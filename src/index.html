@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="project3App">
+<head>
+	<title>WEPO Assignment 3!!! - Online Web Store</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular-mocks/angular-mocks.js"></script>
+	<script src="vendor/angular-toastr/dist/angular-toastr.js"></script>
+	<script src="vendor/angular-route/angular-route.min.js"></script>
+	<script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
+	<script src="shared/app.js"></script>
+	<script src="app.js"></script>
+	<script src="components/sellers/SellersController.js"></script>
+	<script src="components/resource/AppResource.js"></script>
+	<!--link rel="stylesheet" href="/components/sellers/sellers.less"-->
+	<!--link rel="stylesheet" href="styles/vendor.css"-->
+	<!--link rel="stylesheet" href="styles/app.css"-->
+</head>
+
+	<main class="container-fluid">
+		<div class="Main clearfix" ng-view id="content"></div>
+	</main>
+	<div class="Sellers"></div>
+	<toaster-container></toaster-container>
+	<!-- inject:vendor:js -->
+	<!-- endinject -->
+
+	<!-- inject:app:js -->
+	<!-- endinject -->
+
+	<!-- inject:templates:js -->
+	<!-- endinject -->
+</body>
+
+</html>

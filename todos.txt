@@ -1,0 +1,23 @@
+[ ] (20%) Unit tests for all code
+
+[ ] (5%) List individuals
+[ ] (10%) Add/edit individuals
+[ ] (10%) Show details about a given individual
+
+[ ] (10%) All products tab
+[ ] (5%) Top 10 products tab
+[ ] (10%) Add/edit product
+
+[ ] (5%) All tables sortable
+[ ] (5%) All input validated
+
+[ ] (5%) Translated
+
+[ ] (5%) Toastr feedback after add/edit (...what?)
+
+[ ] (5%) Responsive layout
+[ ] (5%) Product directive
+
+[ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED
+	- Videos for products (if page is viewable to customers)
+	- Search and filter
