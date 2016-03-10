@@ -18,6 +18,10 @@
 [ ] (5%) Responsive layout
 [ ] (5%) Product directive
 
-[ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED
+[ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED, one feature may give just 0.1 bonus
 	- Videos for products (if page is viewable to customers)
-	- Search and filter
+	- Search and filter, select category
+
+
+
+[ ] get all data, set on scope
