@@ -106,7 +106,8 @@ function AppResource() {
 		// defined above. A proper implementation will talk to
 		// an API to load/save data.
 		getSellers: function getSellers() {
-
+			console.log("in appresource returning");
+			console.log(mockSellers);
 			return mockHttpPromise(mockResource.successLoadSellers, mockSellers);
 		},
 

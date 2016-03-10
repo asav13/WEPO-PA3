@@ -2,8 +2,14 @@
 
 angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices"])
 .config(function ($routeProvider) {
-	$routeProvider.when("/sellers", {
+
+	$routeProvider.when("/", {
 		controller: "SellersController",
 		templateUrl: "components/sellers/index.html"
+	});
+
+	$routeProvider.when("/sellers/:id", {
+		controller: "SellersController",
+		templateUrl: "components/seller-details/index.html"
 	});
 });
