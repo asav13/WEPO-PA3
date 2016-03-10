@@ -15,7 +15,6 @@ gulp.task("server", () => {
 			routes:  {
 				"/src/vendor":  "src/vendor",
 				"/src/components": "src/components",
-				'/node_modules' // NOTA BENE I ADDED THIS - Asa
 			}
 		}
 	};
