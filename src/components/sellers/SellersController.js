@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, $location, AppResource) {
+function SellersController($scope, $location, AppResource, SellerDlg) {
 
 	$scope.sellers = 'No sellers';
 
@@ -20,7 +20,14 @@ function SellersController($scope, $location, AppResource) {
 	};
 
 	/* When a new seller is submitted, the form is not there already */
-	$scope.onSubmitSeller = function (){
+	$scope.onAddSeller = function (){
+
+		/*TESTING MODULES*/
+		SellerDlg.show().then(function(newSeller) { //this seller is what we get from the dlg controller close() !
+			console.log("INFO: Inside SellerDlg.show().then function, in sellers controller.");
+		});
+
+
 		var mockSeller = { // TODO replace for seller from form
 			name: "New Seller",
 			category: "somecat",
@@ -54,5 +61,6 @@ function SellersController($scope, $location, AppResource) {
 				console.log("ERROR: Failed adding seller.");
 			});
 	};
+
 });
 
