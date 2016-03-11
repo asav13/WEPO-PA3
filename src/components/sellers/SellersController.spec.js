@@ -30,8 +30,10 @@ describe("SellersController should be unit tested here", function() {
 
 	/* TEST the setup */
 	it("leScope and mockLocation should be defined.", function(){
+		expect(sellersController).toBeDefined();
 		expect(leScope).toBeDefined();
 		expect(mockLocation).toBeDefined();
+		expect(resource).toBeDefined();
 	});
 
 	/* TEST for adding a new seller */

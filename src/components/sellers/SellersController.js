@@ -4,7 +4,6 @@ angular.module("project3App").controller("SellersController",
 function SellersController($scope, $location, AppResource) {
 
 	$scope.sellers = 'No sellers';
-	$scope.aNewSellerHasBeenAdded = false;
 
 	AppResource.getSellers()
 		.success(function(data) {
@@ -23,17 +22,14 @@ function SellersController($scope, $location, AppResource) {
 	/* When a new seller is submitted, the form is not there already */
 	$scope.onSubmitSeller = function (){
 		var mockSeller = { // TODO replace for seller from form
-			id: 99,
 			name: "New Seller",
 			category: "somecat",
-			imagePath: "someimg"
+			imagePath: "https://http.cat/201"
 		};
 		
 		AppResource.addSeller(mockSeller)
 			.success(function(data) {
-				$scope.aNewSellerHasBeenAdded = true;
-				console.log("added seller");
-				console.log(data);
+				// Nothing to do here, updates on its own
 			}).error(function() {
 				console.log("ERROR: Failed adding seller.");
 			});
@@ -42,11 +38,12 @@ function SellersController($scope, $location, AppResource) {
 
 	/* When a seller update is submitted, the form is not there already */
 	$scope.onUpdateSeller = function (){
+
 		var mockUpdatedSeller = { // TODO replace for seller from form
 			id: 999,
 			name: "Tester Seller updated",
 			category: "Tester cat updated",
-			imagePath: "updated img"
+			imagePath: "https://http.cat/201"
 		};
 		
 		AppResource.updateSeller(999, mockUpdatedSeller)
