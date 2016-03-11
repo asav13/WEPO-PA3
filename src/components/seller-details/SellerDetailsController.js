@@ -7,13 +7,13 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	$scope.products = [];
 	$scope.topTenProd = [];
 	//var sellerId = $routeParams.id;
-	var sellerId = 1;
+	var sellerId = $routeParams.id;
 	$scope.sellerDetails = 'no details on this seller';
 
 	AppResource.getSellerProducts(sellerId).success(function(data) {
 		console.log(data);
 		$scope.products = data;
-		$scope.topTenProd = FindTopTen(data);
+		$scope.topTenProd = new FindTopTen(data);
 	}).error(function() {
 		console.log("ERROR...");
 	});
@@ -22,9 +22,8 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 
 	/*Asa*/
 
-	var sellerId = $routeParams.id;
+	
 	$scope.sellerDetails = 'no details on this seller';
-
 
 	AppResource.getSellerDetails(parseInt(sellerId))
 	// TODO Should this be in ProductController ?? If so ...then how do 
