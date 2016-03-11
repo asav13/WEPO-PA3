@@ -38,7 +38,12 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 		});
 
 		for(var i = dataArr.length, j = 0; j < 10; i--, j++) {
-			topTenArr[j] = dataArr[i-1];
+			if(dataArr[i-1] !== undefined) {
+				topTenArr[j] = dataArr[i-1];
+			} else {
+				break;
+			}
+			
 		}
 
 		return topTenArr;
