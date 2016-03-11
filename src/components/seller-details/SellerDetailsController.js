@@ -11,11 +11,20 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	$scope.sellerDetails = 'no details on this seller';
 
 	AppResource.getSellerProducts(sellerId).success(function(data) {
+		console.log(data);
 		$scope.products = data;
 		$scope.topTenProd = FindTopTen(data);
 	}).error(function() {
 		console.log("ERROR...");
 	});
+
+	/*End Vedis*/
+
+	/*Asa*/
+
+	var sellerId = $routeParams.id;
+	$scope.sellerDetails = 'no details on this seller';
+
 
 	AppResource.getSellerDetails(parseInt(sellerId))
 	// TODO Should this be in ProductController ?? If so ...then how do 
