@@ -6,8 +6,7 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	/*Vedis*/
 	$scope.products = [];
 	$scope.topTenProd = [];
-	//var sellerId = $routeParams.id;
-	var sellerId = $routeParams.id;
+	var sellerId = parseInt($routeParams.id);
 	$scope.sellerDetails = 'no details on this seller';
 
 	AppResource.getSellerProducts(sellerId).success(function(data) {
@@ -15,7 +14,7 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 		$scope.products = data;
 		$scope.topTenProd = new FindTopTen(data);
 	}).error(function() {
-		console.log("ERROR...");
+		console.log("ERRORÆ Failed while fetching products.");
 	});
 
 	/*End Vedis*/
@@ -25,7 +24,7 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	
 	$scope.sellerDetails = 'no details on this seller';
 
-	AppResource.getSellerDetails(parseInt(sellerId))
+	AppResource.getSellerDetails(sellerId)
 	// TODO Should this be in ProductController ?? If so ...then how do 
 	// we make two controllers work on one html...or maybe it should be with the product card stuff
 		.success(function(data) {

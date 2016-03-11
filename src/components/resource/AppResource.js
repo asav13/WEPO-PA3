@@ -1,4 +1,4 @@
-"use strict";
+	"use strict";
 
 /**
  * This module serves as the main resource object for our app, i.e.
@@ -41,7 +41,7 @@ function AppResource() {
 		createSeller(2, "Smíðaverkstæði Sigríðar", "Skartgripir", "https://i.imgur.com/ywaPivVh.jpg"),
 		createSeller(3, "Sælgætisgerð Sjonna og Súsí", "Matvörur", "http://i.imgur.com/IuL474x.jpg"),
 		createSeller(4, "Leirkeraverkstæði Lomma", "Keramik", "https://upload.wikimedia.org/wikipedia/commons/6/67/Potter_at_work,_Jaura,_India.jpg"),
-		createSeller(999, "Tester Seller", "Tester cat", "tester img"),
+		createSeller(999, "Tester Seller", "Tester cat", "https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg"),
 	];
 
 	var mockProducts = [
@@ -112,6 +112,7 @@ function AppResource() {
 
 		addSeller: function addSeller(seller) {
 			if (mockResource.successAddSeller) {
+				seller.id = mockSellers.length + 1;
 				mockSellers.push(seller);
 			}
 			return mockHttpPromise(mockResource.successAddSeller, seller);
