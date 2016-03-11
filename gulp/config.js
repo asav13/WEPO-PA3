@@ -53,6 +53,7 @@ module.exports = {
 		],
 		styles:  [
 			"src/app.less",
+			"src/general.less",
 			//"src/vendor/bootstrap/dist/css/bootstrap.min.css", //doesnt read
 			"src/components/**/*.less",
 			"!src/components/**/_*.less"
