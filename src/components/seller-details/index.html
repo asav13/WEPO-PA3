@@ -1,3 +1,14 @@
 <h1>Sellers detail page</h1>
-<!--Added by Asa to check data flow, can be deleted-->
-<div ng-model="sellerDetails">{{sellerDetails}}</div>
+
+
+<uib-tabset>
+    <uib-tab index="0" heading="All products">BLABLABLABALABL</uib-tab>
+    <uib-tab index="1" heading="Top 10">
+    <ul>
+    	<li ng-repeat="prod in products">{{prod.name}}</li>
+    </ul>
+    </uib-tab>
+</uib-tabset>
+
+<p>Tabs finished</p>
+
