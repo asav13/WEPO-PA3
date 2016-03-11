@@ -53,11 +53,11 @@ function AppResource() {
 		createProduct(1,  7, "Jakki",            4499,  23, 14, "http://www.newmanmayahandicraft.com.np/wp-content/uploads/2015/10/woolen-jacket-with-multicolored-design.jpg"),
 		createProduct(1,  8, "Peysa",            5899, 122,  1, "https://upload.wikimedia.org/wikipedia/commons/7/75/Selburose-sweater.jpg"),
 		createProduct(1,  9, "Lambhúshetta",     2499, 322,  4, "https://upload.wikimedia.org/wikipedia/commons/9/9a/Balaclava_3_hole_black.jpg"),
-		createProduct(1, 10, "Buxur",            4299,  73,  5, ""),
-		createProduct(1, 11, "Grifflur",         1299,  98,  9, ""),
+		createProduct(1, 10, "Buxur",            4299,  73,  5, "http://demandware.edgesuite.net/aakn_prd/on/demandware.static/-/Sites-bdel/default/dwcffb3d51/products/apparel/_F15/W80T_325_SAGE_Zone_Pants_Front_W_web.jpg"),
+		createProduct(1, 11, "Grifflur",         1299,  98,  9, "http://res.cloudinary.com/ladiesmagz-com/image/upload/v1441766842/womens-fingerless-gloves-6_qizhrk.jpg"),
 		createProduct(1, 12, "Teppi",             499, 819, 98, "https://pixabay.com/static/uploads/photo/2015/11/07/14/40/fabric-1031932_960_720.jpg"),
 		createProduct(1, 13, "Sokkar",            499, 991, 23, "https://upload.wikimedia.org/wikipedia/commons/4/42/HandKnittedWhiteLaceSock.jpg"),
-		createProduct(1, 14, "Bindi",             899,  25, 22, ""),
+		createProduct(1, 14, "Bindi",             899,  25, 22, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTx2g8TJwFZjL_iDMP2UeR7pfkaQcW4nTb3BFEGL5Pofd2ldkI_pJnuMk"),
 		createProduct(1, 15, "Slaufa",            499, 552, 54, "https://pixabay.com/static/uploads/photo/2015/04/20/21/39/bow-tie-732289_960_720.jpg"),
 		createProduct(1, 16, "Hnéháir sokkar",   2499,  93, 42, "https://upload.wikimedia.org/wikipedia/commons/c/cf/Argyle_(PSF).png"),
 		createProduct(1, 17, "Barnatrefill",      999,  39, 11, "https://upload.wikimedia.org/wikipedia/commons/a/a4/Well-clothed_baby.jpg"),
@@ -65,7 +65,7 @@ function AppResource() {
 		createProduct(1, 19, "Hvítir vettlingar", 499, 241,  0, "https://pixabay.com/static/uploads/photo/2014/05/05/22/15/gloves-338614_960_720.jpg"),
 		createProduct(1, 20, "Úlnliðshlífar",    1499,  34,  0, "https://pixabay.com/static/uploads/photo/2015/11/07/17/20/hands-1032312_960_720.jpg"),
 		createProduct(3, 21, "Kókoskúlur",        499, 100, 5000, "https://upload.wikimedia.org/wikipedia/commons/2/2c/Chokladbollar.jpg"),
-		createProduct(3, 22, "Brjóstsykur",       499, 200, 4900, ""),
+		createProduct(3, 22, "Brjóstsykur",       499, 200, 4900, "http://www.visindavefur.is/myndir/brjostsykur_030810.jpg"),
 	];
 	// Note: sellers 2 and 4 don't have any products - yet!
 

@@ -11,6 +11,7 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	$scope.sellerDetails = 'no details on this seller';
 
 	AppResource.getSellerProducts(sellerId).success(function(data) {
+		console.log(data);
 		$scope.products = data;
 		$scope.topTenProd = FindTopTen(data);
 	}).error(function() {
