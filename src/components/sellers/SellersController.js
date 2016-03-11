@@ -56,15 +56,3 @@ function SellersController($scope, AppResource) {
 	};
 });
 
-
-/*		updateSeller: function(id, seller) {
-			if (mockResource.successUpdateSeller) {
-				var current = _.find(mockSellers, function(o){ return o.id === id;});
-				if (current !== null) {
-					current.name      = seller.name;
-					current.category  = seller.category;
-					current.imagePath = seller.imagePath;
-				}
-			}
-			return mockHttpPromise(mockResource.successUpdateSeller, seller);
-		},*/
