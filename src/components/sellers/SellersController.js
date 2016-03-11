@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource) {
+function SellersController($scope, $location, AppResource) {
 
 	$scope.sellers = 'No sellers';
 	$scope.aNewSellerHasBeenAdded = false;
@@ -16,6 +16,9 @@ function SellersController($scope, AppResource) {
 			// TODO check why this gets called billion times when error 
 	});
 
+	$scope.seeDetails = function(sellerID) {
+		$location.path('sellers/' + sellerID);
+	};
 
 	/* When a new seller is submitted, the form is not there already */
 	$scope.onSubmitSeller = function (){

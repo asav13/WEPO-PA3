@@ -16,10 +16,12 @@
 			</thead>
 			<!--TODO: ADD SORTING FILTER IN THEADS AND EDIT OPTION TO TBODY ROWS-->
 			<tbody>
-				<tr role="button" ng-repeat="salesman in sellers">
-					<td scope="row">{{salesman.id}}</td>
-					<td>{{salesman.name}}</td>
-					<td>{{salesman.category}}</td>
+				<tr ng-repeat="salesman in sellers">					
+					<td role="button" scope="row" ng-click="seeDetails(salesman.id)">{{salesman.id}}</td>
+					<td role="button" ng-click="seeDetails(salesman.id)"><img class="img-thumbnail" width="100" ng-src="{{salesman.imagePath}}"/></td>
+					<td role="button" ng-click="seeDetails(salesman.id)">{{salesman.name}}</td>
+					<td role="button" ng-click="seeDetails(salesman.id)">{{salesman.category}}</td>				
+					<td><a title="Edit" ng-click="onUpdateSeller()"><span class="btn btn-primary glyphicon glyphicon-edit"></span></a></td>
 				</tr>			
 			</tbody>
 		</table>
