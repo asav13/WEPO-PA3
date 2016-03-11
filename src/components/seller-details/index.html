@@ -1,13 +1,23 @@
 <h1>Sellers detail page</h1>
 
-<uib-tabset>
-    <uib-tab index="0" heading="All products">
-    </uib-tab>
-    <uib-tab index="1" heading="Top 10">
-	    <ul>
-	    	<li ng-repeat="prod in products">{{prod.name}}</li>
-	    </ul>
-    </uib-tab>
-</uib-tabset>
+<div class="SellerDetails">
+<img src="{{sellerDetails.imagePath}}" height="50px" width="50px">
+<p>Name: {{sellerDetails.name}}<p>
+<p>Category: {{sellerDetails.category}}</p>
+</div>
 
-<p>Tabs finished</p>
+<!--This is copy paste from w3Schools..
+	http://www.w3schools.com/bootstrap/bootstrap_modal.asp-->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Product</button>
+
+<uib-tabset>
+	<uib-tab index="0" heading="All products">
+		<div product>
+			<product-name></product-name>
+		</div>
+	</uib-tab>
+	<uib-tab index="1" heading="Top 10">
+		<div product>
+			<top-product-name></top-product-name>
+		</div>
+	</uib-tab>
