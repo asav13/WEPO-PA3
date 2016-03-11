@@ -5,14 +5,14 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th><a class="btn btn default">Salesman</a></th>
-					<th>Category</th>
+					<th><a class="btn btn-default btn-block">ID</a></th>
+					<th><a class="btn btn-default btn-block">Salesman</a></th>
+					<th><a class="btn btn-default btn-block">Category</a></th>
 				</tr>
 			</thead>
-			<!--TODO: MAKE ROW CLICKABLE AND ADD SORTING FILTER IN THEADS-->
+			<!--TODO: ADD SORTING FILTER IN THEADS AND EDIT OPTION TO TBODY ROWS-->
 			<tbody>
-				<tr ng-repeat="salesman in sellers">
+				<tr role="button" ng-repeat="salesman in sellers">
 					<td scope="row">{{salesman.id}}</td>
 					<td>{{salesman.name}}</td>
 					<td>{{salesman.category}}</td>
@@ -22,4 +22,4 @@
 	</div>
 </div>
 
-<button ng-click="onSubmitSeller()">Submit seller</button>
+<button class="btn btn-primary pull-right" ng-click="onSubmitSeller()">Submit seller</button>

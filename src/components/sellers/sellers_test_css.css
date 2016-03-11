@@ -1,0 +1,11 @@
+/*THIS IS FOR TESTING ONLY. TODO: TRY TO CONVERT THIS INTO THIS LESS SHIT*/
+
+.table>thead>tr>th {
+	padding: 0; 
+}
+.table>thead>tr>th>.btn {
+	border-radius: 0;
+	border-bottom: none;
+	border-top: none;
+	padding: 10px 12px;
+}
