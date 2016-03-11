@@ -8,7 +8,10 @@
 	<script src="vendor/angular-mocks/angular-mocks.js"></script>
 	<script src="vendor/angular-toastr/dist/angular-toastr.js"></script>
 	<script src="vendor/angular-route/angular-route.min.js"></script>
-	<!--<script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>     Taken out to avoid conflicts -Védís-->
+	<!--AS BEFORE, UI-BOOTSTRAP DOES NOT WORK FOR TABS-->
+	<!--<script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
+	<script src="vendor/angular-animate/angular-animate.js"></script><!--Added to for tabs to work -Védís-->
 	<script src="shared/app.js"></script>
 	<script src="app.js"></script>
 	<script src="components/sellers/SellersController.js"></script>
@@ -16,14 +19,11 @@
 	<script src="components/resource/AppResource.js"></script>
 	<!--link rel="stylesheet" href="/components/sellers/sellers.less"-->
 	<!--link rel="stylesheet" href="styles/vendor.css"-->
-
-	<!--THIS IS IN CASE UI BOOTSTRAP DOESNT WORK-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
-	<script src="vendor/angular-animate/angular-animate.js"></script><!--Added to for tabs to work -Védís-->
+	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css">
 	
 	<!--link rel="stylesheet" href="styles/app.css"-->
 </head>
-
+<body>
 	<main class="container-fluid">
 		<div class="Main clearfix" ng-view id="content"></div>
 	</main>
