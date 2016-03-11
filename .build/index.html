@@ -7,6 +7,7 @@
 
 	<!--KEEP THIS ONE -->
 	<link rel="stylesheet" href="src/vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="styles/app.css">
 	<!-- DONT KNOW EXACTLY WHAT REFERENCES WE NEED.....GULP-->
 	<!--
 	<script src="vendor/angular/angular.js"></script>
@@ -25,13 +26,20 @@
 	<script src="components/resource/AppResource.js"></script>
 	<script src="components/product/productDirectives.js"></script>
 	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css">
-	<!--link rel="stylesheet" href="/components/sellers/sellers.less"-->
+	link rel="stylesheet" href="/components/sellers/sellers.less"-->
 	<!--link rel="stylesheet" href="styles/vendor.css"-->	
-	<!--link rel="stylesheet" href="styles/app.css"-->
 
 </head>
 <body>
-	<main class="container-fluid">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a ng-href="#/"><img class="img-circle pull-left" src="src/components/imgs/shell_sark.png"/></a>
+				<a class="navbar-brand" ng-href="#/">ShellSarks</a>
+			</div>
+		</div>
+	</nav>
+	<main class="General container">
 		<div class="Main clearfix" ng-view id="content"></div>
 	</main>
 	<div class="Sellers"></div>
@@ -49,12 +57,12 @@
 	<!-- endinject -->
 
 	<!-- inject:app:js -->
-	<script src="scripts/app-f73fbe0d.js"></script>
+	<script src="scripts/app-126c7c53.js"></script>
 	<script src="scripts/appconfig.js"></script>
 	<!-- endinject -->
 
 	<!-- inject:templates:js -->
-	<script src="scripts/templates-b97f6247.js"></script>
+	<script src="scripts/templates-269024fb.js"></script>
 	<!-- endinject -->
 </body>
 
