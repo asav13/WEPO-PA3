@@ -1,5 +1,32 @@
-<div> Hér ætti að birtast listi af seljendum - TODO: útfæra það!</div>
-<p> Here come the sellers, just as raw data for now</p>
-<div ng-model="sellers">{{sellers}}</div>
 
+
+<!--DATA FOR TESTING, CAN BE DELETED OR EDITED FOR PRETTIFYING-->
+<!--Sellers are in $scope.sellers-->
+<p> Here come the sellers, just as raw data for now</p>
+
+<table class="table">
+	<th>ID</th>
+	<th>Name</th>
+	<th>Category</th>
+	<th>Photo</th>
+	<tr ng-repeat="seller in sellers">
+		<td>{{seller.id}}</td>
+		<td>{{seller.name}}</td>
+		<td>{{seller.category}}</td>
+		<td>{{seller.imagePath}}</td>
+	</tr>
+</table>
+
+
+<!--This function onSubmitSeller should be connected to the button that 
+comes with the form for a new seller, the submit button for that -->
 <button ng-click="onSubmitSeller()">Submit seller</button>
+
+
+<!--This function onUpdateSeller should be connected to the button that 
+comes with the form for updating a new seller, the submit button for that -->
+<button ng-click="onUpdateSeller()">Update seller</button>
+
+
+
+<!--DATA FOR TESTING, CAN BE DELETED OR EDITED FOR PRETTIFYING-->

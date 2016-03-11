@@ -17,6 +17,7 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	/*End Vedis*/
 
 	/*Asa*/
+
 	var sellerId = $routeParams.id;
 	$scope.sellerDetails = 'no details on this seller';
 
