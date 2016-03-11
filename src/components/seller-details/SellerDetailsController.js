@@ -7,12 +7,10 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 	$scope.products = [];
 	$scope.topTenProd = [];
 	//var sellerId = $routeParams.id;
-	var sellerId = 3;
+	var sellerId = 1;
 	$scope.sellerDetails = 'no details on this seller';
 
 	AppResource.getSellerProducts(sellerId).success(function(data) {
-		console.log("DATA");
-		console.log(data);
 		$scope.products = data;
 		$scope.topTenProd = FindTopTen(data);
 	}).error(function() {
@@ -26,13 +24,23 @@ function SellerDetailsController($scope, $routeParams, AppResource) {
 			//console.log("SELLER DETAIL");
 			//console.log(data);
 			$scope.sellerDetails = data;
-
 		}).error(function(){
 			console.log("ERROR: Failed while fetching seller details.");
 		});
 
-
 	function FindTopTen(data) {
+		var dataArr 	= [];
+		var topTenArr 	= [];
+		dataArr 		= data;
 
+		dataArr.sort(function(a, b) {
+			return a.quantitySold - b.quantitySold;
+		});
+
+		for(var i = dataArr.length, j = 0; j < 10; i--, j++) {
+			topTenArr[j] = dataArr[i-1];
+		}
+
+		return topTenArr;
 	}
 });

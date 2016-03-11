@@ -1,18 +1,18 @@
 <h1>Sellers detail page</h1>
 
-
 <uib-tabset>
 	<uib-tab index="0" heading="All products">
 		<ul>
-			<li ng-repeat="prod in products">{{prod.name}} + {{prod.quantitySold}}</li>
+			<li ng-repeat="prod in products">{{prod.name}}</li>
 		</ul>
 	</uib-tab>
 	<uib-tab index="1" heading="Top 10">
 		<ul>
-			<li ng-repeat="top in topTenProd">{{top.name}} + {{top.quantitySold}}</li>
+			<li ng-repeat="top in topTenProd">{{top.quantitySold}} pcs sold of {{top.name}}</li>
 		</ul>
+		<br>
+		<div product>
+			<product-name></product-name>
+			<div product-photo></div>
+		</div>
 	</uib-tab>
-</uib-tabset>
-
-<p>Tabs finished</p>
-
