@@ -89,19 +89,21 @@ angular.module("sharedServices").directive("tableSort", function () {
 		// adds caret class to the default column.
 		function setup() {
 			angular.forEach(tableChildren, function(value) {
-				console.log("value in setUp: " + value);
+				
 				var el = angular.element(value);
+				
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 				if (isSortColumn(columnName)) {
 					el.prepend("<i></i>");
 					if (columnName === defaultColumn || columnName === "'" + defaultColumn + "'") {
-						el.children().addClass("fa fa-caret-" + (scope[reverse] ? "up" : "down"));
+						el.find("i").addClass("fa fa-caret-" + (scope[reverse] ? "up" : "down"));
 					}
 				}
 			});
 		}
 
 		function isSortColumn(columnName) {
+			console.log("columnName: " + columnName);
 			return columnName !== undefined && columnName.length > 0;
 		}
 
@@ -116,9 +118,9 @@ angular.module("sharedServices").directive("tableSort", function () {
 				var el = angular.element(value);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 				if (isSortColumn(columnName)) {
-					el.children().removeClass();
+					el.find("i").removeClass();
 					if (scope[predicate] === columnName) {
-						el.children().addClass("fa fa-caret-" + (sortDown(sortBy) ? "up" : "down"));
+						el.find("i").addClass("fa fa-caret-" + (sortDown(sortBy) ? "up" : "down"));
 					}
 				}
 			});
@@ -131,7 +133,6 @@ angular.module("sharedServices").directive("tableSort", function () {
 
 		scope.$watch("tableSort", function(value) {
 			if (value) {
-				console.log("VALUE IN TABLESORT BEING WATCHED: " + value);
 				defaultColumn = value;
 			}
 			setup();

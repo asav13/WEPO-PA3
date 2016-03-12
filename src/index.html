@@ -7,6 +7,8 @@
 
 	<!--KEEP THIS ONE -->
 	<link rel="stylesheet" href="src/vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="src/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="src/vendor/angular-toastr/dist/angular-toastr.min.css" type="text/css">
 	<link rel="stylesheet" href="styles/app.css">
 	<!-- DONT KNOW EXACTLY WHAT REFERENCES WE NEED.....GULP-->
 	<!--
@@ -34,10 +36,13 @@
 		<div class="container">
 			<div class="navbar-header">
 				<div class="navbar-brand">
-					<a ng-href="#/"><img class="img-circle" src="src/components/imgs/shell_sark.png"/>ShellSarks</a>
+					<a ng-href="#/">
+						<img class="img-circle" src="src/components/imgs/shell_sark.png"/>ShellSarks
+					</a>
 					<div ng-controller="LanguageController">
 						<img role="button" ng-click="changeLanguage('is')" src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Flag_of_Iceland.png" height="25" width="25">
 						<img role="button" ng-click="changeLanguage('en')" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/2000px-Flag_of_the_United_Kingdom.svg.png" height="25" width="25">
+					</div>
 				</div>
 			</div>
 		</div>
