@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, $location, AppResource) {
+function SellersController($scope, $location, AppResource, SellerDlg) {
 
 	$scope.sellers = 'No sellers';
 
@@ -20,19 +20,15 @@ function SellersController($scope, $location, AppResource) {
 	};
 
 	/* When a new seller is submitted, the form is not there already */
-	$scope.onSubmitSeller = function (){
-		var mockSeller = { // TODO replace for seller from form
-			name: "New Seller",
-			category: "somecat",
-			imagePath: "https://http.cat/201"
-		};
-		
-		AppResource.addSeller(mockSeller)
+	$scope.onAddSeller = function (){
+		SellerDlg.show().then(function(newSeller) {
+			AppResource.addSeller(newSeller)
 			.success(function(data) {
 				// Nothing to do here, updates on its own
 			}).error(function() {
 				console.log("ERROR: Failed adding seller.");
 			});
+		});
 	};
 
 
@@ -54,5 +50,6 @@ function SellersController($scope, $location, AppResource) {
 				console.log("ERROR: Failed adding seller.");
 			});
 	};
+
 });
 

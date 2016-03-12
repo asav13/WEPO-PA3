@@ -1,0 +1,39 @@
+<!-- The form will use $scope.newSeller-->
+
+<div class="modal-content">
+	<div class="modal-header">
+		<h4 class="modal-title">Add new seller</h4>
+	</div>
+	<div class="modal-body">
+		<form name="newSellerForm">
+			<div class="input-group">
+				<label for="newSellerName">Name of seller</label>
+				<input type="text" 
+					class="form-control"
+					placeholder="Seller's name"
+					name="newSellerName"
+					ng-model="newSeller.name"/>
+			</div>
+			<div class="input-group">
+				<label for="newSellerCategory">Category</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Category"
+					name="newSellerCategory"
+					ng-model="newSeller.category"/>
+			</div>
+			<div class="input-group">
+				<label for="newSellerName">Path to image</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Image path"
+					name="newSellerImg"
+					ng-model="newSeller.imagePath"/>
+			</div>
+			<div class="modal-footer">
+				<button ng-click="onOk()" class="btn btn-default">Submit</button>
+				<button ng-click="onCancel()" class="btn btn-default">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>
