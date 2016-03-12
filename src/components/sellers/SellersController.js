@@ -21,25 +21,14 @@ function SellersController($scope, $location, AppResource, SellerDlg) {
 
 	/* When a new seller is submitted, the form is not there already */
 	$scope.onAddSeller = function (){
-
-		/*TESTING MODULES*/
-		SellerDlg.show().then(function(newSeller) { //this seller is what we get from the dlg controller close() !
-			console.log("INFO: Inside SellerDlg.show().then function, in sellers controller.");
-		});
-
-
-		var mockSeller = { // TODO replace for seller from form
-			name: "New Seller",
-			category: "somecat",
-			imagePath: "https://http.cat/201"
-		};
-		
-		AppResource.addSeller(mockSeller)
+		SellerDlg.show().then(function(newSeller) {
+			AppResource.addSeller(newSeller)
 			.success(function(data) {
 				// Nothing to do here, updates on its own
 			}).error(function() {
 				console.log("ERROR: Failed adding seller.");
 			});
+		});
 	};
 
 
