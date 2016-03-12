@@ -4,11 +4,14 @@ angular.module("project3App").controller("ProductDlgController",
 function ProductDlgController($scope, $rootScope, AppResource) {
 
 	setPlaceholders();
+	var productPlaceholderImage = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSpvUa_1LfhPuM9eBWBZbWA-HH1c32hoRywESrItNTMFkU3o2yP";
 
 	$scope.onOk = function onOk(){
 		// TODO VALIDATION
 		// dont close if not valid !
-
+		if($scope.newProduct.imagePath === ""){
+			$scope.newProduct.imagePath = productPlaceholderImage;
+		}
 		$scope.$close($scope.newProduct);
 	};
 	$scope.onCancel = function onCancel(){

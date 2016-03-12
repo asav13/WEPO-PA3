@@ -12,27 +12,50 @@
 					class="form-control"
 					placeholder="{{'sellers.AddNew.Name' | translate}}"
 					name="newSellerName"
-					ng-model="newSeller.name"/>
+					autofocus="autofocus"
+					ng-model="newSeller.name"
+					required="required"
+					pattern="[\w\W]{2,30}"/>
 			</div>
+			<small 
+				class="help-block" 
+				ng-show="newSellerForm.newSellerName.$invalid">Can not be empty, must be 2-30 letters.
+			</small>
 			<div class="input-group">
 				<label for="newSellerCategory">{{'sellers.Category' | translate}}</label>
 				<input type="text"
 					class="form-control"
 					placeholder="{{'sellers.AddNew.Category' | translate}}"
 					name="newSellerCategory"
-					ng-model="newSeller.category"/>
+					ng-model="newSeller.category"
+					required="required"
+					pattern="[\w\W]{2,20}"/>
 			</div>
+				<small 
+					class="help-block" 
+					ng-show="newSellerForm.newSellerCategory.$invalid">Can not be empty, must be 2-30 letters.
+				</small>
 			<div class="input-group">
-				<label for="newSellerName">{{'sellers.Image' | translate}}</label>
+				<label for="newSellerImg">{{'sellers.Image' | translate}}</label>
 				<input type="text"
 					class="form-control"
 					placeholder="{{'sellers.AddNew.Image' | translate}}"
 					name="newSellerImg"
 					ng-model="newSeller.imagePath"/>
 			</div>
+				<small 
+					class="help-block">Optional.
+			</small>
 			<div class="modal-footer">
-				<button ng-click="onOk()" class="btn btn-default">{{'sellers.AddNew.Submit' | translate}}</button>
-				<button ng-click="onCancel()" class="btn btn-default">{{'sellers.AddNew.Cancel' | translate}}</button>
+				<button 
+					ng-click="onOk()" 
+					ng-disabled="newSellerForm.$invalid" 
+					class="btn btn-default">{{'sellers.AddNew.Submit'| translate}}
+				</button>
+				<button 
+					ng-click="onCancel()" 
+					class="btn btn-default">{{'sellers.AddNew.Cancel' | translate}}
+				</button>
 			</div>
 		</form>
 	</div>
