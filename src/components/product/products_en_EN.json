@@ -14,7 +14,7 @@
 			"Sold": 				"Quantity sold",
 			"InStock": 				"Quantity in stock",
 			"Image": 				"Image path",
-			"Submit": 				"Submit product",
+			"Submit": 				"Submit",
 			"Cancel": 				"Abort"
 		},
 		"Messages" : {
