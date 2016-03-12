@@ -7,8 +7,15 @@ function ProductDlgController($scope, $rootScope, AppResource) {
 	var productPlaceholderImage = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSpvUa_1LfhPuM9eBWBZbWA-HH1c32hoRywESrItNTMFkU3o2yP";
 
 	$scope.onOk = function onOk(){
-		// TODO VALIDATION
-		// dont close if not valid !
+
+		if($scope.newProduct.name 		=== undefined 	|| 
+			$scope.newProduct.name 		=== "" 			||
+			$scope.newProduct.price 	=== undefined 	|| 
+			$scope.newProduct.price 	=== "") {
+
+				console.log("ERROR: TODO, notify");
+				$scope.$dismiss();
+		}
 		if($scope.newProduct.imagePath === ""){
 			$scope.newProduct.imagePath = productPlaceholderImage;
 		}

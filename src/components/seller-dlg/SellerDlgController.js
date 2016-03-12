@@ -7,12 +7,19 @@ function SellerDlgController($scope, $rootScope, AppResource) {
 	var sellerPlaceholderImage = "http://www.kirkerholidays.com/sites/default/files/styles/person_listing_image/public/default_images/person-placeholder.jpg?itok=bsq7f9IC";
 
 	$scope.onOk = function onOk(){
-		// TODO VALIDATION
-		// dont close if not valid !
+
+		if($rootScope.newSeller 			=== undefined 	||
+			$rootScope.newSeller.name 		=== undefined 	|| 
+			$rootScope.newSeller.name		=== "" 			|| 
+			$rootScope.newSeller.category 	=== undefined 	|| 
+			$rootScope.newSeller.category 	=== "") {
+
+				console.log("ERROR: TODO, notify");
+				$scope.$dismiss();
+		}
 		if($rootScope.newSeller.imagePath === ""){
 			$rootScope.newSeller.imagePath = sellerPlaceholderImage;
 		}
-
 		$scope.$close($rootScope.newSeller);
 	};
 	$scope.onCancel = function onCancel(){
@@ -24,7 +31,7 @@ function SellerDlgController($scope, $rootScope, AppResource) {
 		if($rootScope.updating === undefined){
 			$rootScope.newSeller = {
 				name: "",
-				category: "", // TODO MAKE SELECTABLE?? 
+				category: "",
 				imagePath: ""
 			};
 		} else {
