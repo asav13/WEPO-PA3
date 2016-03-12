@@ -56,7 +56,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 		function initClickHandlers() {
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
-				console.log("value is: " + el)
+				console.log("value is: " + el);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 
 				// Only attach a click handler if:
