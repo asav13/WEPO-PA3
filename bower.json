@@ -21,7 +21,8 @@
     "angular-translate": "~2.10.0",
     "angular-toastr": "~1.7.0",
     "angular-mocks": "~1.5.0",
-    "lodash": "~4.5.1"
+    "lodash": "~4.5.1",
+    "angular-translate-loader-static-files": "^2.10.0"
   },
   "devDependencies": {
     "angular-animate": "^1.5.0"

@@ -1,0 +1,55 @@
+<!-- The form will use $scope.newProduct-->
+
+<div class="modal-content">
+	<div class="modal-header">
+		<h4 class="modal-title">Add new product</h4>
+	</div>
+	<div class="modal-body">
+		<form name="newProductForm">
+			<div class="input-group">
+				<label for="productName">Name of product</label>
+				<input type="text" 
+					class="form-control"
+					placeholder="Product's name"
+					name="productName"
+					ng-model="newProduct.name"/>
+			</div>
+			<div class="input-group">
+				<label for="price">Price</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Product's price"
+					name="price"
+					ng-model="newProduct.price"/>
+			</div>
+			<div class="input-group">
+				<label for="quantitySold">Quantity sold</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Quantity sold"
+					name="quantitySold"
+					ng-model="newProduct.quantitySold"/>
+			</div>
+			<div class="input-group">
+				<label for="quantityInStock">Quantity in stock</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Quantity in stock"
+					name="quantityInStock"
+					ng-model="newProduct.quantityInStock"/>
+			</div>
+			<div class="input-group">
+				<label for="imagePath">Path to image</label>
+				<input type="text"
+					class="form-control"
+					placeholder="Image path"
+					name="imagePath"
+					ng-model="newProduct.imagePath"/>
+			</div>			
+			<div class="modal-footer">
+				<button ng-click="onOk()" class="btn btn-default">Submit</button>
+				<button ng-click="onCancel()" class="btn btn-default">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

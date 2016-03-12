@@ -1,27 +1,26 @@
 [ ] (20%) Unit tests for all code
 
-[ ] (5%) List individuals
-[ ] (10%) Add/edit individuals
-[ ] (10%) Show details about a given individual
+[x] (5%) List individuals
+[x] (10%) Add/edit individuals
+[x] (10%) Show details about a given individual
 
-[ ] (10%) All products tab
-[ ] (5%) Top 10 products tab
-[ ] (10%) Add/edit product
+[x] (10%) All products tab // only need to change the look a bit
+[x] (5%) Top 10 products tab
+[1/2] (10%) Add/edit product // missing edit product
 
-[ ] (5%) All tables sortable
-[ ] (5%) All input validated
+[?x] (5%) All tables sortable // it seems to be done ! :D
+[ ] (5%) All input validated 
 
 [ ] (5%) Translated
 
 [ ] (5%) Toastr feedback after add/edit (...what?)
 
-[ ] (5%) Responsive layout
-[ ] (5%) Product directive
+[x] (5%) Responsive layout 
+[x] (5%) Product directive
 
 [ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED, one feature may give just 0.1 bonus
 	- Videos for products (if page is viewable to customers)
 	- Search and filter, select category
 
 
-
-[ ] get all data, set on scope
+5+10+10+10+5+5+5=50/100
