@@ -4,7 +4,7 @@
 
 describe("SellerDetailsController should be unit tested here", function() {
 	// TODO: add beforeEach/describe/it/etc. functions as appropriate!
-		var sellerDetailsController, leScope, resource;
+		var sellerDetailsController, leScope, resource, productDlg;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
@@ -16,16 +16,19 @@ describe("SellerDetailsController should be unit tested here", function() {
 	};
 
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $rootScope, AppResource){
+	beforeEach(inject(function($controller, $rootScope, AppResource, ProductDlg){
 		leScope = $rootScope.$new();
 		resource = AppResource;
+		productDlg = ProductDlg;
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
+		spyOn(productDlg, 'show').and.callThrough();
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		leScope,
 			$location: 		mockLocation,
-			AppResource: 	resource
+			AppResource: 	resource,
+			ProductDlg: 	productDlg
 			});
 		spyOn(mockLocation, "path");
 	}));
@@ -39,17 +42,24 @@ describe("SellerDetailsController should be unit tested here", function() {
 	});
 
 	/* TEST for getting sellers details as the seller details page is entered */
-	it("The scope variable 'sellers' should include one more entry after the call.", function(){
+	it("getSellerDetails should be called as the page is entered", function(){
 		expect(resource.getSellerDetails).toHaveBeenCalled();
-		//expect(resource.getSellerDetails).toHaveBeenCalledWith(); // THE ID
 	});
 
 	/* TEST for getting sellers details */
-	it("The scope variable 'sellers' should include one more entry after the call.", function(){
+	it("getSellerProducts should be called as the page is entered", function(){
 		expect(resource.getSellerProducts).toHaveBeenCalled();
 		//expect(resource.getSellerDetails).toHaveBeenCalledWith(); // THE ID
-		console.log("LOOKATME");
-		console.log(mockLocation.path);
+	});
+
+	it("add new product ", function(){
+		leScope.onAddProduct();
+		expect(productDlg.show).toHaveBeenCalled();
+	});
+
+	it("update product", function(){
+		leScope.onUpdateSellerProduct();
+		expect(productDlg.show).toHaveBeenCalled();
 	});
 
 });
