@@ -4,10 +4,15 @@ angular.module("project3App").controller("SellerDlgController",
 function SellerDlgController($scope, $rootScope, AppResource) {
 
 	setPlaceholders();
+	var sellerPlaceholderImage = "http://www.kirkerholidays.com/sites/default/files/styles/person_listing_image/public/default_images/person-placeholder.jpg?itok=bsq7f9IC";
 
 	$scope.onOk = function onOk(){
 		// TODO VALIDATION
 		// dont close if not valid !
+		if($rootScope.newSeller.imagePath === ""){
+			$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+		}
+
 		$scope.$close($rootScope.newSeller);
 	};
 	$scope.onCancel = function onCancel(){
