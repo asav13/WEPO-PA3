@@ -2,9 +2,6 @@
 	<!--This function onSubmitSeller should be connected to the button that 
 	comes with the form for a new seller, the submit button for that -->
 	<div class="clearfix">
-		<button class="btn btn-primary pull-right" ng-click="onSubmitSeller()">Submit seller</button>
-		<!--This function onSubmitSeller should be connected to the button that 
-		comes with the form for a new seller, the submit button for that -->
 		<button class="btn btn-primary pull-right" ng-click="onAddSeller()">Add new seller</button>
 		<h1 class="pull-left">Sellers</h1>
 	</div>
@@ -20,23 +17,18 @@
 			</thead>
 			<!--TODO: ADD SORTING FILTER IN THEADS-->
 			<tbody>
-				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">					
+				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">
 					<td class="text-center" role="button" scope="row" ng-click="seeDetails(s.id)">
 						<img class="img-thumbnail" width="100" ng-src="{{s.imagePath}}"/>
 					</td>
 					<td role="button" ng-click="seeDetails(s.id)">{{s.name}}</td>
-					<td role="button" ng-click="seeDetails(s.id)">{{s.category}}</td>				
-					<td><a title="Edit" ng-click="onUpdateSeller()"><span class="btn btn-primary glyphicon glyphicon-edit"></span></a></td>
-				</tr>			
+					<td role="button" ng-click="seeDetails(s.id)">{{s.category}}</td>
+					<td><a title="Edit" ng-click="onUpdateSeller(s.id)"><span class="btn btn-primary glyphicon glyphicon-edit"></span></a></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
 
 </div>
 
-<!--This function onUpdateSeller should be connected to the button that 
-comes with the form for updating a new seller, the submit button for that -->
-<button class="btn btn-primary pull-right" ng-click="onUpdateSeller()">Update seller</button>
-
-</div>
 

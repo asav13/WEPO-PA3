@@ -32,6 +32,7 @@ function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) 
 			AppResource.addSellerProduct(sellerId, newProduct)
 			.success(function(data) {
 				$scope.products.push(data);
+				$scope.topTenProd = new FindTopTen($scope.products);
 			}).error(function() {
 				console.log("ERROR: Failed when adding product.");
 			});

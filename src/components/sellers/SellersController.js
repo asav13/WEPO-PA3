@@ -1,55 +1,75 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, $location, AppResource, SellerDlg) {
+function SellersController($scope, $rootScope, $location, AppResource, SellerDlg) {
 
-	$scope.sellers = 'No sellers';
+	$scope.sellers 	= {};
+	$rootScope.updating = undefined;
+
+	/* GET FUNCTIONS */
 
 	AppResource.getSellers()
 		.success(function(data) {
-			console.log("DATA");
-			console.log(data);
 			$scope.sellers = data;
 		}).error(function() {
 			console.log("ERROR: Failed getting sellers.");
-			// TODO check why this gets called billion times when error 
 	});
 
 	$scope.seeDetails = function(sellerID) {
 		$location.path('sellers/' + sellerID);
 	};
 
+	/* POST AND UPDATE FUNCTIONS */
+
 	/* When a new seller is submitted, the form is not there already */
-	$scope.onAddSeller = function (){
+	$scope.onAddSeller = function() {
 		SellerDlg.show().then(function(newSeller) {
 			AppResource.addSeller(newSeller)
-			.success(function(data) {
+				.success(function(data) {
 				// Nothing to do here, updates on its own
-			}).error(function() {
-				console.log("ERROR: Failed adding seller.");
-			});
+				}).error(function() {
+					console.log("ERROR: Failed adding seller.");
+				});
 		});
 	};
 
-
 	/* When a seller update is submitted, the form is not there already */
-	$scope.onUpdateSeller = function (){
+	$scope.onUpdateSeller = function (sellerId) {
+		$rootScope.updating = sellerId;
+		SellerDlg.show().then(function(updatedSeller) {
+			updatedSeller = checkUpdates(sellerId, updatedSeller);
+			AppResource.updateSeller(sellerId, updatedSeller)
+				.success(function(data) {
+					// Nothing to do here, updates on its own
+					$rootScope.updating = undefined;
+				}).error(function() {
+					console.log("ERROR: Failed adding seller.");
+				});
+		});
 
-		var mockUpdatedSeller = { // TODO replace for seller from form
-			id: 999,
-			name: "Tester Seller updated",
-			category: "Tester cat updated",
-			imagePath: "https://http.cat/201"
-		};
-		
-		AppResource.updateSeller(999, mockUpdatedSeller)
-			.success(function(data) {
-				console.log("added seller");
-				console.log(data);
-			}).error(function() {
-				console.log("ERROR: Failed adding seller.");
-			});
 	};
+
+	/* HELPER FUNCTIONS */
+
+	function checkUpdates(sellerId, updatedSeller) {
+		var sellerBefore;
+		AppResource.getSellerDetails(sellerId)
+			.success(function(data){
+				sellerBefore = data;
+		});
+		// For those fields that were not modified, we keep the old values
+		if(updatedSeller.name === ""){
+			updatedSeller.name = sellerBefore.name;
+		}
+		if(updatedSeller.category === ""){
+			updatedSeller.category = sellerBefore.category;
+		}
+		if(updatedSeller.imagePath === ""){
+			updatedSeller.imagePath = sellerBefore.imagePath;
+		}
+
+		return updatedSeller;
+	}
 
 });
 
