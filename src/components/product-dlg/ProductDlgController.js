@@ -29,8 +29,6 @@ function ProductDlgController($scope, $rootScope, AppResource) {
 		} else {
 			AppResource.getSellerProductDetails($rootScope.updating[0], $rootScope.updating[1])
 				.success(function(data){
-					console.log("DATA IN GET SELLER PRODUCT DETAILS");
-					console.log(data);
 					$rootScope.newProduct.name 		= data.name;
 					$rootScope.newProduct.price 	= data.price;
 					$rootScope.newProduct.imagePath = data.imagePath;

@@ -32,7 +32,7 @@ angular.module("project3App").directive("productName", function productName() {
 						"<td>{{prod.quantityInStock}}</td>" +
 						//"<td role=\"button\" ng-click=\"seeDetails(topTenProd.id)\">{{topTenProd.name}}</td>" +
 						//"<td role=\"button\" ng-click=\"seeDetails(topTenProd.id)\">{{topTenProd.category}}</td>" +
-						"<td><a title=\"Edit\" ng-click=\"onUpdateSeller(prod.id)\"><span class=\"btn btn-primary glyphicon glyphicon-edit\"></span></a></td>" +
+						"<td><a title=\"Edit\" ng-click=\"onUpdateSellerProduct(prod.id)\"><span class=\"btn btn-primary glyphicon glyphicon-edit\"></span></a></td>" +
 					"</tr>" +
 				"</tbody>" +
 			"</table>"
