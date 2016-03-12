@@ -40,7 +40,8 @@
  */
 angular.module("sharedServices").directive("tableSort", function () {
 	function link(scope, element, attrs) {
-		var tableChildren = element.children();
+
+		var tableChildren = element.children();		
 		var defaultColumn = attrs.tableSort;
 		var reverse = attrs["reverse"] || "reverse";
 		var predicate = attrs["predicate"] || "predicate";
@@ -56,6 +57,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 		function initClickHandlers() {
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
+				console.log("el: " + el);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 
 				// Only attach a click handler if:
@@ -87,6 +89,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 		// adds caret class to the default column.
 		function setup() {
 			angular.forEach(tableChildren, function(value) {
+				console.log("value in setUp: " + value);
 				var el = angular.element(value);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 				if (isSortColumn(columnName)) {
@@ -103,6 +106,8 @@ angular.module("sharedServices").directive("tableSort", function () {
 		}
 
 		function sortNotes(sortBy) {
+			console.log("VALUE IN scope[predicate]: " + scope[predicate]);
+			console.log("VALUE IN scope[reverse]: " + scope[reverse]);
 			if (scope[predicate] === sortBy) {
 				scope[reverse] = !scope[reverse];
 			}
@@ -126,6 +131,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 
 		scope.$watch("tableSort", function(value) {
 			if (value) {
+				console.log("VALUE IN TABLESORT BEING WATCHED: " + value);
 				defaultColumn = value;
 			}
 			setup();
