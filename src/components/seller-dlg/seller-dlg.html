@@ -2,37 +2,37 @@
 
 <div class="modal-content">
 	<div class="modal-header">
-		<h4 class="modal-title">Seller information</h4>
+		<h4 class="modal-title">{{'sellers.AddNewSeller' | translate}}</h4>
 	</div>
 	<div class="modal-body">
 		<form name="newSellerForm">
 			<div class="input-group">
-				<label for="newSellerName">Name of seller</label>
+				<label for="newSellerName">{{'sellers.Name' | translate}}</label>
 				<input type="text" 
 					class="form-control"
-					placeholder="Seller's name"
+					placeholder="{{'sellers.AddNew.Name' | translate}}"
 					name="newSellerName"
 					ng-model="newSeller.name"/>
 			</div>
 			<div class="input-group">
-				<label for="newSellerCategory">Category</label>
+				<label for="newSellerCategory">{{'sellers.Category' | translate}}</label>
 				<input type="text"
 					class="form-control"
-					placeholder="Category"
+					placeholder="{{'sellers.AddNew.Category' | translate}}"
 					name="newSellerCategory"
 					ng-model="newSeller.category"/>
 			</div>
 			<div class="input-group">
-				<label for="newSellerName">Path to image</label>
+				<label for="newSellerName">{{'sellers.Image' | translate}}</label>
 				<input type="text"
 					class="form-control"
-					placeholder="Image path"
+					placeholder="{{'sellers.AddNew.Image' | translate}}"
 					name="newSellerImg"
 					ng-model="newSeller.imagePath"/>
 			</div>
 			<div class="modal-footer">
-				<button ng-click="onOk()" class="btn btn-default">Submit</button>
-				<button ng-click="onCancel()" class="btn btn-default">Cancel</button>
+				<button ng-click="onOk()" class="btn btn-default">{{'sellers.AddNew.Submit' | translate}}</button>
+				<button ng-click="onCancel()" class="btn btn-default">{{'sellers.AddNew.Cancel' | translate}}</button>
 			</div>
 		</form>
 	</div>

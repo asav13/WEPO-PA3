@@ -1,0 +1,21 @@
+{
+	"products" : {
+		"AllProducts": 				"Allar vörur",
+		"TopProducts": 				"10 vinsælustu",
+		"Name": 					"Nafn",
+		"Price": 					"Verð",
+		"Sold": 					"Seld stykki",
+		"InStock": 					"Fjöldi til á lager",
+		"Image": 					"Mynd",
+		"AddNewProduct": 			"Bæta við nýrri vöru",
+		"AddNew" : {
+			"Name": 				"Nafn vöru",
+			"Price": 				"Verð vöru",
+			"Sold": 				"Fjöldi seldra",
+			"InStock": 				"Fjöldi á lager",
+			"Image": 				"Slóð á mynd",
+			"Submit": 				"Bæta við vöru",
+			"Cancel": 				"Hætta við"
+		}
+	}
+}

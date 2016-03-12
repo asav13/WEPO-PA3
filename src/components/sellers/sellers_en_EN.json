@@ -3,10 +3,19 @@
 		"Title":                     "Sellers List",
 		"Name":                      "Name",
 		"Category":                  "Category",
+		"Image":                     "Image",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of sellers",
 			"SaveSucceeded":         "The seller has been added successfully",
 			"SaveFailed":            "Unfortunately we could not add a new seller"
+		},
+		"AddNewSeller":              "Add new seller",
+		"AddNew" : {
+			"Name":                  "Seller's name",
+			"Category":              "Product's category",
+			"Image":                 "Image Path",
+			"Submit":                "Submit new seller",
+			"Cancel":                "Abort"
 		}
 	}
 }

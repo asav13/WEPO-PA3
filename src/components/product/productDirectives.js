@@ -14,10 +14,10 @@ angular.module("project3App").directive("productName", function productName() {
 		template: 	"<table class=\"table table-hover table-condensed\">" +
 				"<thead>" +
 					"<tr table-sort=Name>" +
-						"<th data-columnName=\"WHAT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">Name</a></th>" +
-						"<th data-columnName=\"WHUT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">Price</a></th>" +
-						"<th data-columnName=\"WHIT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">Sold</a></th>" +
-						"<th data-columnName=\"SLUT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">InStock</a></th>" +
+						"<th data-columnName=\"WHAT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">{{'products.Name' | translate}}</a></th>" +
+						"<th data-columnName=\"WHUT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">{{'products.Price' | translate}}</a></th>" +
+						"<th data-columnName=\"WHIT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">{{'products.Sold' | translate}}</a></th>" +
+						"<th data-columnName=\"SLUT\" colspan=\"2\"><a class=\"btn btn-default btn-block\">{{'products.InStock' | translate}}</a></th>" +
 					"<th></th>" +
 					"</tr>" +
 				"</thead>" +
