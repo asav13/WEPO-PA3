@@ -14,17 +14,16 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pas
 	});
 
 	$translateProvider.useStaticFilesLoader({
-		files: [{
-			prefix: "lang_",
-			suffix: ".json"
-			//}, {
-				//prefix:
-				//suffix:
-			//}
-		}]
+		prefix: "lang_",
+		suffix: ".json"
 	});
-	//$translate.use("is");
-	$translateProvider.preferredLanguage("is");
 
-	//moment.locale("is");
+	$translateProvider.preferredLanguage("en");	//For Laura <3
+	$translateProvider.fallbackLanguage("en");
+
+	//%/$%%$#"&/%#$&TRFGHFDHGFDSR"#
+	$translateProvider.useSanitizeValueStrategy('sanitize');
+	$translateProvider.useSanitizeValueStrategy('escapeParameters');
+	$translateProvider.useSanitizeValueStrategy('escape');
+	$translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 });

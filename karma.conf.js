@@ -26,6 +26,7 @@ module.exports = function(config) {
       'src/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'src/vendor/angular-toastr/dist/angular-toastr.js',
       'src/vendor/angular-translate/angular-translate.js',
+      'src/vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
       'src/vendor/angular-mocks/angular-mocks.js',
       'src/shared/app.js',
       'src/shared/**/*.js',

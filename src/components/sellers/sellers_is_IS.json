@@ -3,10 +3,19 @@
 		"Title":                     "Seljendur",
 		"Name":                      "Nafn",
 		"Category":                  "Flokkur",
+		"Image":                     "Mynd",
 		"Messages" : {
 			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
 			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",
 			"SaveFailed":            "Því miður tókst ekki að bæta við nýjum seljanda"
+		},
+		"AddNewSeller":              "Bæta við sölumanni",
+		"AddNew" : {
+			"Name":                  "Nafn Sölumanns",
+			"Category":              "Vöruflokkur",
+			"Image":                 "Slóð á mynd",
+			"Submit":                "Bæta við sölumanni",
+			"Cancel":                "Hætta við"
 		}
 	}
 }

@@ -1,0 +1,21 @@
+{
+	"products" : {
+		"AllProducts": 				"All products",
+		"TopProducts": 				"10 most bought",
+		"Name": 					"Name",
+		"Price": 					"Price",
+		"Sold": 					"Sold units",
+		"InStock": 					"In stock",
+		"Image": 					"Image",
+		"AddNewProduct": 			"Add new product",
+		"AddNew" : {
+			"Name": 				"Product's name",
+			"Price": 				"Product's price",
+			"Sold": 				"Quantity sold",
+			"InStock": 				"Quantity in stock",
+			"Image": 				"Image path",
+			"Submit": 				"Submit product",
+			"Cancel": 				"Abort"
+		}
+	}
+}
