@@ -16,6 +16,14 @@
 			"Image": 				"Image path",
 			"Submit": 				"Submit product",
 			"Cancel": 				"Abort"
+		},
+		"Messages" : {
+			"LoadFailed":            "Failed to load the products for this seller",
+			"SaveSucceeded":         "The product has been added successfully",
+			"SaveFailed":            "Unfortunately we could not add a new product",
+			"UpdateSucceeded":       "The product has been updated successfully",
+			"UpdateFailed":          "Unfortunately we could not update the product",
+			"GetSellerDetailsFailed": 	"Unfortunately we could not load this seller's details"
 		}
 	}
 }

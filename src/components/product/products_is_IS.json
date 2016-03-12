@@ -16,6 +16,14 @@
 			"Image": 				"Slóð á mynd",
 			"Submit": 				"Bæta við vöru",
 			"Cancel": 				"Hætta við"
+		},
+		"Messages" : {
+			"LoadFailed":            "Ekki tókst að sækja vörur fyrir þennan seljanda",
+			"SaveSucceeded":         "Nýrri vöru hefur verið bætt við",
+			"SaveFailed":            "Því miður tókst ekki að bæta við nýrri vöru",
+			"UpdateSucceeded":       "Varan hefur verið uppfærð",
+			"UpdateFailed":          "Því miður tókst ekki að uppfæra vöruna",
+			"GetSellerDetailsFailed": 	"Því miður tókst ekki að sækja upplýsingar um þennan seljanda"
 		}
 	}
 }

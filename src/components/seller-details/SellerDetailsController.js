@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDetailsController",
-function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg) {
+function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg, centrisNotify) {
 
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
@@ -15,14 +15,14 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 			$scope.products 	= data;
 			$scope.topTenProd 	= new FindTopTen(data);
 		}).error(function() {
-			console.log("ERROR: Failed while fetching products.");
+			centrisNotify.error("products.Messages.LoadFailed");
 	});
 
 	AppResource.getSellerDetails(sellerId)
 		.success(function(data) {
 			$scope.sellerDetails = data;
 		}).error(function(){
-			console.log("ERROR: Failed while fetching seller details.");
+			centrisNotify.error("product.Messages.GetSellerDetailsFailed");
 	});
 
 	/* POST AND UPDATE FUNCTIONS */
@@ -31,10 +31,11 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 		ProductDlg.show().then(function(newProduct) {
 			AppResource.addSellerProduct(sellerId, newProduct)
 			.success(function(data) {
+				centrisNotify.success("products.Messages.SaveSucceeded");
 				$scope.products.push(data);
 				$scope.topTenProd = new FindTopTen($scope.products);
 			}).error(function() {
-				console.log("ERROR: Failed when adding product.");
+				centrisNotify.error("products.Messages.SaveFailed");
 			});
 		});
 	};
@@ -50,10 +51,10 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 			updatedProduct['id'] = productId;
 			AppResource.updateSellerProduct(sellerId, productId, updatedProduct)
 				.success(function(data) {
-					// No need to do anything, updates on it´s own
+					centrisNotify.success("products.Messages.UpdateSucceeded");
 					$rootScope.updating = undefined;
 				}).error(function() {
-					console.log("ERROR: Failed while updating product.");
+					centrisNotify.error("products.Messages.UpdateFailed");
 				});
 		});
 	};
