@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDetailsController",
-function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) {
+function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg) {
 
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
@@ -39,6 +39,32 @@ function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) 
 		});
 	};
 
+	$scope.onUpdateSellerProduct = function (productId) {
+		var MOCKPRODUCTID = parseInt(7);
+		$rootScope.updating = [];
+		$rootScope.updating[0] = sellerId;
+		$rootScope.updating[1] = MOCKPRODUCTID;
+
+		ProductDlg.show().then(function(updatedProduct) {
+			updatedProduct = checkUpdates(MOCKPRODUCTID, updatedProduct);
+			updatedProduct['id'] = MOCKPRODUCTID;
+			AppResource.updateSellerProduct(sellerId, MOCKPRODUCTID, updatedProduct)
+				.success(function(data) {
+					// Now we update
+					AppResource.getSellerProducts(sellerId)
+							.success(function(data2) {
+								$scope.products 	= data2;
+							}).error(function() {
+								console.log("ERROR: Failed while fetching products.");
+						});
+					// Nothing to do here, updates on its own
+					$rootScope.updating = undefined;
+				}).error(function() {
+					console.log("ERROR: Failed updating product.");
+				});
+		});
+	};
+
 	/* HELPER FUNCTIONS */
 
 	/* Finding top 10 most sold products */
@@ -59,5 +85,25 @@ function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) 
 			}
 		}
 		return topTenArr;
+	}
+
+	function checkUpdates(productId, updatedProduct) {
+		var productBefore;
+		AppResource.getSellerProductDetails(sellerId, productId)
+			.success(function(data){
+				productBefore = data;
+		});
+		// For those fields that were not modified, we keep the old values
+		if(updatedProduct.name === ""){
+			updatedProduct.name = productBefore.name;
+		}
+		if(updatedProduct.price === ""){
+			updatedProduct.price = productBefore.category;
+		}
+		if(updatedProduct.imagePath === ""){
+			updatedProduct.imagePath = productBefore.imagePath;
+		}
+
+		return updatedProduct;
 	}
 });
