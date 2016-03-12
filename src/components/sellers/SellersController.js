@@ -1,13 +1,12 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, $rootScope, $location, AppResource, SellerDlg) {
+function SellersController($scope, $rootScope, $location, AppResource, SellerDlg, $translate, /*centrisNotify*/) {
 
 	$scope.sellers 	= {};
 	$rootScope.updating = undefined;
 
 	/* GET FUNCTIONS */
-
 	AppResource.getSellers()
 		.success(function(data) {
 			$scope.sellers = data;
@@ -27,6 +26,7 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 			AppResource.addSeller(newSeller)
 				.success(function(data) {
 				// Nothing to do here, updates on its own
+				//centrisNotify.success("sellers.Messages.SaveSucceeded");
 				}).error(function() {
 					console.log("ERROR: Failed adding seller.");
 				});
