@@ -40,27 +40,20 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 	};
 
 	$scope.onUpdateSellerProduct = function (productId) {
-		var MOCKPRODUCTID = parseInt(7);
+		productId = parseInt(productId);
 		$rootScope.updating = [];
 		$rootScope.updating[0] = sellerId;
-		$rootScope.updating[1] = MOCKPRODUCTID;
+		$rootScope.updating[1] = productId;
 
 		ProductDlg.show().then(function(updatedProduct) {
-			updatedProduct = checkUpdates(MOCKPRODUCTID, updatedProduct);
-			updatedProduct['id'] = MOCKPRODUCTID;
-			AppResource.updateSellerProduct(sellerId, MOCKPRODUCTID, updatedProduct)
+			updatedProduct = checkUpdates(productId, updatedProduct);
+			updatedProduct['id'] = productId;
+			AppResource.updateSellerProduct(sellerId, productId, updatedProduct)
 				.success(function(data) {
-					// Now we update
-					AppResource.getSellerProducts(sellerId)
-							.success(function(data2) {
-								$scope.products 	= data2;
-							}).error(function() {
-								console.log("ERROR: Failed while fetching products.");
-						});
-					// Nothing to do here, updates on its own
+					// No need to do anything, updates on it´s own
 					$rootScope.updating = undefined;
 				}).error(function() {
-					console.log("ERROR: Failed updating product.");
+					console.log("ERROR: Failed while updating product.");
 				});
 		});
 	};

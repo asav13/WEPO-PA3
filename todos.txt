@@ -6,12 +6,12 @@
 
 [x] (10%) All products tab // only need to change the look a bit
 [x] (5%) Top 10 products tab
-[1/2] (10%) Add/edit product // missing edit product
+[x] (10%) Add/edit product // missing edit product
 
-[?x] (5%) All tables sortable // it seems to be done ! :D
+[~] (5%) All tables sortable // it seems to be done ! :D
 [ ] (5%) All input validated 
 
-[ ] (5%) Translated
+[~] (5%) Translated
 
 [ ] (5%) Toastr feedback after add/edit (...what?)
 
@@ -23,4 +23,5 @@
 	- Search and filter, select category
 
 
-5+10+10+10+5+5+5=50/100
+
+5+10+10+10+5+10+10=60

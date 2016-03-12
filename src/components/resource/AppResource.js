@@ -170,12 +170,11 @@ function AppResource() {
 					break;
 				}
 			}
-			console.log("RETURNING FROM GET SELLER PRO DET");
-			console.log(theProduct);
 			return mockHttpPromise(mockResource.successGetSellerProducts, theProduct);
 		},
 
 		addSellerProduct: function addSellerProduct(id, product) {
+			product.id = mockProducts.length+1;
 			var success = false;
 			if (mockResource.successAddSellerProduct) {
 				var seller = _.find(mockSellers, function(o){ return o.id === id;});
@@ -194,8 +193,6 @@ function AppResource() {
 		updateSellerProduct: function(sellerId, productId, product) {
 			var i = 0;
 				if (mockResource.successUpdateSellerProduct) {
-					console.log("mockproducts[sellerId]");
-					console.log(mockProducts[sellerId]);
 					for(i = 0; i < mockProducts.length; i++){
 						if(mockProducts[i].product.id === productId){
 							mockProducts[i].product.name = product.name;
