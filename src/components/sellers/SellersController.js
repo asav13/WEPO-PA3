@@ -1,6 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
+
 function SellersController($scope, $rootScope, $location, AppResource, SellerDlg, $translate /*centrisNotify*/) {
 
 	$scope.sellers 	= {};
