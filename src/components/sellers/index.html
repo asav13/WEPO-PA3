@@ -12,20 +12,28 @@
 		<table class="table table-hover table-condensed">
 			<thead>
 				<tr table-sort="Name">
-					<th data-columnName="Name" colspan="2"><a class="btn btn-default btn-block" translate="sellers.Name"></a></th>
-					<th data-columnName="Category" colspan="2"><a class="btn btn-default btn-block" translate="sellers.Category"></a></th>
+					<th class="text-center">Photo</th>
+					<th data-columnName="Name">
+						<a class="btn btn-default btn-block" translate="sellers.Name"></a>
+					</th>
+					<th data-columnName="Name">
+						<a class="btn btn-default btn-block" translate="sellers.Category"></a>
+					</th>
 					<th></th>
 				</tr>
 			</thead>
 			<!--TODO: ADD SORTING FILTER IN THEADS-->
 			<tbody>
 				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">
-					<td class="text-center" role="button" scope="row" ng-click="seeDetails(s.id)">
-						<img class="img-thumbnail" width="100" ng-src="{{s.imagePath}}"/>
+					<td class="text-center" title="See item's details" role="button" scope="row" ng-click="seeDetails(s.id)">
+						<img width="50" height="50" ng-src="{{s.imagePath}}"/>
 					</td>
-					<td role="button" ng-click="seeDetails(s.id)">{{s.name}}</td>
-					<td role="button" ng-click="seeDetails(s.id)">{{s.category}}</td>
-					<td><a title="Edit" ng-click="onUpdateSeller(s.id)"><span class="btn btn-primary glyphicon glyphicon-edit"></span></a></td>
+					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.name}}</td>
+					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.category}}</td>
+					<td><a title="Edit item" ng-click="onUpdateSeller(s.id)">
+							<span class="btn btn-default glyphicon glyphicon-edit"></span>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
