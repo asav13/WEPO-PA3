@@ -1,25 +1,19 @@
-<h1>Sellers detail page</h1>
-
 <div class="SellerDetails">
+<h1>{{sellerDetails.name}}</h1>
+<p>{{sellerDetails.category}}</p>
 <img src="{{sellerDetails.imagePath}}" height="50px" width="50px">
-<p>Name: {{sellerDetails.name}}<p>
-<p>Category: {{sellerDetails.category}}</p>
 </div>
 
-<!--This is copy paste from w3Schools..
-	http://www.w3schools.com/bootstrap/bootstrap_modal.asp-->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Product</button>
-
 <uib-tabset>
-	<uib-tab index="0" heading="All products">
+	<uib-tab index="0" heading="{{'products.AllProducts' | translate}}">
 		<div product>
 			<product-name></product-name>
 		</div>
 	</uib-tab>
-	<uib-tab index="1" heading="Top 10">
+	<uib-tab index="1" heading="{{'products.TopProducts' | translate}}">
 		<div product>
 			<top-product-name></top-product-name>
 		</div>
 	</uib-tab>
 
-	<button class="btn btn-primary pull-right" ng-click="onAddProduct()">Add new product</button>
+	<button class="btn btn-primary pull-right" ng-click="onAddProduct()">{{'products.AddNewProduct' | translate}}</button>
