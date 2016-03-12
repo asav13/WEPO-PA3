@@ -16,7 +16,7 @@
 			"Name":                  "Seller's name",
 			"Category":              "Product's category",
 			"Image":                 "Image Path",
-			"Submit":                "Submit new seller",
+			"Submit":                "Submit",
 			"Cancel":                "Abort"
 		}
 	}
