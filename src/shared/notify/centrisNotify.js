@@ -35,7 +35,7 @@
 angular.module("sharedServices").factory("centrisNotify",
 function(toastr, toastrConfig, $translate, $rootScope) {
 	var durationMSec = 10000;
-	var defaultTitle = "Centris";
+	var defaultTitle = "SellSarks";
 
 	// Is this the correct place for this? Perhaps not. But we
 	// want the code to be DRY, and we don't want to
