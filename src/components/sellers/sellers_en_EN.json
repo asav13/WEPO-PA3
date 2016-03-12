@@ -2,6 +2,7 @@
 	"sellers" : {
 		"Title":                     "Sellers List",
 		"Name":                      "Name",
+		"Category":                  "Category",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of sellers",
 			"SaveSucceeded":         "The seller has been added successfully",
