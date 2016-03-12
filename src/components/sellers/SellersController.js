@@ -43,10 +43,9 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 					// Nothing to do here, updates on its own
 					$rootScope.updating = undefined;
 				}).error(function() {
-					console.log("ERROR: Failed adding seller.");
+					console.log("ERROR: Failed updating seller.");
 				});
 		});
-
 	};
 
 	/* HELPER FUNCTIONS */

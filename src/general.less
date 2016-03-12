@@ -1,5 +1,30 @@
 .General {
 	
 	//Variables
+	@navColor: #993333;
+	@navTextColor: #efefef;
+	@spacing: 10px;
+	@navbarHeight: 30px;
+
+	.navbar {
+		min-height: 50px + @navbarHeight;
+	}
+	.navbar-inverse {
+		background-color: @navColor;
+		.navbar-header {
+			a {
+				color: spin(darken(@navTextColor, 15%), 8);
+				font-size: 16pt;
+				&:hover {				
+					color: @navTextColor;
+
+				}
+				img {
+					margin-right: @spacing;
+				}
+			}
+			
+		}
+	}
 	
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDetailsController",
-function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) {
+function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg) {
 
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
@@ -39,6 +39,25 @@ function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) 
 		});
 	};
 
+	$scope.onUpdateSellerProduct = function (productId) {
+		productId = parseInt(productId);
+		$rootScope.updating = [];
+		$rootScope.updating[0] = sellerId;
+		$rootScope.updating[1] = productId;
+
+		ProductDlg.show().then(function(updatedProduct) {
+			updatedProduct = checkUpdates(productId, updatedProduct);
+			updatedProduct['id'] = productId;
+			AppResource.updateSellerProduct(sellerId, productId, updatedProduct)
+				.success(function(data) {
+					// No need to do anything, updates on it´s own
+					$rootScope.updating = undefined;
+				}).error(function() {
+					console.log("ERROR: Failed while updating product.");
+				});
+		});
+	};
+
 	/* HELPER FUNCTIONS */
 
 	/* Finding top 10 most sold products */
@@ -59,5 +78,25 @@ function SellerDetailsController($scope, $routeParams, AppResource, ProductDlg) 
 			}
 		}
 		return topTenArr;
+	}
+
+	function checkUpdates(productId, updatedProduct) {
+		var productBefore;
+		AppResource.getSellerProductDetails(sellerId, productId)
+			.success(function(data){
+				productBefore = data;
+		});
+		// For those fields that were not modified, we keep the old values
+		if(updatedProduct.name === ""){
+			updatedProduct.name = productBefore.name;
+		}
+		if(updatedProduct.price === ""){
+			updatedProduct.price = productBefore.category;
+		}
+		if(updatedProduct.imagePath === ""){
+			updatedProduct.imagePath = productBefore.imagePath;
+		}
+
+		return updatedProduct;
 	}
 });

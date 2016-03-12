@@ -156,7 +156,25 @@ function AppResource() {
 			return mockHttpPromise(mockResource.successGetSellerProducts, products);
 		},
 
+		getSellerProductDetails: function getSellerProductDetails(sellerId, productId) {
+			var products = [];
+			var theProduct;
+			for (var i = 0; i < mockProducts.length; ++i) {
+				if (mockProducts[i].id === sellerId) {
+					products.push(mockProducts[i].product);
+				}
+			}
+			for (var j = 0; j < products.length; ++j) {
+				if (products[j].id === productId) {
+					theProduct = products[j];
+					break;
+				}
+			}
+			return mockHttpPromise(mockResource.successGetSellerProducts, theProduct);
+		},
+
 		addSellerProduct: function addSellerProduct(id, product) {
+			product.id = mockProducts.length+1;
 			var success = false;
 			if (mockResource.successAddSellerProduct) {
 				var seller = _.find(mockSellers, function(o){ return o.id === id;});
@@ -170,7 +188,24 @@ function AppResource() {
 			}
 
 			return mockHttpPromise(success, product);
-		}
+		},
+
+		updateSellerProduct: function(sellerId, productId, product) {
+			var i = 0;
+				if (mockResource.successUpdateSellerProduct) {
+					for(i = 0; i < mockProducts.length; i++){
+						if(mockProducts[i].product.id === productId){
+							mockProducts[i].product.name = product.name;
+							mockProducts[i].product.price = product.price;
+							mockProducts[i].product.imagePath = product.imagePath;
+							break;
+						}
+					}
+			}
+
+			return mockHttpPromise(mockResource.successUpdateSellerProduct, mockProducts[i].product);
+		},
+
 
 		// TODO: the updateProduct() function is left as an exercise to
 		// the reader...

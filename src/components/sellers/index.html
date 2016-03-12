@@ -2,7 +2,9 @@
 	<!--This function onSubmitSeller should be connected to the button that 
 	comes with the form for a new seller, the submit button for that -->
 	<div class="clearfix">
-		<button class="btn btn-primary pull-right" ng-click="onAddSeller()">Add new seller</button>
+		<button class="btn btn-primary pull-right" ng-click="onAddSeller()">
+			<span class="glyphicon glyphicon-plus"></span> Add new seller
+		</button>
 		<h1 class="pull-left" translate="sellers.Title"></h1>
 	</div>
 	<hr>
@@ -11,7 +13,7 @@
 			<thead>
 				<tr table-sort="Name">
 					<th data-columnName="Name" colspan="2"><a class="btn btn-default btn-block" translate="sellers.Name"></a></th>
-					<th data-columnName="Name" colspan="2"><a class="btn btn-default btn-block" translate="sellers.Category"></a></th>
+					<th data-columnName="Category" colspan="2"><a class="btn btn-default btn-block" translate="sellers.Category"></a></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -28,10 +30,4 @@
 			</tbody>
 		</table>
 	</div>
-
 </div>
-
-<!--This function onUpdateSeller should be connected to the button that 
-comes with the form for updating a new seller, the submit button for that -->
-<button class="btn btn-primary pull-right" ng-click="onUpdateSeller()">Update seller</button>
-
