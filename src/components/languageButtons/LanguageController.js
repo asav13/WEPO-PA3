@@ -6,5 +6,6 @@ function LanguageController($translate, $scope) {
 
 	$scope.changeLanguage = function(lang) {
 		$translate.use(lang);
+		$scope.languageInUse = lang;
 	};
 });
