@@ -46,9 +46,12 @@ angular.module("sharedServices").directive("tableSort", function () {
 		var reverse = attrs["reverse"] || "reverse";
 		var predicate = attrs["predicate"] || "predicate";
 
+		console.log("PREDICATE: " + defaultColumn);
+
 		if (defaultColumn.length > 0 && defaultColumn[0] === "-") {
 			scope[reverse] = true;
 			scope[predicate] = defaultColumn.substring(1);
+
 		} else {
 			scope[reverse] = false;
 			scope[predicate] = defaultColumn;
@@ -111,6 +114,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 			if (scope[predicate] === sortBy) {
 				scope[reverse] = !scope[reverse];
 			}
+			console.log("SORTBY" + sortBy);
 			scope[predicate] = sortBy;
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
