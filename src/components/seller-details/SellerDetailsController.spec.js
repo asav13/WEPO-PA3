@@ -4,7 +4,7 @@
 
 describe("SellerDetailsController should be unit tested here", function() {
 	// TODO: add beforeEach/describe/it/etc. functions as appropriate!
-		var sellerDetailsController, leScope, resource, productDlg;
+	var sellerDetailsController, leScope, resource, productDlg;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
