@@ -14,24 +14,26 @@ function ProductDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			$scope.newProduct.price 	=== undefined 	|| 
 			$scope.newProduct.price 	=== "") {
 
-				centrisNotify.error("products.Messages.SaveFailed");
-				$scope.$dismiss();
-		}
+				centrisNotify.warning("productDlg.InvalidInput");
+		} else {
 
-		checkImage($scope.newProduct.imagePath, function success(){
-			$scope.$close($rootScope.newProduct);
-		}, function error() {
-			if($rootScope.newProduct.imagePath === ""){
-				$rootScope.newProduct.imagePath = productPlaceholderImage;
+			checkImage($scope.newProduct.imagePath, function success(){
 				$scope.$close($rootScope.newProduct);
-			} else {
-				centrisNotify.error("productDlg.ImageLoadFailed");
-				$scope.$dismiss();
-			}
-		});
+			}, function error() {
+				if($rootScope.newProduct.imagePath === ""){
+					$rootScope.newProduct.imagePath = productPlaceholderImage;
+					$scope.$close($rootScope.newProduct);
+				} else {
+					$rootScope.updating = undefined;
+					centrisNotify.error("productDlg.ImageLoadFailed");
+					$scope.$dismiss();
+				}
+			});
+		}
 	};
 	
 	$scope.onCancel = function onCancel(){
+		$rootScope.updating = undefined;
 		$scope.$dismiss();
 	};
 

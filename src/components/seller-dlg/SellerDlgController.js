@@ -14,24 +14,27 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			$rootScope.newSeller.category 	=== undefined 	|| 
 			$rootScope.newSeller.category 	=== "") {
 
-				centrisNotify.error("sellers.Messages.SaveFailed");
-				$scope.$dismiss();
-		}
+				centrisNotify.warning("sellerDlg.InvalidInput");
 
-		checkImage($scope.newSeller.imagePath, function success(){
-			$scope.$close($rootScope.newSeller);
-		}, function error() {
-			if($rootScope.newSeller.imagePath === ""){
-				$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+		} else {
+
+			checkImage($scope.newSeller.imagePath, function success(){
 				$scope.$close($rootScope.newSeller);
-			} else {
-				centrisNotify.error("sellerDlg.ImageLoadFailed");
-				$scope.$dismiss();
-			}
-		});
+			}, function error() {
+				if($rootScope.newSeller.imagePath === ""){
+					$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+					$scope.$close($rootScope.newSeller);
+				} else {
+					$rootScope.updating = undefined;
+					centrisNotify.error("sellerDlg.ImageLoadFailed");
+					$scope.$dismiss();
+				}
+			});
+		}
 	};
 
 	$scope.onCancel = function onCancel(){
+		$rootScope.updating = undefined;
 		$scope.$dismiss();
 	};
 
