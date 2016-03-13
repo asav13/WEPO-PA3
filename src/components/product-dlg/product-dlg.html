@@ -12,16 +12,29 @@
 					class="form-control"
 					placeholder="{{'products.AddNew.Name' | translate}}"
 					name="productName"
-					ng-model="newProduct.name"/>
+					autofocus="autofocus"
+					ng-model="newProduct.name"
+					required="required"
+					pattern="[\w\W]{2,30}"/>
 			</div>
+			<small 
+				class="help-block" 
+				ng-show="newProductForm.productName.$invalid">Can not be empty, must be 2-30 letters.
+			</small>
 			<div class="input-group">
 				<label for="price">{{'products.Price' | translate}}</label>
 				<input type="text"
 					class="form-control"
 					placeholder="{{'products.AddNew.Price' | translate}}"
 					name="price"
-					ng-model="newProduct.price"/>
+					ng-model="newProduct.price"
+					required="required"
+					pattern="[0-9]{1,30}"/>
 			</div>
+			<small 
+				class="help-block" 
+				ng-show="newProductForm.price.$invalid">Can not be empty, numberic digits only.
+			</small>
 			<div class="input-group">
 				<label for="imagePath">{{'products.Image' | translate}}</label>
 				<input type="text"
@@ -29,10 +42,19 @@
 					placeholder="{{'products.AddNew.Image' | translate}}"
 					name="imagePath"
 					ng-model="newProduct.imagePath"/>
-			</div>			
+			</div>
+			<small 
+				class="help-block">Optional.
+			</small>
 			<div class="modal-footer">
-				<button ng-click="onOk()" class="btn btn-default">{{'products.AddNew.Submit' | translate}}</button>
-				<button ng-click="onCancel()" class="btn btn-default">{{'products.AddNew.Cancel' | translate}}</button>
+				<button 
+					ng-click="onOk()" 
+					class="btn btn-default">{{'products.AddNew.Submit'| translate}}
+				</button>
+				<button 
+					ng-click="onCancel()" 
+					class="btn btn-default">{{'products.AddNew.Cancel' | translate}}
+				</button>
 			</div>
 		</form>
 	</div>

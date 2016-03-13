@@ -67,8 +67,11 @@ function(toastr, toastrConfig, $translate, $rootScope) {
 
 		if (type === "success") {
 			toastr.success(message, title, options);
+			//toastr.warning(message, title, options);
 		} else if (type === "error") {
 			toastr.error(message, title, options);
+		} else if (type === "warning") {
+			toastr.warning(message, title, options);
 		}
 	}
 
@@ -123,6 +126,9 @@ function(toastr, toastrConfig, $translate, $rootScope) {
 		},
 		error: function error(messageKey, titleKey) {
 			notificationFunction("error", titleKey, messageKey);
+		},
+		warning: function warning(messageKey, titleKey) {
+			notificationFunction("warning", titleKey, messageKey);
 		},
 		successWithParam: function successWithParam(messageKey, param) {
 			notificationFunctionWithParam("success", messageKey, param);

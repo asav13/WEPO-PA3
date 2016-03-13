@@ -11,7 +11,7 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 		.success(function(data) {
 			$scope.sellers = data;
 		}).error(function() {
-			console.log("ERROR: Failed getting sellers.");
+			centrisNotify.error("sellers.Messages.LoadFailed");
 	});
 
 	$scope.seeDetails = function(sellerID) {
@@ -25,12 +25,9 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 		SellerDlg.show().then(function(newSeller) {
 			AppResource.addSeller(newSeller)
 				.success(function(data) {
-					console.log("SELLER ADDED");
 					centrisNotify.success("sellers.Messages.SaveSucceeded");
-				// Nothing to do here, updates on its own
-				//centrisNotify.success("sellers.Messages.SaveSucceeded");
 				}).error(function() {
-					console.log("ERROR: Failed adding seller.");
+					centrisNotify.error("sellers.Messages.SaveFailed");
 				});
 		});
 	};
@@ -42,10 +39,10 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 			updatedSeller = checkUpdates(sellerId, updatedSeller);
 			AppResource.updateSeller(sellerId, updatedSeller)
 				.success(function(data) {
-					// Nothing to do here, updates on its own
+					centrisNotify.success("sellers.Messages.UpdateSucceeded");
 					$rootScope.updating = undefined;
 				}).error(function() {
-					console.log("ERROR: Failed updating seller.");
+					centrisNotify.success("sellers.Messages.UpdateFailed");
 				});
 		});
 	};

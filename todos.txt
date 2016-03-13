@@ -1,19 +1,20 @@
-[ ] (20%) Unit tests for all code
+[~1/3] (20%) Unit tests for all code
 
 [x] (5%) List individuals
 [x] (10%) Add/edit individuals
 [x] (10%) Show details about a given individual
 
-[x] (10%) All products tab // only need to change the look a bit
+[x] (10%) All products tab 	// only need to change the look a bit
+[ ] (? %) Boxes
 [x] (5%) Top 10 products tab
-[x] (10%) Add/edit product // missing edit product
+[x] (10%) Add/edit product 
 
-[~] (5%) All tables sortable // it seems to be done ! :D
-[ ] (5%) All input validated 
+[ ] (5%) All tables sortable
+[x] (5%) All input validated 
 
-[~] (5%) Translated
+[x] (5%) Translated
 
-[ ] (5%) Toastr feedback after add/edit (...what?)
+[x] (5%) Toastr feedback after add/edit
 
 [x] (5%) Responsive layout 
 [x] (5%) Product directive
@@ -22,6 +23,3 @@
 	- Videos for products (if page is viewable to customers)
 	- Search and filter, select category
 
-
-
-5+10+10+10+5+10+10=60

@@ -1,0 +1,7 @@
+	{
+	"sellerDlg" : {
+		"ImageLoadFailed" :				"Uppgefin slóð var ekki á mynd, vinsamlegast reyndu aftur",
+		"InvalidInput" :				"Ólöglegt inntak, vinsamlegast skoðið viðvörunina",
+		"NameTaken" :					"Það er nú þegar til seljandi með þetta nafn"
+	}
+}
