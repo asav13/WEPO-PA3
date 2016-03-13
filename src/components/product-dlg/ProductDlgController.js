@@ -18,8 +18,9 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 				centrisNotify.warning("productDlg.InvalidInput");
 		} else {
 
-			nameIsTaken($rootScope.newProduct.name, function taken(){
-				centrisNotify.warning("productDlg.NameTaken");
+			nameIsTaken($rootScope.newProduct.name, 
+				function taken(){
+					centrisNotify.warning("productDlg.NameTaken");
 			}, function available() {
 				checkImage($scope.newProduct.imagePath, function success(){
 					$scope.$close($rootScope.newProduct);
