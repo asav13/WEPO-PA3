@@ -27,15 +27,19 @@ describe("LanguageController should be unit tested here", function() {
 	});
 
 	it("should change the language to is", function() {
-		expect(scope.languageInUse).not.toBeDefined();
 		scope.changeLanguage("is");
-		expect(scope.languageInUse).toEqual("is");
+		expect(translate.proposedLanguage()).toEqual("is");
 	});
 
 	it("should change the language to en", function() {
-		expect(scope.languageInUse).not.toBeDefined();
 		scope.changeLanguage("en");
-		expect(scope.languageInUse).toEqual("en");
+		expect(translate.proposedLanguage()).toEqual("en");
 	});
+
+	it("should fallback to english", function() {
+		scope.changeLanguage("");
+		expect(translate.proposedLanguage()).toEqual("en");
+	});
+
 
 });
