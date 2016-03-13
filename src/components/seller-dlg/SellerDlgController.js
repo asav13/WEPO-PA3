@@ -7,6 +7,8 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
 
 	$scope.onOk = function onOk(){
+		$scope.isOpen = true;
+		$scope.upd = $rootScope.updating;
 
 		if($rootScope.newSeller 			=== undefined 	||
 			$rootScope.newSeller.name 		=== undefined 	|| 
@@ -17,19 +19,23 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 				centrisNotify.warning("sellerDlg.InvalidInput");
 		} else {
 
-			nameIsTaken($rootScope.newSeller.name, function taken(){
+			nameIsTaken($rootScope.newSeller.name, function taken() {
 				centrisNotify.warning("sellerDlg.NameTaken");
 			}, function available() {
-				checkImage($scope.newSeller.imagePath, function success(){
+				checkImage($scope.newSeller.imagePath, function success() {
+					$scope.stuff = true;
 					$scope.$close($rootScope.newSeller);
+					$scope.isOpen = false;
 				}, function error() {
 					if($rootScope.newSeller.imagePath === ""){
 						$rootScope.newSeller.imagePath = sellerPlaceholderImage;
 						$scope.$close($rootScope.newSeller);
+						$scope.isOpen = false;
 					} else {
 						$rootScope.updating = undefined;
 						centrisNotify.error("sellerDlg.ImageLoadFailed");
 						$scope.$dismiss();
+						$scope.isOpen = false;
 					}
 				});
 			});
@@ -39,10 +45,11 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	$scope.onCancel = function onCancel(){
 		$rootScope.updating = undefined;
 		$scope.$dismiss();
+		$scope.isOpen = false;
 	};
 
 	function setPlaceholders(){
-		
+
 		$rootScope.newSeller = {};
 		if($rootScope.updating === undefined){
 			$rootScope.newSeller = {
