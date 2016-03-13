@@ -13,15 +13,7 @@ angular.module("project3App").directive("productName", function productName() {
 		template:
 		"<ul class=\"list-inline\">" +
 			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in products\">" + 
-				"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
-					"<product-photo></product-photo>" + 
-					"<div class=\"caption\">" +
-						"<h3>{{prod.name}}</h3>" +
-						"<p>Price: {{prod.price}} EUR</p>" + 
-						"<small>{{'products.Sold' | translate}}: </small>" +
-						"<small>{{prod.quantitySold}}</small>" +
-					"</div>" + 
-				"</div>" + 
+				"<product-card></product-card>" +
 			"</li>" + 
 		"</ul>",
 		replace: true
@@ -42,17 +34,31 @@ angular.module("project3App").directive("topProductName", function topProductNam
 		template: 
 		"<ul class=\"list-inline\">" +
 			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in topTenProd\">" + 
-				"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
-					"<product-photo></product-photo>" + 
-					"<div class=\"caption\">" +
-						"<h3>{{prod.name}}</h3>" +
-						"<p>Price: {{prod.price}} EUR</p>" + 
-						"<small>{{'products.Sold' | translate}}: </small>" +
-						"<small>{{prod.quantitySold}}</small>" +
-					"</div>" + 					
-				"</div>" + 
+				"<product-card></product-card>" +
 			"</li>" + 
 		"</ul>",
 		replace: true
+	};
+});
+
+angular.module("project3App").directive("productCard", function productCard() {
+	return {
+		restrict: "E",
+		template: 	"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
+						"<product-photo></product-photo>" + 
+						"<product-caption></product-caption>" +
+					"</div>"
+	};
+});
+
+angular.module("project3App").directive("productCaption", function productCaption() {
+	return {
+		restrict: "E",
+		template: "<div class=\"caption\">" +
+						"<h3>{{prod.name}}</h3>" +
+						"<p>{{'products.Price' | translate}}: {{prod.price}} ISK</p>" + 
+						"<small>{{'products.Sold' | translate}}: </small>" +
+						"<small>{{prod.quantitySold}}</small>" +
+					"</div>"
 	};
 });
