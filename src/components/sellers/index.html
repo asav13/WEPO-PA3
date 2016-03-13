@@ -9,24 +9,23 @@
 	</div>
 	<hr>
 	<div class="panel panel-default table-responsive">
-		<table class="table table-hover table-condensed">
+		<table class="table table-hover">
 			<thead>
 				<tr table-sort="Name">
 					<th class="text-center">Photo</th>
-					<th data-columnName="Name">
-						<a class="btn btn-default btn-block" translate="sellers.Name"></a>
+					<th role="button" data-columnName="Name" title="Sort">
+						<span translate="sellers.Name"></span>
 					</th>
-					<th data-columnName="Name">
-						<a class="btn btn-default btn-block" translate="sellers.Category"></a>
+					<th role="button" data-columnName="Category" title="Sort">
+						<span translate="sellers.Category"></span>
 					</th>
 					<th></th>
 				</tr>
 			</thead>
-			<!--TODO: ADD SORTING FILTER IN THEADS-->
 			<tbody>
 				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">
 					<td class="text-center" title="See item's details" role="button" scope="row" ng-click="seeDetails(s.id)">
-						<img width="50" height="50" class="img-circle" ng-src="{{s.imagePath}}"/>
+						<img width="80" height="80" class="img-circle" ng-src="{{s.imagePath}}"/>
 					</td>
 					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.name}}</td>
 					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.category}}</td>

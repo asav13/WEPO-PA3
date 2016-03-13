@@ -40,8 +40,8 @@
  */
 angular.module("sharedServices").directive("tableSort", function () {
 	function link(scope, element, attrs) {
-
-		var tableChildren = element.children();		
+		console.log("link");
+		var tableChildren = element.children();
 		var defaultColumn = attrs.tableSort;
 		var reverse = attrs["reverse"] || "reverse";
 		var predicate = attrs["predicate"] || "predicate";
@@ -55,9 +55,9 @@ angular.module("sharedServices").directive("tableSort", function () {
 		}
 
 		function initClickHandlers() {
+			console.log("initClickHandlers");
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
-				console.log("el: " + el);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 
 				// Only attach a click handler if:
@@ -88,28 +88,26 @@ angular.module("sharedServices").directive("tableSort", function () {
 		// Setup the columns adding <i> to all table headers and
 		// adds caret class to the default column.
 		function setup() {
+			console.log("setup()");
 			angular.forEach(tableChildren, function(value) {
-				
 				var el = angular.element(value);
-				
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 				if (isSortColumn(columnName)) {
 					el.prepend("<i></i>");
+					//Using glyphicon for typography consistency
 					if (columnName === defaultColumn || columnName === "'" + defaultColumn + "'") {
-						el.find("i").addClass("fa fa-caret-" + (scope[reverse] ? "up" : "down"));
+						el.find("i").addClass("glyphicon glyphicon-chevron-" + (scope[reverse] ? "up" : "down"));
 					}
 				}
 			});
 		}
 
 		function isSortColumn(columnName) {
-			console.log("columnName: " + columnName);
 			return columnName !== undefined && columnName.length > 0;
 		}
 
 		function sortNotes(sortBy) {
-			console.log("VALUE IN scope[predicate]: " + scope[predicate]);
-			console.log("VALUE IN scope[reverse]: " + scope[reverse]);
+			console.log("sortNotes()");
 			if (scope[predicate] === sortBy) {
 				scope[reverse] = !scope[reverse];
 			}
@@ -117,10 +115,16 @@ angular.module("sharedServices").directive("tableSort", function () {
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
+				//IF THIS IS A SORT COLUMN
 				if (isSortColumn(columnName)) {
-					el.find("i").removeClass();
+					el.children().removeClass("glyphicon glyphicon-chevron-" + "down" || "up");
+					
+					//AND IF THIS IS THE COLUMN NAME WE ARE SORTING BY
 					if (scope[predicate] === columnName) {
-						el.find("i").addClass("fa fa-caret-" + (sortDown(sortBy) ? "up" : "down"));
+						el.find("i").addClass("glyphicon glyphicon-chevron-" + (sortDown(sortBy) ? "up" : "down"));
+					}
+					else {
+						el.find("i").removeAttr("class");
 					}
 				}
 			});

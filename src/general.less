@@ -7,25 +7,39 @@
 	@navbarHeight: 30px;
 
 	.navbar {
-		min-height: 50px + @navbarHeight;
+		.container {
+			.navbar-header {
+				a {
+					color: spin(darken(@navTextColor, 10%), 8);
+					text-decoration: none;
+					font-size: 16pt;
+					&:hover {				
+						color: @navTextColor;
+					}
+					img {
+						margin-right: @spacing;
+					}
+				}
+				min-height: 50px + @navbarHeight;
+			}
+		}
+	
+		ul {
+			padding-top: @spacing + 4;
+			a {
+				padding-left: @spacing - 5;
+				img {
+					&:hover {
+						border: 1px solid @navTextColor;
+					}
+				}
+			}
+		}
+	
+			
 	}
 	.navbar-inverse {
 		background-color: @navColor;
-		.navbar-header {
-			a {
-				color: spin(darken(@navTextColor, 10%), 8);
-				text-decoration: none;
-				font-size: 16pt;
-				&:hover {				
-					color: @navTextColor;
-
-				}
-				img {
-					margin-right: @spacing;
-				}
-			}
-			
-		}
 	}
 	
 }
