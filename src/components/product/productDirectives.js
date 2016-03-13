@@ -43,7 +43,7 @@ angular.module("project3App").directive("productName", function productName() {
 angular.module("project3App").directive("productPhoto", function productPhoto() {
 	return {
 		restrict: "E",
-		template: "<img ng-src=\"{{prod.imagePath}}\" width=\"50px\" height=\"50px\">"
+		template: "<img ng-src=\"{{prod.imagePath}}\" class=\"img-circle\" width=\"50px\" height=\"50px\">"
 	};
 });
 
@@ -84,6 +84,6 @@ angular.module("project3App").directive("topProductName", function topProductNam
 angular.module("project3App").directive("topProductPhoto", function topProductPhoto() {
 	return {
 		restrict: "A",
-		template: "<img ng-src=\"{{prod.imagePath}}\" width=\"50px\" height=\"50px\">"
+		template: "<img ng-src=\"{{prod.imagePath}}\"  class=\"img-circle\" width=\"50px\" height=\"50px\">"
 	};
 });
