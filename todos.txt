@@ -23,6 +23,3 @@
 	- Videos for products (if page is viewable to customers)
 	- Search and filter, select category
 
-
-
-5+10+10+10+5+10+10=60

@@ -15,20 +15,23 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			$rootScope.newSeller.category 	=== "") {
 
 				centrisNotify.warning("sellerDlg.InvalidInput");
-
 		} else {
 
-			checkImage($scope.newSeller.imagePath, function success(){
-				$scope.$close($rootScope.newSeller);
-			}, function error() {
-				if($rootScope.newSeller.imagePath === ""){
-					$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+			nameIsTaken($rootScope.newSeller.name, function taken(){
+				centrisNotify.warning("sellerDlg.NameTaken");
+			}, function available() {
+				checkImage($scope.newSeller.imagePath, function success(){
 					$scope.$close($rootScope.newSeller);
-				} else {
-					$rootScope.updating = undefined;
-					centrisNotify.error("sellerDlg.ImageLoadFailed");
-					$scope.$dismiss();
-				}
+				}, function error() {
+					if($rootScope.newSeller.imagePath === ""){
+						$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+						$scope.$close($rootScope.newSeller);
+					} else {
+						$rootScope.updating = undefined;
+						centrisNotify.error("sellerDlg.ImageLoadFailed");
+						$scope.$dismiss();
+					}
+				});
 			});
 		}
 	};
@@ -69,5 +72,24 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 		};
 		img.src = url;
 	}
+
+	function nameIsTaken(name, taken, available) {
+		AppResource.getSellers()
+			.success(function(data) {
+				for(var i = 0; i < data.length; i++){
+					if(data[i]['name'] === name){
+						if($scope.updating === undefined || $scope.updating !== data[i].id){
+							taken();
+							return;
+						}
+						break;
+					}
+				}
+				available();
+			}).error(function() {
+				centrisNotify.error("sellers.Messages.LoadFailed");
+			});
+	}
+	
 });
 

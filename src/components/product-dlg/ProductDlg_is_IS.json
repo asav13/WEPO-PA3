@@ -1,5 +1,7 @@
 {
 	"productDlg" : {
-		"ImageLoadFailed" :				"Uppgefin slóð var ekki á mynd, vinsamlegast reyndu aftur"
+		"ImageLoadFailed" :				"Uppgefin slóð var ekki á mynd, vinsamlegast reyndu aftur",
+		"InvalidInput" :				"Ólöglegt inntak, vinsamlegast skoðið viðvörunina",
+		"NameTaken" :					"Þessi seljandi er nú þegar með vöru með þessu nafni"
 	}
 }

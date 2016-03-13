@@ -1,10 +1,11 @@
 "use strict";
 
 angular.module("project3App").controller("ProductDlgController",
-function ProductDlgController($scope, $rootScope, AppResource, centrisNotify) {
+function ProductDlgController($scope, $rootScope, $routeParams, AppResource, centrisNotify) {
 
 	setPlaceholders();
 	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";
+	var sellerId 			= parseInt($routeParams.id);
 
 	$scope.onOk = function onOk(){
 
@@ -17,17 +18,21 @@ function ProductDlgController($scope, $rootScope, AppResource, centrisNotify) {
 				centrisNotify.warning("productDlg.InvalidInput");
 		} else {
 
-			checkImage($scope.newProduct.imagePath, function success(){
-				$scope.$close($rootScope.newProduct);
-			}, function error() {
-				if($rootScope.newProduct.imagePath === ""){
-					$rootScope.newProduct.imagePath = productPlaceholderImage;
+			nameIsTaken($rootScope.newProduct.name, function taken(){
+				centrisNotify.warning("productDlg.NameTaken");
+			}, function available() {
+				checkImage($scope.newProduct.imagePath, function success(){
 					$scope.$close($rootScope.newProduct);
-				} else {
-					$rootScope.updating = undefined;
-					centrisNotify.error("productDlg.ImageLoadFailed");
-					$scope.$dismiss();
-				}
+				}, function error() {
+					if($rootScope.newProduct.imagePath === ""){
+						$rootScope.newProduct.imagePath = productPlaceholderImage;
+						$scope.$close($rootScope.newProduct);
+					} else {
+						$rootScope.updating = undefined;
+						centrisNotify.error("productDlg.ImageLoadFailed");
+						$scope.$dismiss();
+					}
+				});
 			});
 		}
 	};
@@ -72,5 +77,23 @@ function ProductDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			error();
 		};
 		img.src = url;
+	}
+
+	function nameIsTaken(name, taken, available) {
+		AppResource.getSellerProducts(sellerId)
+			.success(function(data) {
+				for(var i = 0; i < data.length; i++){
+					if(data[i]['name'] === name){
+						if($scope.updating === undefined || $scope.updating[1] !== data[i].id){
+							taken();
+							return;
+						}
+						break;
+					}
+				}
+				available();
+			}).error(function() {
+				centrisNotify.error("sellers.Messages.LoadFailed");
+			});
 	}
 });

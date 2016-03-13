@@ -1,6 +1,7 @@
 {
 	"sellerDlg" : {
 		"ImageLoadFailed" :				"The given image path is not a path to an image, please try again",
-		"InvalidInput" :				"Invalid input, please check the warnings"
+		"InvalidInput" :				"Invalid input, please check the warnings",
+		"NameTaken" :					"There already exists a seller with this name"
 	}
 }
