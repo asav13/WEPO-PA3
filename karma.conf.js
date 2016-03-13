@@ -37,7 +37,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      
+
     ],
 
 
@@ -45,7 +45,12 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'src/app.js': 'coverage',
-      'src/components/**/*.js': 'coverage'
+      'src/components/sellers/*.js': 'coverage',
+      'src/components/seller-details/*.js': 'coverage',
+      'src/components/seller-dlg/*.js': 'coverage',
+      'src/components/product/*.js': 'coverage',
+      'src/components/product-dlg/*.js': 'coverage',
+      'src/components/languageButtons/*.js': 'coverage'
     },
 
 

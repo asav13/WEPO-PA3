@@ -41,5 +41,4 @@ describe("LanguageController should be unit tested here", function() {
 		expect(translate.proposedLanguage()).toEqual("en");
 	});
 
-
 });
