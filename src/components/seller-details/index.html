@@ -1,20 +1,22 @@
-<div class="SellerDetails">
-<h1>{{sellerDetails.name}}</h1>
-<p>{{sellerDetails.category}}</p>
-<img src="{{sellerDetails.imagePath}}"  class="img-circle" height="50px" width="50px">
+<div class="Sellers">
+	<h1>{{sellerDetails.name}}</h1>
+	<p>{{sellerDetails.category}}</p>
+	<img src="{{sellerDetails.imagePath}}"  class="img-circle" height="50px" width="50px">
+
+	<uib-tabset>
+		<uib-tab index="0" heading="{{'products.AllProducts' | translate}}">
+			<div product>
+				<div class="row">
+					<product-name></product-name>
+				</div>
+			</div>
+		</uib-tab>
+		<uib-tab index="1" heading="{{'products.TopProducts' | translate}}">
+			<div product>
+				<top-product-name></top-product-name>
+			</div>
+		</uib-tab>
+	</uib-tabset>
+
+	<button class="btn btn-primary pull-right" ng-click="onAddProduct()"> <span class="glyphicon glyphicon-plus"></span>{{'products.AddNewProduct' | translate}}</button>
 </div>
-
-<uib-tabset>
-	<uib-tab index="0" heading="{{'products.AllProducts' | translate}}">
-		<div product>
-			<product-name></product-name>
-		</div>
-	</uib-tab>
-	<uib-tab index="1" heading="{{'products.TopProducts' | translate}}">
-		<div product>
-			<top-product-name></top-product-name>
-		</div>
-	</uib-tab>
-</uib-tabset>
-
-<button class="btn btn-primary pull-right" ng-click="onAddProduct()"> <span class="glyphicon glyphicon-plus"></span>{{'products.AddNewProduct' | translate}}</button>
