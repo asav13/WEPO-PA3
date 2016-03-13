@@ -94,6 +94,7 @@ angular.module("sharedServices").directive("tableSort", function () {
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
 				if (isSortColumn(columnName)) {
 					el.prepend("<i></i>");
+					//Using glyphicon for typography consistency
 					if (columnName === defaultColumn || columnName === "'" + defaultColumn + "'") {
 						el.find("i").addClass("glyphicon glyphicon-chevron-" + (scope[reverse] ? "up" : "down"));
 					}
@@ -114,10 +115,16 @@ angular.module("sharedServices").directive("tableSort", function () {
 			angular.forEach(tableChildren, function(value) {
 				var el = angular.element(value);
 				var columnName = el.attr("columnName") || el.attr("data-columnName");
+				//IF THIS IS A SORT COLUMN
 				if (isSortColumn(columnName)) {
-					el.find("i").removeClass("glyphicon glyphicon-chevron-" + (sortDown(sortBy) ? "down" : "up"));
+					el.children().removeClass("glyphicon glyphicon-chevron-" + "down" || "up");
+					
+					//AND IF THIS IS THE COLUMN NAME WE ARE SORTING BY
 					if (scope[predicate] === columnName) {
 						el.find("i").addClass("glyphicon glyphicon-chevron-" + (sortDown(sortBy) ? "up" : "down"));
+					}
+					else {
+						el.find("i").removeAttr("class");
 					}
 				}
 			});
