@@ -1,9 +1,7 @@
 <div ng-model="sellers" class="Sellers">
-	<!--This function onSubmitSeller should be connected to the button that 
-	comes with the form for a new seller, the submit button for that -->
 	<div class="clearfix">
 		<button class="btn btn-primary pull-right" ng-click="onAddSeller()">
-			<span class="glyphicon glyphicon-plus"></span> Add new seller
+			<span class="glyphicon glyphicon-plus"></span> <span translate="sellers.AddNewSeller"></span>
 		</button>
 		<h1 class="pull-left" translate="sellers.Title"></h1>
 	</div>
@@ -11,35 +9,25 @@
 	<div class="panel panel-default table-responsive">
 		<table class="table table-hover">
 			<thead>
-			<!--<tr ng-model="sellers" table-sort="sellers.name">
-					<th translate="sellers.Photo" class="text-center"></th>
-					<th role="button" data-columnName="sellers.name" title="Sort">
+				<tr table-sort="name">
+					<th class="text-center">
+						<span translate="sellers.Photo"></span>
+					<th  data-columnName="name" title="{{'sellers.SortByName' | translate}}">
 						<span translate="sellers.Name"></span>
 					</th>
-					<th role="button" data-columnName="s.category" title="Sort">
+					<th  data-columnName="category" title="{{'sellers.SortByCategory' | translate}}">
 						<span translate="sellers.Category"></span>
 					</th>
-					<th></th>
-			-->
-				<tr table-sort="Name">
-					<th class="text-center">Photo</th>
-					<th role="button" data-columnName="Name" title="Sort">
-						<span translate="sellers.Name"></span>
-					</th>
-					<th role="button" data-columnName="Category" title="Sort">
-						<span translate="sellers.Category"></span>
-					</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">
-					<td class="text-center" title="See item's details" role="button" scope="row" ng-click="seeDetails(s.id)">
+					<td class="text-center" title="See sellers's details" role="button" scope="row" ng-click="seeDetails(s.id)">
 						<img width="80" height="80" class="img-circle" ng-src="{{s.imagePath}}"/>
 					</td>
-					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.name}}</td>
-					<td role="button"  title="See item's details" ng-click="seeDetails(s.id)">{{s.category}}</td>
-					<td><a title="Edit item" ng-click="onUpdateSeller(s.id)">
+					<td role="button"  title="See seller's details" ng-click="seeDetails(s.id)">{{s.name}}</td>
+					<td role="button"  title="See seller's details" ng-click="seeDetails(s.id)">{{s.category}}</td>
+					<td><a title="Edit seller" ng-click="onUpdateSeller(s.id)">
 							<span class="btn btn-default glyphicon glyphicon-edit"></span>
 						</a>
 					</td>
