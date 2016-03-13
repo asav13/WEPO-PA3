@@ -2,11 +2,10 @@
 	<button class="btn btn-primary pull-right" ng-click="onAddProduct()">
 		<span class="glyphicon glyphicon-plus"></span>{{'products.AddNewProduct' | translate}}
 	</button>
-	<img src="{{sellerDetails.imagePath}}" class="img-circle pull-left" height="80px" width="80px">
+	<img src="{{sellerDetails.imagePath}}" class="img-circle pull-left sellerPhoto" height="80px" width="80px">
 	<h1 class="clearfix">{{sellerDetails.name}}
 		<br><small>{{sellerDetails.category}}</small>
 	</h1>
-	<hr>
 	<uib-tabset class="tabsSpace" >
 		<uib-tab index="0" heading="{{'products.AllProducts' | translate}}">
 			<div product>

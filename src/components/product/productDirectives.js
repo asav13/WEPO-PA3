@@ -12,14 +12,14 @@ angular.module("project3App").directive("productName", function productName() {
 		restrict: "E",	// E is for element
 		template:
 		"<ul class=\"list-inline\">" +
-			"<li ng-repeat=\"prod in products\">" + 
-				"<div class=\"thumbnail\">" +
+			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in products\">" + 
+				"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
 					"<product-photo></product-photo>" + 
 					"<div class=\"caption\">" +
 						"<h3>{{prod.name}}</h3>" +
-						"<p>Price: {{prod.price}}</p>" + 
-						"<span>{{'products.Sold' | translate}}: </span>" +
-						"<span>{{prod.quantitySold}}</span>" +
+						"<p>Price: {{prod.price}} EUR</p>" + 
+						"<small>{{'products.Sold' | translate}}: </small>" +
+						"<small>{{prod.quantitySold}}</small>" +
 					"</div>" + 
 				"</div>" + 
 			"</li>" + 
@@ -41,27 +41,18 @@ angular.module("project3App").directive("topProductName", function topProductNam
 		restrict: "E",	// E is for element
 		template: 
 		"<ul class=\"list-inline\">" +
-			"<li ng-repeat=\"prod in topTenProd\">" + 
-				"<div class=\"thumbnail\">" +
+			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in topTenProd\">" + 
+				"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
 					"<product-photo></product-photo>" + 
 					"<div class=\"caption\">" +
 						"<h3>{{prod.name}}</h3>" +
-						"<p>Price: {{prod.price}}</p>" + 
-						"<span>{{'products.Sold' | translate}}: </span>" +
-						"<span>{{prod.quantitySold}}</span>" +
+						"<p>Price: {{prod.price}} EUR</p>" + 
+						"<small>{{'products.Sold' | translate}}: </small>" +
+						"<small>{{prod.quantitySold}}</small>" +
 					"</div>" + 					
 				"</div>" + 
 			"</li>" + 
 		"</ul>",
 		replace: true
-
-		//template: "<ul><li ng-repeat=\"topProd in topTenProd\">{{topProd.name}}<br><div top-product-photo></top-product-photo></li></ul>"
-	};
-});
-
-angular.module("project3App").directive("topProductPhoto", function topProductPhoto() {
-	return {
-		restrict: "A",
-		template: "<img ng-src=\"{{prod.imagePath}}\"  height=\"100\">"
 	};
 });

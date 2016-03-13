@@ -1,15 +1,25 @@
 .Sellers {
 
 	@spacingBase: 10px;
+	@linkColor: #fff;
 
 	.center-block {
 	    display: block;
 	    margin-left: auto;
 	    margin-right: auto;
 	 }
+	.sellerPhoto{
+		margin-right: @spacingBase;
+		margin-top: @spacingBase;
+	}
 	.tabsSpace {
 		ul {
 			padding-top: @spacingBase;
+			.listLink {
+				&:hover {
+					background-color: spin(darken(@linkColor, 10%), 8);
+				}
+			}
 		}		
 	}
 	.table {
