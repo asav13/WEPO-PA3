@@ -19,6 +19,8 @@
 			"Image":                 "Image Path",
 			"Submit":                "Submit",
 			"Cancel":                "Abort"
-		}
+		},
+		"SortByName":                "Sort by name",
+		"SortByCategory":            "Sort by category"
 	}
 }

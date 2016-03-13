@@ -2,12 +2,12 @@
 
 angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pascalprecht.translate"])
 .config(function ($routeProvider, $translateProvider) {
-	/* Startup page shows list of sellers*/
+	/* Startup page shows list of sellers */
 	$routeProvider.when("/", {
 		controller: "SellersController",
 		templateUrl: "components/sellers/index.html"
 	});
-	/* For each seller */
+	/* Details for each seller */
 	$routeProvider.when("/sellers/:id", {
 		controller: "SellerDetailsController",
 		templateUrl: "components/seller-details/index.html"
@@ -20,10 +20,9 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pas
 
 	$translateProvider.preferredLanguage("en");	//For Laura <3
 	$translateProvider.fallbackLanguage("en");
-
-	//%/$%%$#"&/%#$&TRFGHFDHGFDSR"#
 	$translateProvider.useSanitizeValueStrategy('sanitize');
 	$translateProvider.useSanitizeValueStrategy('escapeParameters');
 	$translateProvider.useSanitizeValueStrategy('escape');
 	$translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+
 });
