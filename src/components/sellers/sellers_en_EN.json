@@ -1,6 +1,7 @@
 {
 	"sellers" : {
 		"Title":                     "Sellers",
+		"Photo":                      "Photo",
 		"Name":                      "Name",
 		"Category":                  "Category",
 		"Image":                     "Image",
