@@ -1,10 +1,10 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDlgController",
-function SellerDlgController($scope, $rootScope, AppResource) {
+function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 
 	setPlaceholders();
-	var sellerPlaceholderImage = "http://www.kirkerholidays.com/sites/default/files/styles/person_listing_image/public/default_images/person-placeholder.jpg?itok=bsq7f9IC";
+	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
 
 	$scope.onOk = function onOk(){
 
@@ -14,19 +14,29 @@ function SellerDlgController($scope, $rootScope, AppResource) {
 			$rootScope.newSeller.category 	=== undefined 	|| 
 			$rootScope.newSeller.category 	=== "") {
 
-				console.log("ERROR: TODO, notify");
+				centrisNotify.error("sellers.Messages.SaveFailed");
 				$scope.$dismiss();
 		}
-		if($rootScope.newSeller.imagePath === ""){
-			$rootScope.newSeller.imagePath = sellerPlaceholderImage;
-		}
-		$scope.$close($rootScope.newSeller);
+
+		checkImage($scope.newSeller.imagePath, function success(){
+			$scope.$close($rootScope.newSeller);
+		}, function error() {
+			if($rootScope.newSeller.imagePath === ""){
+				$rootScope.newSeller.imagePath = sellerPlaceholderImage;
+				$scope.$close($rootScope.newSeller);
+			} else {
+				centrisNotify.error("sellerDlg.ImageLoadFailed");
+				$scope.$dismiss();
+			}
+		});
 	};
+
 	$scope.onCancel = function onCancel(){
 		$scope.$dismiss();
 	};
 
 	function setPlaceholders(){
+		
 		$rootScope.newSeller = {};
 		if($rootScope.updating === undefined){
 			$rootScope.newSeller = {
@@ -44,6 +54,17 @@ function SellerDlgController($scope, $rootScope, AppResource) {
 				console.log("ERROR: Failed while fetching user to update.");
 			});
 		}
+	}
+
+	function checkImage(url, success, error) {
+		var img = new Image();
+		img.onload = function() {
+			success();
+		};
+		img.onerror = function() {
+			error();
+		};
+		img.src = url;
 	}
 });
 

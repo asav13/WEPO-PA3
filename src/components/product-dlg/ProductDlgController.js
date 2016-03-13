@@ -1,26 +1,36 @@
 "use strict";
 
 angular.module("project3App").controller("ProductDlgController",
-function ProductDlgController($scope, $rootScope, AppResource) {
+function ProductDlgController($scope, $rootScope, AppResource, centrisNotify) {
 
 	setPlaceholders();
-	var productPlaceholderImage = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSpvUa_1LfhPuM9eBWBZbWA-HH1c32hoRywESrItNTMFkU3o2yP";
+	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";
 
 	$scope.onOk = function onOk(){
 
-		if($scope.newProduct.name 		=== undefined 	|| 
+		if($scope.newProduct 			=== undefined 	||
+			$scope.newProduct.name 		=== undefined 	|| 
 			$scope.newProduct.name 		=== "" 			||
 			$scope.newProduct.price 	=== undefined 	|| 
 			$scope.newProduct.price 	=== "") {
 
-				console.log("ERROR: TODO, notify");
+				centrisNotify.error("products.Messages.SaveFailed");
 				$scope.$dismiss();
 		}
-		if($scope.newProduct.imagePath === ""){
-			$scope.newProduct.imagePath = productPlaceholderImage;
-		}
-		$scope.$close($scope.newProduct);
+
+		checkImage($scope.newProduct.imagePath, function success(){
+			$scope.$close($rootScope.newProduct);
+		}, function error() {
+			if($rootScope.newProduct.imagePath === ""){
+				$rootScope.newProduct.imagePath = productPlaceholderImage;
+				$scope.$close($rootScope.newProduct);
+			} else {
+				centrisNotify.error("productDlg.ImageLoadFailed");
+				$scope.$dismiss();
+			}
+		});
 	};
+	
 	$scope.onCancel = function onCancel(){
 		$scope.$dismiss();
 	};
@@ -49,5 +59,16 @@ function ProductDlgController($scope, $rootScope, AppResource) {
 				console.log("ERROR: Failed while fetching product to update.");
 			});
 		}
-	}	
+	}
+
+	function checkImage(url, success, error) {
+		var img = new Image();
+		img.onload = function() {
+			success();
+		};
+		img.onerror = function() {
+			error();
+		};
+		img.src = url;
+	}
 });
