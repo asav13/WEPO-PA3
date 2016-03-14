@@ -3,8 +3,7 @@
 angular.module("project3App").controller("ProductDlgController",
 function ProductDlgController($scope, $rootScope, $routeParams, AppResource, centrisNotify) {
 	setPlaceholders();
-	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";
-	$scope.sellerId 			= parseInt($routeParams.id);
+	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";	$scope.sellerId 			= parseInt($routeParams.id);
 
 	$scope.onOk = function onOk(){
 		$scope.isOpen = true;
@@ -15,18 +14,19 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 			$scope.newProduct.price 	=== undefined 	||
 			$scope.newProduct.price 	=== "") {
 
-			centrisNotify.warning("productDlg.InvalidInput");
+				centrisNotify.warning("productDlg.InvalidInput");
 		} else {
 			nameIsTaken($scope.newProduct.name, function taken(){
-					centrisNotify.warning("productDlg.NameTaken");
+				centrisNotify.warning("productDlg.NameTaken");
 			}, function available() {
-				checkImage($scope.newProduct.imagePath, function success() {
-				$scope.$close($rootScope.newProduct);
-				$scope.isOpen = false;
+				checkImage($scope.newProduct.imagePath, 
+					function success() {
+						$scope.$close($scope.newProduct);
+						$scope.isOpen = false;
 				}, function error() {
-					if($rootScope.newProduct.imagePath === "") {
-						$rootScope.newProduct.imagePath = productPlaceholderImage;
-						$scope.$close($rootScope.newProduct);
+					if($scope.newProduct.imagePath === "") {
+						$scope.newProduct.imagePath = productPlaceholderImage;
+						$scope.$close($scope.newProduct);
 						$scope.isOpen 					= false;
 					} else {
 						$rootScope.updating = undefined;
@@ -46,9 +46,9 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 	};
 
 	function setPlaceholders() {
-		$rootScope.newProduct = {};
+		$scope.newProduct = {};
 		if($rootScope.updating === undefined) {
-			$rootScope.newProduct = {
+			$scope.newProduct = {
 				name: "",
 				price: "",
 				quantitySold: "0",
@@ -58,11 +58,11 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 		} else {
 			AppResource.getSellerProductDetails($rootScope.updating[0], $rootScope.updating[1])
 				.success(function(data){
-					$rootScope.newProduct.name 				= data.name;
-					$rootScope.newProduct.price 			= data.price;
-					$rootScope.newProduct.imagePath 		= data.imagePath;
-					$rootScope.newProduct.quantitySold 		= data.quantitySold;
-					$rootScope.newProduct.quantityInStock 	= data.quantityInStock;
+					$scope.newProduct.name 				= data.name;
+					$scope.newProduct.price 			= data.price;
+					$scope.newProduct.imagePath 		= data.imagePath;
+					$scope.newProduct.quantitySold 		= data.quantitySold;
+					$scope.newProduct.quantityInStock 	= data.quantityInStock;
 			});
 		}
 	}
@@ -83,7 +83,7 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 			.success(function(data) {
 				for(var i = 0; i < data.length; i++) {
 					if(data[i]['name'] === name) {
-						if($scope.updating === undefined || $scope.updating[1] !== data[i].id) {
+						if($rootScope.updating === undefined || $rootScope.updating[1] !== data[i].id) {
 							taken();
 							return;
 						}

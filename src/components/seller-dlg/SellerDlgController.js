@@ -3,7 +3,7 @@
 angular.module("project3App").controller("SellerDlgController",
 function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	setPlaceholders();
-	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
+	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg"
 
 	$rootScope.onOk = function onOk() {
 		$scope.isOpen = true;
@@ -13,6 +13,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			$scope.newSeller.name		=== "" 			||
 			$scope.newSeller.category 	=== undefined 	||
 			$scope.newSeller.category 	=== "") {
+
 				centrisNotify.warning("sellerDlg.InvalidInput");
 		} else {
 			nameIsTaken($scope.newSeller.name, function taken() {
@@ -27,7 +28,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 						$scope.newSeller.imagePath 	= sellerPlaceholderImage;
 						$scope.$close($scope.newSeller);
 						$scope.isOpen 				= false;
-					} else {
+					} else { 
 						$rootScope.updating = undefined;
 						centrisNotify.error("sellerDlg.ImageLoadFailed");
 						$scope.$dismiss();

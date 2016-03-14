@@ -115,19 +115,7 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 
 	beforeEach(module("project3App"));
 
-	var mockProduct = {name: "mockSeller", price: 100};
-
-	var mockProductDlg = {
-		show: function() {
-			return {
-				then: function(fn){
-					fn(mockProduct);
-				}
-			};
-		}
-	};
-
-	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
+	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource) {
 		scope 				= $rootScope.$new();
 		resource 			= AppResource;
 		routeParams 		= $routeParams;
@@ -137,14 +125,12 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
-		spyOn(mockProductDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			ProductDlg: 	mockProductDlg,
 			$routeParams: 	routeParams
 			});
 		
@@ -156,7 +142,6 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(routeParams).toBeDefined();
-		expect(mockProductDlg).toBeDefined();
 	});
 
 	it("getSellerDetails should be called as the page is entered", function() {

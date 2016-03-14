@@ -2,7 +2,8 @@
 /* UNIT TESTS FOR PRODUCT DIALOG CONTROLLER */
 
 describe("ProductDlgController should be unit tested here", function() {
-	var scope, routeParams, resource, cNotify, ctrl, rootScope;
+
+	var productDlgController, scope, routeParams, resource, cNotify;
 
 	beforeEach(module("project3App"));
 
@@ -22,15 +23,15 @@ describe("ProductDlgController should be unit tested here", function() {
 		spyOn(scope, '$close').and.callThrough();
 		spyOn(cNotify, 'warning').and.callThrough();
 
-		ctrl 			= $controller("ProductDlgController", {
-									$scope : 		scope,
-									$routeParams : 	routeParams,
-									AppResource : 	resource,
-									centrisNotify : cNotify});
+		productDlgController 	= $controller("ProductDlgController", {
+			$scope : 		scope,
+			$routeParams : 	routeParams,
+			AppResource : 	resource,
+			centrisNotify : cNotify});
 		}));
 
 	it("Setup variables should be defined.", function() {
-		expect(ctrl).toBeDefined();
+		expect(productDlgController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(cNotify).toBeDefined();
@@ -49,11 +50,13 @@ describe("ProductDlgController should be unit tested here", function() {
 	});
 
 	it("adding with valid input should succeed", function() {
+		scope.updating = undefined;
 		scope.newProduct = {
 			name: 		"Product",
 			price: 		"50",
 			imagePath: 	""
 		};
+
 		scope.onOk();
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
@@ -64,6 +67,7 @@ describe("ProductDlgController should be unit tested here", function() {
 			price: 		"50",
 			imagePath: 	"troll"
 		};
+
 		scope.onOk();
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
@@ -109,7 +113,7 @@ describe("ProductDlgController should be unit tested here", function() {
 });
 
 describe("ProductDlgController should be unit tested here, updating", function() {
-	var scope, routeParams, resource, cNotify, ctrl;
+	var scope, routeParams, resource, cNotify, productDlgController;
 
 	beforeEach(module("project3App"));
 
@@ -131,7 +135,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 		spyOn(scope, '$close').and.callThrough();
 		spyOn(cNotify, 'warning').and.callThrough();
 
-		ctrl 				= $controller("ProductDlgController", {
+		productDlgController 				= $controller("ProductDlgController", {
 									$scope : 		scope,
 									$routeParams : 	routeParams,
 									AppResource : 	resource,
@@ -139,7 +143,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 	}));
 
 	it("Setup variables should be defined.", function() {
-		expect(ctrl).toBeDefined();
+		expect(productDlgController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(cNotify).toBeDefined();
