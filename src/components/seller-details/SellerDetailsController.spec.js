@@ -7,7 +7,7 @@ describe("SellerDetailsController should be unit tested here", function() {
 	beforeEach(module("project3App"));
 
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg){
+	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
 		scope = $rootScope.$new();
 		resource = AppResource;
 		productDlg = ProductDlg;
@@ -29,34 +29,34 @@ describe("SellerDetailsController should be unit tested here", function() {
 			});
 	}));
 
-	it("test setup variables should be defined.", function(){
+	it("test setup variables should be defined.", function() {
 		expect(sellerDetailsController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 	});
 
-	it("getSellerDetails should be called as the page is entered, with the correct id", function(){
+	it("getSellerDetails should be called as the page is entered, with the correct id", function() {
 		expect(resource.getSellerDetails).toHaveBeenCalledWith(routeParams.id);
 		
 	});
 
-	it("getSellerProducts should be called as the page is entered, with the correct id", function(){
+	it("getSellerProducts should be called as the page is entered, with the correct id", function() {
 		expect(resource.getSellerProducts).toHaveBeenCalledWith(routeParams.id);
 		expect(scope.noProducts).toEqual(false);
 	});
 
-	it("add new product should open productDlg", function(){
+	it("add new product should open productDlg", function() {
 		scope.onAddProduct();
 		expect(productDlg.show).toHaveBeenCalled();
 	});
 
-	it("update product should open productDlg", function(){
+	it("update product should open productDlg", function() {
 		scope.onUpdateSellerProduct();
 		expect(productDlg.show).toHaveBeenCalled();
 	});
 
-	it("calling selectedValue for product sorting should change the title in the dropdown", function(){
+	it("calling selectedValue for product sorting should change the title in the dropdown", function() {
 		// To reach code coverage we should not sort by name A-Z and then Z-A right after
 		scope.selectedValue(1);
 		expect(scope.dropdown.title).toEqual(scope.dropdown.value1);
@@ -74,7 +74,7 @@ describe("SellerDetailsController should be unit tested here", function() {
 		expect(scope.dropdown.title).toEqual("Order by");
 	});
 
-	it("when updating products the helper function should replace empty values with the old ones",function(){
+	it("when updating products the helper function should replace empty values with the old ones",function() {
 		var updatedProd1 = {
 			name: "Updated name",
 			price: "100",
@@ -102,7 +102,7 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 
 	beforeEach(module("project3App"));
 
-	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg){
+	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
 		scope = $rootScope.$new();
 		resource = AppResource;
 		productDlg = ProductDlg;
@@ -125,7 +125,7 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 		
 	}));
 
-	it("scope and mockLocation should be defined.", function(){
+	it("scope and mockLocation should be defined.", function() {
 		expect(sellerDetailsController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
@@ -134,11 +134,11 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 		expect(productDlg).toBeDefined();
 	});
 
-	it("getSellerDetails should be called as the page is entered", function(){
+	it("getSellerDetails should be called as the page is entered", function() {
 		expect(resource.getSellerDetails).toHaveBeenCalledWith(2);
 	});
 
-	it("getSellerProducts should be called as the page is entered, and noProducts set to true", function(){
+	it("getSellerProducts should be called as the page is entered, and noProducts set to true", function() {
 		expect(resource.getSellerProducts).toHaveBeenCalledWith(2);
 		expect(scope.noProducts).toEqual(true);
 	});
@@ -157,7 +157,7 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 	};
 
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $rootScope, AppResource, ProductDlg, centrisNotify){
+	beforeEach(inject(function($controller, $rootScope, AppResource, ProductDlg, centrisNotify) {
 		scope = $rootScope.$new();
 		resource = AppResource;
 		resource.successGetSellerProducts = false;
@@ -179,7 +179,7 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 		spyOn(mockLocation, "path");
 	}));
 
-	it("scope and mockLocation should be defined.", function(){
+	it("scope and mockLocation should be defined.", function() {
 		expect(sellerDetailsController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
@@ -188,12 +188,12 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 		expect(cNotify).toBeDefined();
 	});
 
-	it("when getSellerDetails fails and error message should be shown", function(){
+	it("when getSellerDetails fails and error message should be shown", function() {
 		expect(resource.getSellerDetails).toHaveBeenCalled();
 		expect(cNotify.error).toHaveBeenCalled();
 	});
 
-	it("when getSellerProducts fails and error message should be shown", function(){
+	it("when getSellerProducts fails and error message should be shown", function() {
 		expect(resource.getSellerProducts).toHaveBeenCalled();
 		expect(cNotify.error).toHaveBeenCalled();
 	});

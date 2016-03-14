@@ -13,13 +13,12 @@ describe("SellersController should be unit tested here", function() {
 		}
 	};
 
-
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify){
-		scope 			= $rootScope.$new();
-		resource 		= AppResource;
-		sellerDlg 		= SellerDlg;
-		cNotify 		= centrisNotify;
+	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
+		scope 		= $rootScope.$new();
+		resource 	= AppResource;
+		sellerDlg 	= SellerDlg;
+		cNotify 	= centrisNotify;
 
 		spyOn(resource, 'getSellers').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
@@ -40,7 +39,7 @@ describe("SellersController should be unit tested here", function() {
 	}));
 
 	/* TEST the setup */
-	it("Setup variables should be defined.", function(){
+	it("Setup variables should be defined.", function() {
 		expect(sellersController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
@@ -48,22 +47,21 @@ describe("SellersController should be unit tested here", function() {
 		expect(sellerDlg).toBeDefined();
 	});
 
-
 	/* TEST for getting sellers */
-	it("getSellers should have been called and succeeded", function(){
+	it("getSellers should have been called and succeeded", function() {
 		expect(resource.getSellers).toHaveBeenCalled();
 		expect(cNotify.error).not.toHaveBeenCalled();
 	});
 
 	/* TEST for adding a new seller */
-	it("The scope variable 'sellers' should include one more entry after the call.", function(){
+	it("The scope variable 'sellers' should include one more entry after the call.", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
 	//	expect(sellerDlg.show).toHaveBeenCalled();
 		
 	});
 
-	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function(){
+	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
 		var sellerBefore = scope.sellers[0];
 
 		expect(scope.updating).toEqual(undefined);
@@ -72,7 +70,7 @@ describe("SellersController should be unit tested here", function() {
 		expect(sellerDlg.show).toHaveBeenCalled();
 	});
 
-	it("", function(){
+	it("", function() {
 		scope.seeDetails(1);
 		expect(mockLocation.path).toHaveBeenCalled();
 		expect(mockLocation.path).toHaveBeenCalledWith('sellers/' + 1);
@@ -93,7 +91,7 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 	};
 
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify){
+	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
 		scope = $rootScope.$new();
 		resource = AppResource;
 		resource.successLoadSellers = false;
@@ -120,7 +118,7 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 	}));
 
 	/* TEST the setup */
-	it("Setup variables should be defined.", function(){
+	it("Setup variables should be defined.", function() {
 		expect(sellersController).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
@@ -130,13 +128,13 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 
 
 	/* TEST for getting sellers */
-	it("getSellers should have been called and failed, resulting in error message", function(){
+	it("getSellers should have been called and failed, resulting in error message", function() {
 		expect(resource.getSellers).toHaveBeenCalled();
 		expect(cNotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailed");
 	});
 
 	/* TEST for adding a new seller and failing */
-	it("The scope variable 'sellers' should include one more entry after the call.", function(){
+	it("The scope variable 'sellers' should include one more entry after the call.", function() {
 		scope.onAddSeller();
 		
 	});

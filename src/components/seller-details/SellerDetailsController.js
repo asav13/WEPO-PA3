@@ -36,14 +36,14 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	AppResource.getSellerDetails(sellerId)
 		.success(function(data) {
 			$scope.sellerDetails = data;
-		}).error(function(){
+		}).error(function() {
 			centrisNotify.error("products.Messages.GetSellerDetailsFailed");
 
 	});
 
 	/* POST AND UPDATE FUNCTIONS */
 
-	$scope.onAddProduct = function (){
+	$scope.onAddProduct = function() {
 		ProductDlg.show().then(function(newProduct) {
 			AppResource.addSellerProduct(sellerId, newProduct)
 			.success(function(data) {
@@ -58,7 +58,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		});
 	};
 
-	$scope.onUpdateSellerProduct = function (productId) {
+	$scope.onUpdateSellerProduct = function(productId) {
 		productId = parseInt(productId);
 		$rootScope.updating = [];
 		$rootScope.updating[0] = sellerId;
@@ -119,7 +119,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		return updatedProduct;
 	}
 
-	$scope.testUpdates = function(id, prod){
+	$scope.testUpdates = function(id, prod) {
 		return checkUpdates(id, prod);
 	};
 

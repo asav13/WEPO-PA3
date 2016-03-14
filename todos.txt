@@ -1,4 +1,5 @@
-[~1/2] (20%) Unit tests for all code
+[~1/2] (20%) 	Unit tests for all code
+[ ]				CHECK DIALOGS !!! Not only the controllers
 
 [x] (5%) List individuals
 [x] (10%) Add/edit individuals

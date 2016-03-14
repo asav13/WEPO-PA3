@@ -52,17 +52,17 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 	function checkUpdates(sellerId, updatedSeller) {
 		var sellerBefore;
 		AppResource.getSellerDetails(sellerId)
-			.success(function(data){
+			.success(function(data) {
 				sellerBefore = data;
 		});
 		// For those fields that were not modified, we keep the old values
-		if(updatedSeller.name === ""){
+		if(updatedSeller.name === "") {
 			updatedSeller.name = sellerBefore.name;
 		}
-		if(updatedSeller.category === ""){
+		if(updatedSeller.category === "") {
 			updatedSeller.category = sellerBefore.category;
 		}
-		if(updatedSeller.imagePath === ""){
+		if(updatedSeller.imagePath === "") {
 			updatedSeller.imagePath = sellerBefore.imagePath;
 		}
 

@@ -6,7 +6,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	setPlaceholders();
 	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
 
-	$rootScope.onOk = function onOk(){
+	$rootScope.onOk = function onOk() {
 		$scope.isOpen = true;
 
 		if($scope.newSeller 			=== undefined 	||
@@ -26,7 +26,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 						$scope.$close($scope.newSeller);
 						$scope.isOpen = false;
 				}, function error() {
-					if($scope.newSeller.imagePath === ""){
+					if($scope.newSeller.imagePath === "") {
 						$scope.newSeller.imagePath = sellerPlaceholderImage;
 						$scope.$close($scope.newSeller);
 						$scope.isOpen = false;
@@ -41,16 +41,16 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 		}
 	};
 
-	$scope.onCancel = function onCancel(){
+	$scope.onCancel = function onCancel() {
 		$rootScope.updating = undefined;
 		$scope.$dismiss();
 		$scope.isOpen = false;
 	};
 
-	function setPlaceholders(){
+	function setPlaceholders() {
 
 		$scope.newSeller = {};
-		if($rootScope.updating === undefined){
+		if($rootScope.updating === undefined) {
 			$scope.newSeller = {
 				name: "",
 				category: "",
@@ -58,7 +58,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			};
 		} else {
 			AppResource.getSellerDetails($rootScope.updating)
-				.success(function(data){
+				.success(function(data) {
 					$scope.newSeller.name = data.name;
 					$scope.newSeller.category = data.category;
 					$scope.newSeller.imagePath = data.imagePath;
@@ -80,9 +80,9 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	function nameIsTaken(name, taken, available) {
 		AppResource.getSellers()
 			.success(function(data) {
-				for(var i = 0; i < data.length; i++){
-					if(data[i]['name'] === name){
-						if($rootScope.updating === undefined || $rootScope.updating !== data[i].id){
+				for(var i = 0; i < data.length; i++) {
+					if(data[i]['name'] === name) {
+						if($rootScope.updating === undefined || $rootScope.updating !== data[i].id) {
 							taken();
 							return;
 						}
