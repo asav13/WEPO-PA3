@@ -2,6 +2,9 @@
 	"productDlg" : {
 		"ImageLoadFailed" :				"Uppgefin slóð var ekki á mynd, vinsamlegast reyndu aftur",
 		"InvalidInput" :				"Ólöglegt inntak, vinsamlegast skoðið viðvörunina",
-		"NameTaken" :					"Þessi seljandi er nú þegar með vöru með þessu nafni"
+		"NameTaken" :					"Þessi seljandi er nú þegar með vöru með þessu nafni",
+		"StringValidation":				"Þessi reitur má ekki vera tómur og verður að innihalda 2-30 stafi",
+		"NumberValidation":				"Can not be empty, must include numberic values only",
+		"Optional":						"Það þarf ekki að fylla þennan reit út"
 	}
 }
