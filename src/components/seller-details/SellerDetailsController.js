@@ -3,9 +3,10 @@
 angular.module("project3App").controller("SellerDetailsController",
 function SellerDetailsController($scope, $rootScope, $routeParams, $location, AppResource, ProductDlg, centrisNotify) {
 
+	var sortValue;
+	var sellerId 			= parseInt($routeParams.id);
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
-	var sellerId 			= parseInt($routeParams.id);
 	$scope.sellerDetails 	= 'no details on this seller';
 	$scope.noProducts 		= false;
 
@@ -51,6 +52,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 				$scope.products.push(data);
 				$scope.topTenProd = new FindTopTen($scope.products);
 				$scope.noProducts = false;
+				$scope.selectedValue(sortValue);
 			}).error(function() {
 				centrisNotify.error("products.Messages.SaveFailed");
 				$location.path('/');
@@ -65,12 +67,13 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		$rootScope.updating[1] = productId;
 
 		ProductDlg.show().then(function(updatedProduct) {
-			updatedProduct = $scope.checkUpdates(productId, updatedProduct);
+			updatedProduct = checkUpdates(productId, updatedProduct);
 			updatedProduct['id'] = productId;
 			AppResource.updateSellerProduct(sellerId, productId, updatedProduct)
 				.success(function(data) {
 					centrisNotify.success("products.Messages.UpdateSucceeded");
 					$rootScope.updating = undefined;
+					$scope.selectedValue(sortValue);
 				}).error(function() {
 					centrisNotify.error("products.Messages.UpdateFailed");
 				});
@@ -125,6 +128,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 
 	/* ORDERBY FUNCTIONS */
 	$scope.selectedValue = function(value) {
+		sortValue = value;
 		switch(value) {
 			case 1:
 				$scope.dropdown.title = $scope.dropdown.value1;
