@@ -20,6 +20,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 
 	AppResource.getSellerDetails(sellerId)
 		.success(function(data) {
+			console.log("HRE");
 			$scope.sellerDetails = data;
 		}).error(function(){
 			centrisNotify.error("product.Messages.GetSellerDetailsFailed");

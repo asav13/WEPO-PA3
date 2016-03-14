@@ -5,7 +5,7 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 
 	$scope.sellers 	= {};
 	$rootScope.updating = undefined;
-
+	
 	/* GET FUNCTIONS */
 	AppResource.getSellers()
 		.success(function(data) {

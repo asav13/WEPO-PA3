@@ -5,9 +5,10 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 
 	setPlaceholders();
 	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";
-	var sellerId 			= parseInt($routeParams.id);
+	$scope.sellerId 			= parseInt($routeParams.id);
 
 	$scope.onOk = function onOk(){
+		$scope.isOpen = true;
 
 		if($scope.newProduct 			=== undefined 	||
 			$scope.newProduct.name 		=== undefined 	|| 
@@ -18,20 +19,24 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 				centrisNotify.warning("productDlg.InvalidInput");
 		} else {
 
-			nameIsTaken($rootScope.newProduct.name, 
+			nameIsTaken($scope.newProduct.name, 
 				function taken(){
 					centrisNotify.warning("productDlg.NameTaken");
+
 			}, function available() {
 				checkImage($scope.newProduct.imagePath, function success(){
 					$scope.$close($rootScope.newProduct);
+					$scope.isOpen = false;
 				}, function error() {
 					if($rootScope.newProduct.imagePath === ""){
 						$rootScope.newProduct.imagePath = productPlaceholderImage;
 						$scope.$close($rootScope.newProduct);
+						$scope.isOpen = false;
 					} else {
 						$rootScope.updating = undefined;
 						centrisNotify.error("productDlg.ImageLoadFailed");
 						$scope.$dismiss();
+						$scope.isOpen = false;
 					}
 				});
 			});
@@ -41,6 +46,7 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 	$scope.onCancel = function onCancel(){
 		$rootScope.updating = undefined;
 		$scope.$dismiss();
+		$scope.isOpen = false;
 	};
 
 	function setPlaceholders(){
@@ -63,8 +69,6 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 					$rootScope.newProduct.quantitySold = data.quantitySold;
 					$rootScope.newProduct.quantityInStock = data.quantityInStock;
 
-			}).error(function(){
-				console.log("ERROR: Failed while fetching product to update.");
 			});
 		}
 	}
@@ -81,7 +85,7 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 	}
 
 	function nameIsTaken(name, taken, available) {
-		AppResource.getSellerProducts(sellerId)
+		AppResource.getSellerProducts($scope.sellerId)
 			.success(function(data) {
 				for(var i = 0; i < data.length; i++){
 					if(data[i]['name'] === name){
@@ -93,8 +97,6 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 					}
 				}
 				available();
-			}).error(function() {
-				centrisNotify.error("sellers.Messages.LoadFailed");
 			});
 	}
 });
