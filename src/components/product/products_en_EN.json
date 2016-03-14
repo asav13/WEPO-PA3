@@ -7,7 +7,7 @@
 		"Sold": 					"Sold units",
 		"InStock": 					"In stock",
 		"Image": 					"Image",
-		"AddNewProduct": 			"Add new product",
+		"AddNewProduct": 			"Add/edit product",
 		"AddNew" : {
 			"Name": 				"Product's name",
 			"Price": 				"Product's price",
