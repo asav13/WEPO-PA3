@@ -13,6 +13,7 @@
 			"UpdateFailed":		"Unfortunately we could not update the seller"
 		},
 		"AddNewSeller":			"Add new/Edit seller",
+		"AddNewSellerButton":	"Add new Seller",
 		"AddNew" : {
 			"Name":				"Seller's name",
 			"Category":			"Product's category",

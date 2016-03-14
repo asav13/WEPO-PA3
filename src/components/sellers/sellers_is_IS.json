@@ -13,6 +13,7 @@
 			"UpdateFailed":		"Því miður tókst ekki að bæta við nýjum seljanda"
 		},
 		"AddNewSeller":			"Bæta við/Breyta sölumanni",
+		"AddNewSellerButton":	"Bæta við nýjum sölumanni",
 		"AddNew" : {
 			"Name":				"Nafn Sölumanns",
 			"Category":			"Vöruflokkur",

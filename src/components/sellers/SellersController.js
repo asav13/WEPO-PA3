@@ -65,5 +65,9 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 
 		return updatedSeller;
 	}
+
+	$scope.testUpdates = function(id, seller) {
+		return checkUpdates(id, seller);
+	};
 });
 

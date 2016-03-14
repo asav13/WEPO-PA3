@@ -15,7 +15,7 @@ describe("directive: product", function() {
 		//backend = $httpBackend;
 		element = angular.element("<div product></div>");
 		directiveElem = compile(element)(scope);
-		spyOn(resource, 'getSellerProducts').and.callThrough();
+		//spyOn(resource, 'getSellerProducts').and.callThrough();
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
