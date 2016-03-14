@@ -14,7 +14,6 @@ In order for everything to work properly one must first run in the <strong>root<
 ```
 	bower install
 	npm install
-
 ```
 preferably in the order listed here to avoid eventual dependency conflicts.
 
