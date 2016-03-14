@@ -1,22 +1,38 @@
-// "use strict";
-// /* UNIT TESTS FOR SELLERSDLG  CONTROLLER */
+"use strict";
+/* UNIT TESTS FOR SELLERS DIALOG */
 
-// describe("SellerDlg should be unit tested here", function() {
+describe("SellerDlg should be unit tested here", function() {
 
-// 	var sellerDlg, uibModal;
+	var sellerDlg, mockUibModal;
 
-// 	beforeEach(module("project3App"));
+	var mockModalInstane = {
+		templateUrl: "components/seller-dlg/seller-dlg.html", 
+		controller:  "SellerDlgController"
+	};
 
-// 	/* Inject: Get access */
-// 	beforeEach(inject(function($uibModal){
+	beforeEach(module("project3App"));
 
-// 		sellerDlg = $factory("SellerDlg", {
-// 			$uibModal: uibModal
-// 		});
+	beforeEach(inject(function(SellerDlg, $uibModal){
 
-// 	}));
+		sellerDlg 		= SellerDlg;
+		mockUibModal 	= $uibModal;
 
-// 	it("setPlaceholders should be called when the dlg starts up", function(){
-// 		//expect(this.setPlaceholders).toHaveBeenCalled();
-// 	});
-// });
+		spyOn(mockUibModal, 'open').and.callThrough();
+
+	}));
+
+	it("test settup variables should be defined", function() {
+		expect(sellerDlg).toBeDefined();
+		expect(mockUibModal).toBeDefined();
+	});
+
+	it("show and open should be defined", function() {
+		expect(sellerDlg.show()).toBeDefined();
+		expect(mockUibModal.open).toBeDefined();
+	});
+
+	it("uibModal open should be called when sellerDlg show is called", function() {
+		sellerDlg.show();
+		expect(mockUibModal.open).toHaveBeenCalledWith(mockModalInstane);
+	});
+});
