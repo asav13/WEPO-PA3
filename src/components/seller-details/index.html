@@ -19,7 +19,7 @@
 			<div class="btn-group" uib-dropdown keyboard-nav>
 				<button id="simple-btn-keyboard-nav" type="button" class="btn btn-default" uib-dropdown-toggle>
 					{{dropdown.title | translate}} <span class="caret"></span>
-				</button>	
+				</button>
 				<ul uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
 					<li role="menuitem" ng-click="selectedValue(1)"><a href="">{{dropdown.value1 | translate}}</a></li>
 					<li role="menuitem" ng-click="selectedValue(2)"><a href="">{{dropdown.value2 | translate}}</a></li>
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 	</form>
-
+	<br>
 	<uib-tabset class="tabsSpace" >
 		<uib-tab index="0" ng-click="selectedValue()" heading="{{'products.AllProducts' | translate}}">
 			

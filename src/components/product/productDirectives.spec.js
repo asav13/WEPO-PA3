@@ -43,13 +43,13 @@ describe("directive: product", function() {
 		expect(productCard).toBeDefined();
 		it("which should contain the product-photo directive", function() {			
 			expect(productCard.find("product-photo")).toBeDefined();
-		})
+		});
 	});
 
 	it("should list as many products as there are in the data", function() {
 		var productBoxNr = directiveElem.find('ul').children('li').length;
 		//expect(productBoxNr).toBeEqual(scope.mockProducts.length);
-	})	
+	});
 });
 
 /*

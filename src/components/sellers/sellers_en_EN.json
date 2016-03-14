@@ -21,6 +21,7 @@
 			"Cancel":                "Abort"
 		},
 		"SortByName":                "Sort by name",
-		"SortByCategory":            "Sort by category"
+		"SortByCategory":            "Sort by category",
+		"Search":                    "Search"
 	}
 }
