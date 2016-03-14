@@ -1,14 +1,15 @@
 {
 	"products" : {
-		"AllProducts": 				"All products",
-		"TopProducts": 				"10 most bought",
-		"Name": 					"Name",
-		"Price": 					"Price",
-		"Sold": 					"Sold units",
-		"InStock": 					"In stock",
+		"AllProducts": 					"All products",
+		"TopProducts": 					"10 most bought",
+		"Name": 						"Name",
+		"Price": 						"Price",
+		"Sold": 						"Sold units",
+		"InStock": 						"In stock",
 		"Search": 						"Search",
-		"Image": 					"Image",
-		"AddNewProduct": 			"Add/edit product",
+		"Image": 						"Image",
+		"AddProductButton": 			"Add new product",
+		"AddNewProduct": 				"Add/edit product",
 		"AddNew" : {
 			"Name": 					"Product's name",
 			"Price": 					"Product's price",
@@ -19,20 +20,20 @@
 			"Cancel": 					"Abort"
 		},
 		"Messages" : {
-			"LoadFailed":            	"Failed to load the products for this seller",
-			"SaveSucceeded":         	"The product has been added successfully",
-			"SaveFailed":            	"Unfortunately we could not add a new product",
-			"UpdateSucceeded":       	"The product has been updated successfully",
-			"UpdateFailed":          	"Unfortunately we could not update the product",
+			"LoadFailed": 				"Failed to load the products for this seller",
+			"SaveSucceeded": 			"The product has been added successfully",
+			"SaveFailed": 				"Unfortunately we could not add a new product",
+			"UpdateSucceeded": 			"The product has been updated successfully",
+			"UpdateFailed": 			"Unfortunately we could not update the product",
 			"GetSellerDetailsFailed": 	"Unfortunately we could not load this seller's details",
-			"NoProducts":             	"This seller has no products registered"
+			"NoProducts": 				"This seller has no products registered"
 		},
 		"Dropdown" : {
-			"Title":                  	"Order by",
-			"value1":                 	"Name (A - Z)",
-			"value2":                 	"Name (Z - A)",
-			"value3":                 	"Price (High - Low)",
-			"value4":                 	"Price (Low - High)"
+			"Title": 					"Order by",
+			"value1": 					"Name (A - Z)",
+			"value2": 					"Name (Z - A)",
+			"value3": 					"Price (High - Low)",
+			"value4": 					"Price (Low - High)"
 		}
 	}
 }

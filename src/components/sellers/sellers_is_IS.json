@@ -1,27 +1,28 @@
 {
 	"sellers" : {
-		"Title":                     "Seljendur",
-		"Photo":                      "Mynd",
-		"Name":                      "Nafn",
-		"Category":                  "Flokkur",
-		"Image":                     "Mynd",
+		"Title":				"Seljendur",
+		"Photo":				"Mynd",
+		"Name":					"Nafn",
+		"Category":				"Flokkur",
+		"Image":				"Mynd",
 		"Messages" : {
-			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
-			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",
-			"SaveFailed":            "Því miður tókst ekki að bæta við nýjum seljanda",
-			"UpdateSucceeded":       "Seljandinn hefur verið uppfærður",
-			"UpdateFailed":          "Því miður tókst ekki að bæta við nýjum seljanda"
+			"LoadFailed":		"Ekki tókst að sækja lista yfir seljendur",
+			"SaveSucceeded":	"Nýjum seljanda hefur verið bætt við",
+			"SaveFailed":		"Því miður tókst ekki að bæta við nýjum seljanda",
+			"UpdateSucceeded":	"Seljandinn hefur verið uppfærður",
+			"UpdateFailed":		"Því miður tókst ekki að bæta við nýjum seljanda"
 		},
-		"AddNewSeller":              "Bæta við/Breyta sölumanni",
+		"AddNewSeller":			"Bæta við/Breyta sölumanni",
+		"AddNewSellerButton":	"Bæta við nýjum sölumanni",
 		"AddNew" : {
-			"Name":                  "Nafn Sölumanns",
-			"Category":              "Vöruflokkur",
-			"Image":                 "Slóð á mynd",
-			"Submit":                "Staðfesta",
-			"Cancel":                "Hætta við"
+			"Name":				"Nafn Sölumanns",
+			"Category":			"Vöruflokkur",
+			"Image":			"Slóð á mynd",
+			"Submit":			"Staðfesta",
+			"Cancel":			"Hætta við"
 		},
-		"SortByName":                "Raða eftir nafni",
-		"SortByCategory":            "Raða eftir flokk",
-		"Search":                    "Leita"
+		"SortByName":			"Raða eftir nafni",
+		"SortByCategory":		"Raða eftir flokk",
+		"Search":				"Leita"
 	}
 }

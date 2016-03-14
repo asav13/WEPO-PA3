@@ -8,7 +8,7 @@
 		<form name="newProductForm">
 			<div class="input-group">
 				<label for="productName">{{'products.Name' | translate}}</label>
-				<input type="text" 
+				<input type="text"
 					class="form-control"
 					placeholder="{{'products.AddNew.Name' | translate}}"
 					name="productName"
@@ -17,8 +17,8 @@
 					required="required"
 					pattern="[\w\W]{2,30}"/>
 			</div>
-			<small 
-				class="help-block" 
+			<small
+				class="help-block"
 				ng-show="newProductForm.productName.$invalid">{{'productDlg.StringValidation' | translate}}
 			</small>
 			<div class="input-group">
@@ -31,8 +31,8 @@
 					required="required"
 					pattern="[0-9]{1,30}"/>
 			</div>
-			<small 
-				class="help-block" 
+			<small
+				class="help-block"
 				ng-show="newProductForm.price.$invalid">{{'productDlg.NumberValidation' | translate}}
 			</small>
 			<div class="input-group">
@@ -48,11 +48,11 @@
 			</small>
 			<div class="modal-footer">
 				<button 
-					ng-click="onOk()" 
+					ng-click="onOk()"
 					class="btn btn-default">{{'products.AddNew.Submit'| translate}}
 				</button>
 				<button 
-					ng-click="onCancel()" 
+					ng-click="onCancel()"
 					class="btn btn-default">{{'products.AddNew.Cancel' | translate}}
 				</button>
 			</div>

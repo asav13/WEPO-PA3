@@ -8,13 +8,15 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
-		scope = $rootScope.$new();
-		resource = AppResource;
-		productDlg = ProductDlg;
-		routeParams = $routeParams;
-		routeParams.id = 1;
-		mockLocation = $location;
-		mockLocation.path = "/sellers/1";
+		scope 				= $rootScope.$new();
+		resource 			= AppResource;
+		productDlg 			= ProductDlg;
+		routeParams 		= $routeParams;
+		routeParams.id 		= 1;
+		mockLocation 		= $location;
+
+		mockLocation.path 	= "/sellers/1";
+
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
 		spyOn(productDlg, 'show').and.callThrough();
@@ -38,7 +40,6 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 	it("getSellerDetails should be called as the page is entered, with the correct id", function() {
 		expect(resource.getSellerDetails).toHaveBeenCalledWith(routeParams.id);
-		
 	});
 
 	it("getSellerProducts should be called as the page is entered, with the correct id", function() {
@@ -76,13 +77,13 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 	it("when updating products the helper function should replace empty values with the old ones",function() {
 		var updatedProd1 = {
-			name: "Updated name",
-			price: "100",
+			name: 	"Updated name",
+			price: 	"100",
 		};
 		var updatedProd2 = {
-			name: "",
-			price: "",
-			imagePath: ""
+			name: 		"",
+			price: 		"",
+			imagePath: 	""
 		};
 
 		var afterCheck = scope.testUpdates(1,updatedProd1);
@@ -95,7 +96,6 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 	});
 });
-
 
 describe("SellerDetailsController should be unit tested here, seller with no products", function() {
 	var sellerDetailsController, scope, resource, productDlg, routeParams, mockLocation;

@@ -38,7 +38,7 @@ describe("SellersController should be unit tested here", function() {
 		spyOn(cNotify, "error").and.callThrough();
 
 
-		sellersController = $controller("SellersController", { 
+		sellersController = $controller("SellersController", {
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
@@ -67,7 +67,6 @@ describe("SellersController should be unit tested here", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
 	//	expect(mockSellerDlg.show).toHaveBeenCalled();
-		
 	});
 
 	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
@@ -77,21 +76,20 @@ describe("SellersController should be unit tested here", function() {
 		expect(mockSellerDlg.show).toHaveBeenCalled();
 	});
 
-	it("", function() {
+	it("it should set the ending of the path to sellers/1", function() {
 		scope.seeDetails(1);
-		expect(mockLocation.path).toHaveBeenCalled();
 		expect(mockLocation.path).toHaveBeenCalledWith('sellers/' + 1);
 	});
 
 	it("when updating sellers the helper function should replace empty values with the old ones",function() {
 		var updatedSeller1 = {
-			name: "Updated name",
-			category: "Updated category",
+			name: 		"Updated name",
+			category: 	"Updated category",
 		};
 		var updatedSeller2 = {
-			name: "",
-			category: "",
-			imagePath: ""
+			name: 		"",
+			category: 	"",
+			imagePath: 	""
 		};
 
 		var afterCheck = scope.testUpdates(1,updatedSeller1);
@@ -101,9 +99,7 @@ describe("SellersController should be unit tested here", function() {
 		var afterCheck2 =scope.testUpdates(1,updatedSeller2);
 		expect(afterCheck2.name).not.toEqual("");
 		expect(afterCheck2.category).not.toEqual("");
-
 	});
-
 });
 
 describe("SellersController should be unit tested here, loads FAIL", function() {

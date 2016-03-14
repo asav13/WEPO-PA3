@@ -2,7 +2,6 @@
 
 angular.module("project3App").controller("SellerDetailsController",
 function SellerDetailsController($scope, $rootScope, $routeParams, $location, AppResource, ProductDlg, centrisNotify) {
-
 	var sortValue;
 	var sellerId 			= parseInt($routeParams.id);
 	$scope.products 		= [];
@@ -11,7 +10,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	$scope.noProducts 		= false;
 
 	$scope.dropdown = {
-		title:"products.Dropdown.Title ",
+		title: 	"products.Dropdown.Title ",
 		value1: "products.Dropdown.value1",
 		value2: "products.Dropdown.value2",
 		value3: "products.Dropdown.value3",
@@ -19,7 +18,6 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 };
 
 	/* GET FUNCTIONS */
-
 	AppResource.getSellerProducts(sellerId)
 		.success(function(data) {
 			$scope.products 	= data;
@@ -39,11 +37,9 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 			$scope.sellerDetails = data;
 		}).error(function() {
 			centrisNotify.error("products.Messages.GetSellerDetailsFailed");
-
 	});
 
 	/* POST AND UPDATE FUNCTIONS */
-
 	$scope.onAddProduct = function() {
 		ProductDlg.show().then(function(newProduct) {
 			AppResource.addSellerProduct(sellerId, newProduct)
@@ -81,7 +77,6 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	};
 
 	/* HELPER FUNCTIONS */
-
 	/* Finding top 10 most sold products */
 	function FindTopTen(data) {
 		var dataArr 	= [];
