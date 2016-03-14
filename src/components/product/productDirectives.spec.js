@@ -2,7 +2,7 @@
 /* UNIT TESTS FOR PRODUCT DIRECTIVES */
 
 describe("directive: product", function() {
-	var template = "<div product></div>"
+	var template = "<div product></div>";
 	var scope;
 	var compile;
 	var element;
