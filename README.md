@@ -14,7 +14,6 @@ In order for everything to work properly one must first run in the <strong>root<
 ```
 	bower install
 	npm install
-
 ```
 preferably in the order listed here to avoid eventual dependency conflicts.
 
@@ -26,10 +25,9 @@ Go to the project's <strong>root</strong> and with you prefered command line int
 ```
 
 ### Start the application
+
+The previous step of running the 
 ```
 	gulp
 ```
-should automatically open your browser on
-```
-	explorer http://localhost:7000
-```
+command should automatically open <a href="http://localhost:7000">http://localhost:7000</a> in your browser, where the client will be running.
