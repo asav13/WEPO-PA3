@@ -53,9 +53,9 @@ describe("Product directive", function() {
 		var directiveElem2;
 		beforeEach(function() {
 			element 		= angular.element("<product-name></product-name>");
-			elem2 			= angular.element("<top-product-name></top-product-name>")
+			elem2 			= angular.element("<top-product-name></top-product-name>");
 			directiveElem 	= compile(element)(scope);
-			directiveElem2 	= compile(elem2)(scope)
+			directiveElem2 	= compile(elem2)(scope);
 		});
 
 		it("should exist", function() {
