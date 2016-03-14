@@ -3,7 +3,7 @@
 
 describe("SellersController should be unit tested here", function() {
 
-	var sellersController, scope, resource, sellerDlg, cNotify, sellerDlgController;
+	var sellersController, scope, resource, cNotify;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
@@ -13,18 +13,27 @@ describe("SellersController should be unit tested here", function() {
 		}
 	};
 
+	var mockSellerDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn({name:"mockSeller", category: "mockCategory"});
+				}
+			};
+		}
+	};
+
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
 		scope 		= $rootScope.$new();
 		resource 	= AppResource;
-		sellerDlg 	= SellerDlg;
 		cNotify 	= centrisNotify;
 
 		spyOn(resource, 'getSellers').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'addSeller').and.callThrough();
 		spyOn(resource, 'updateSeller').and.callThrough();
-		spyOn(sellerDlg, 'show').and.callThrough();
+		spyOn(mockSellerDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 		spyOn(cNotify, "error").and.callThrough();
 
@@ -33,7 +42,7 @@ describe("SellersController should be unit tested here", function() {
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			SellerDlg: 		sellerDlg,
+			SellerDlg: 		mockSellerDlg,
 			centrisNotify: 	cNotify
 		});
 	}));
@@ -44,7 +53,7 @@ describe("SellersController should be unit tested here", function() {
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
-		expect(sellerDlg).toBeDefined();
+		expect(mockSellerDlg).toBeDefined();
 	});
 
 	/* TEST for getting sellers */
@@ -57,17 +66,15 @@ describe("SellersController should be unit tested here", function() {
 	it("The scope variable 'sellers' should include one more entry after the call.", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
-	//	expect(sellerDlg.show).toHaveBeenCalled();
+	//	expect(mockSellerDlg.show).toHaveBeenCalled();
 		
 	});
 
 	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
 		var sellerBefore = scope.sellers[0];
-
 		expect(scope.updating).toEqual(undefined);
 		scope.onUpdateSeller(sellerBefore.id);
-		expect(scope.updating).not.toEqual(undefined);
-		expect(sellerDlg.show).toHaveBeenCalled();
+		expect(mockSellerDlg.show).toHaveBeenCalled();
 	});
 
 	it("", function() {
