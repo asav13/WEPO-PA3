@@ -11,25 +11,22 @@ All javascript references are handled by gulp with the exception of the CSS docu
 main HTML file.
 
 In order for everything to work properly one must first run in the <strong>root</strong> folder
-```
-	bower install
+```	bower install
 	npm install
-
 ```
 preferably in the order listed here to avoid eventual dependency conflicts.
 
 ### Run the client
 Go to the project's <strong>root</strong> and with you prefered command line interface, simply run 
 
-```
-	gulp
+```	gulp
 ```
 
 ### Start the application
 ```
 	gulp
 ```
-should automatically open your browser on
+should automatically open the local address 
+```	http://localhost:7000
 ```
-	explorer http://localhost:7000
-```
+in your browser, where the client will be running.
