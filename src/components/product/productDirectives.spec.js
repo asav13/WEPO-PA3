@@ -49,6 +49,11 @@ describe("directive: product", function() {
 	it("should list as many products as there are in the data", function() {
 		var productBoxNr = directiveElem.find('ul').children('li').length;
 		expect(productBoxNr).toEqual(scope.products.length);
+	});
+
+	it("should list as many products as there are in the data", function() {
+		var productBoxNr = directiveElem.find('ul').children('li').length;
+		expect(productBoxNr).toEqual(scope.products.length);
 	});	
 });
 
