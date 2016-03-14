@@ -1,36 +1,49 @@
 "use strict";
 /* UNIT TESTS FOR PRODUCT DIRECTIVES */
 
-describe("directive: product", function() {
-	var template = "<div product></div>";
+describe("Product directive", function() {
+	//var template = "<div product></div>";
 	var scope, resource, compile, element;
 	var directiveElem, sellerDetailsController;
-	//var backend;
+	var backend;
 	
 	beforeEach(module("project3App"));
-	beforeEach(inject(function($controller, $rootScope, $compile, AppResource, $httpBackend) {
+	beforeEach(inject(function($controller, $rootScope, $compile, AppResource) {
 		scope = $rootScope.$new();
 		resource = AppResource;
 		compile = $compile;
-		//backend = $httpBackend;
 		element = angular.element("<div product></div>");
 		directiveElem = compile(element)(scope);
-		//spyOn(resource, 'getSellerProducts').and.callThrough();
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
 			AppResource: 	resource
 		});
-
-		$httpBackend.expectGET("../src/components/seller-details/index.html").respond("<div class=\"product\"");
+		//$httpBackend.expectGET("../src/components/seller-details/index.html").respond("<div class=\"product\"");
 	}));
+
+	it("test variables should be defined", function() {
+		expect(sellerDetailsController).toBeDefined();
+		expect(scope).toBeDefined();
+		expect(element).toBeDefined();
+		expect(resource).toBeDefined();
+	});
+
+	it("should contain the productName function", function() {
+		expect(directiveElem).toBeDefined();
+	});
 
 	it("should add class 'product' to element", function() {
 		/*element = compile(template)(scope);
 		backend.flush();
 		var isolatedScope = element.isolatedScope();
 		expect(isolatedScope.class).toBe(product);*/
-		expect(element.hasClass("product"));
+		expect(directiveElem.hasClass("product"));
+	});
+
+	it("should contain the product-name directive", function() {
+		var productName = directiveElem.find('product-name');
+		expect(productName).toBeDefined();
 	});
 
 	it("should have an <ul> element appended", function() {
@@ -38,24 +51,48 @@ describe("directive: product", function() {
 		expect(ul).toBeDefined();
 	});
 
-	it("should contain the product-card directive", function() {
-		var productCard = directiveElem.find('product-card');
-		expect(productCard).toBeDefined();
-		it("which should contain the product-photo directive", function() {			
-			expect(productCard.find("product-photo")).toBeDefined();
+	it("should list as many products as there are in the data", function() {
+		var productBoxNr = directiveElem.find('ul').children('li').length;
+		expect(productBoxNr).toEqual(scope.products.length);
+	});
+
+	describe("product-name and top-product-name", function() {
+		var elem2;
+		var directiveElem2;
+		beforeEach(function() {
+			element = angular.element("<product-name></product-name>");
+			elem2 = angular.element("<top-product-name></top-product-name>")
+			directiveElem = compile(element)(scope);
+			directiveElem2 = compile(elem2)(scope)
+		});
+
+		it("should exist", function() {
+			expect(directiveElem).toBeDefined();
+			expect(directiveElem2).toBeDefined();
+		});
+
+		it("should contain the product-card directive", function() {
+			var productCard = directiveElem.children().find('product-card');		
+			expect(productCard).toBeDefined();
 		});
 	});
+	describe("product-card", function() {
+		beforeEach(function() {
+			element = angular.element("<product-card></product-card>");
+			directiveElem = compile(element)(scope);
+		});
 
-	it("should list as many products as there are in the data", function() {
-		var productBoxNr = directiveElem.find('ul').children('li').length;
-		expect(productBoxNr).toEqual(scope.products.length);
+		it("should exist", function() {
+			expect(directiveElem).toBeDefined();
+		});
+
+		it("should contain the product-photo directive", function() {
+		var productPhoto = directiveElem.find('product-photo');		
+			expect(productPhoto).toBeDefined();
+		});
 	});
-
-	it("should list as many products as there are in the data", function() {
-		var productBoxNr = directiveElem.find('ul').children('li').length;
-		expect(productBoxNr).toEqual(scope.products.length);
-	});	
 });
+
 
 /*
 

@@ -23,6 +23,7 @@
 	- Videos for products (if page is viewable to customers)
 	-[x] Search/filter, products
 	-[x] Search/filter, sellers
+	-[x] Order By on products
 
 [x] (? %) Boxes
 [x] (? %) Make products sortable in JS
