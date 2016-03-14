@@ -1,12 +1,21 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDetailsController",
-function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg, centrisNotify) {
+function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg, centrisNotify, $log) {
 
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
 	var sellerId 			= parseInt($routeParams.id);
 	$scope.sellerDetails 	= 'no details on this seller';
+	$scope.noProducts = false;
+
+	$scope.dropdown = {
+		message:"Order By",
+		value1: "Name (A - Z)",
+		value2: "Name (Z - A)",
+		value3: "Price (High - Low)",
+		value4: "Price (Low - High"
+};
 
 	/* GET FUNCTIONS */
 
@@ -14,6 +23,12 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 		.success(function(data) {
 			$scope.products 	= data;
 			$scope.topTenProd 	= new FindTopTen(data);
+
+			if(data.length === 0) {
+				$scope.noProducts = true;
+			} else {
+				$scope.noProducts = false;
+			}
 		}).error(function() {
 			centrisNotify.error("products.Messages.LoadFailed");
 	});
@@ -100,4 +115,71 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 
 		return updatedProduct;
 	}
+
+	/*OrderBy function*/
+	$scope.selectedValue = function(value) {
+	switch(value) {
+		case 1:
+			$scope.dropdown.message = $scope.dropdown.value1;
+			$scope.products.sort(function(a, b) {
+				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+				if(nameA > nameB) {
+					return 1;
+				} else {
+					return -1;
+				}
+			});
+			$scope.topTenProd.sort(function(a, b) {
+				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+				if(nameA > nameB) {
+					return 1;
+				} else {
+					return -1;
+				}
+			});
+			break;
+		case 2:
+			$scope.dropdown.message = $scope.dropdown.value2;
+			$scope.products.sort(function(a, b) {
+				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+				if(nameA < nameB) {
+					return 1;
+				} else {
+					return -1;
+				}
+			});
+			$scope.topTenProd.sort(function(a, b) {
+				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+				if(nameA < nameB) {
+					return 1;
+				} else {
+					return -1;
+				}
+			});
+			break;
+		case 3:
+			$scope.dropdown.message = $scope.dropdown.value3;
+			$scope.products.sort(function(a, b) {
+				return b.price - a.price;
+			});
+			$scope.topTenProd.sort(function(a, b) {
+				return b.price - a.price;
+			});
+			break;
+		case 4:
+			$scope.dropdown.message = $scope.dropdown.value4;
+			$scope.products.sort(function(a, b) {
+				return a.price - b.price;
+			});
+			$scope.topTenProd.sort(function(a, b) {
+				return a.price - b.price;
+			});
+			break;
+		default:
+			$scope.dropdown.message = "Order by";
+			$scope.products.sort(function(a, b) {
+				return a.id - b.id;
+			});
+	}
+};
 });
