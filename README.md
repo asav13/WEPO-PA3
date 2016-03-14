@@ -31,8 +31,4 @@ The previous step of running the
 ```
 	gulp
 ```
-command should automatically open 
-```
-	explorer http://localhost:7000
-```
-in your browser, where the client will be running.
+command should automatically open <a href="http://localhost:7000">http://localhost:7000</a> in your browser, where the client will be running.
