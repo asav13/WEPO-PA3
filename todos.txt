@@ -1,15 +1,14 @@
-[~1/3] (20%) Unit tests for all code
+[~1/2] (20%) Unit tests for all code
 
 [x] (5%) List individuals
 [x] (10%) Add/edit individuals
 [x] (10%) Show details about a given individual
 
 [x] (10%) All products tab 	// only need to change the look a bit
-[ ] (? %) Boxes
 [x] (5%) Top 10 products tab
 [x] (10%) Add/edit product 
 
-[ ] (5%) All tables sortable
+[x] (5%) All tables sortable
 [x] (5%) All input validated 
 
 [x] (5%) Translated
@@ -23,3 +22,7 @@
 	- Videos for products (if page is viewable to customers)
 	- Search and filter, select category
 
+[x] (? %) Boxes
+[ ] (? %) Make products sortable in JS
+
+ca 90% done

@@ -8,7 +8,6 @@ function SellerDlg($uibModal) {
 				templateUrl: "components/seller-dlg/seller-dlg.html", 
 				controller:  "SellerDlgController"
 			});
-
 			return modalInstance.result;
 		}
 	};

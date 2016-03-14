@@ -6,30 +6,29 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	setPlaceholders();
 	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
 
-	$scope.onOk = function onOk(){
+	$rootScope.onOk = function onOk(){
 		$scope.isOpen = true;
-		$scope.upd = $rootScope.updating;
 
-		if($rootScope.newSeller 			=== undefined 	||
-			$rootScope.newSeller.name 		=== undefined 	|| 
-			$rootScope.newSeller.name		=== "" 			|| 
-			$rootScope.newSeller.category 	=== undefined 	|| 
-			$rootScope.newSeller.category 	=== "") {
+		if($scope.newSeller 			=== undefined 	||
+			$scope.newSeller.name 		=== undefined 	|| 
+			$scope.newSeller.name		=== "" 			|| 
+			$scope.newSeller.category 	=== undefined 	|| 
+			$scope.newSeller.category 	=== "") {
 
 				centrisNotify.warning("sellerDlg.InvalidInput");
 		} else {
 
-			nameIsTaken($rootScope.newSeller.name, function taken() {
+			nameIsTaken($scope.newSeller.name, function taken() {
 				centrisNotify.warning("sellerDlg.NameTaken");
 			}, function available() {
-				checkImage($scope.newSeller.imagePath, function success() {
-					$scope.stuff = true;
-					$scope.$close($rootScope.newSeller);
-					$scope.isOpen = false;
+				checkImage($scope.newSeller.imagePath, 
+					function success() {
+						$scope.$close($scope.newSeller);
+						$scope.isOpen = false;
 				}, function error() {
-					if($rootScope.newSeller.imagePath === ""){
-						$rootScope.newSeller.imagePath = sellerPlaceholderImage;
-						$scope.$close($rootScope.newSeller);
+					if($scope.newSeller.imagePath === ""){
+						$scope.newSeller.imagePath = sellerPlaceholderImage;
+						$scope.$close($scope.newSeller);
 						$scope.isOpen = false;
 					} else {
 						$rootScope.updating = undefined;
@@ -50,9 +49,9 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 
 	function setPlaceholders(){
 
-		$rootScope.newSeller = {};
+		$scope.newSeller = {};
 		if($rootScope.updating === undefined){
-			$rootScope.newSeller = {
+			$scope.newSeller = {
 				name: "",
 				category: "",
 				imagePath: ""
@@ -60,11 +59,9 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 		} else {
 			AppResource.getSellerDetails($rootScope.updating)
 				.success(function(data){
-					$rootScope.newSeller.name = data.name;
-					$rootScope.newSeller.category = data.category;
-					$rootScope.newSeller.imagePath = data.imagePath;
-			}).error(function(){
-				console.log("ERROR: Failed while fetching user to update.");
+					$scope.newSeller.name = data.name;
+					$scope.newSeller.category = data.category;
+					$scope.newSeller.imagePath = data.imagePath;
 			});
 		}
 	}
@@ -85,7 +82,7 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 			.success(function(data) {
 				for(var i = 0; i < data.length; i++){
 					if(data[i]['name'] === name){
-						if($scope.updating === undefined || $scope.updating !== data[i].id){
+						if($rootScope.updating === undefined || $rootScope.updating !== data[i].id){
 							taken();
 							return;
 						}
@@ -93,8 +90,6 @@ function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 					}
 				}
 				available();
-			}).error(function() {
-				centrisNotify.error("sellers.Messages.LoadFailed");
 			});
 	}
 	

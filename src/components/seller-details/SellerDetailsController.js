@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDetailsController",
-function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, ProductDlg, centrisNotify, $log) {
+function SellerDetailsController($scope, $rootScope, $routeParams, $location, AppResource, ProductDlg, centrisNotify) {
 
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
@@ -37,7 +37,8 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 		.success(function(data) {
 			$scope.sellerDetails = data;
 		}).error(function(){
-			centrisNotify.error("product.Messages.GetSellerDetailsFailed");
+			centrisNotify.error("products.Messages.GetSellerDetailsFailed");
+
 	});
 
 	/* POST AND UPDATE FUNCTIONS */
@@ -51,6 +52,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, AppResource, 
 				$scope.topTenProd = new FindTopTen($scope.products);
 			}).error(function() {
 				centrisNotify.error("products.Messages.SaveFailed");
+				$location.path('/');
 			});
 		});
 	};
