@@ -3,11 +3,12 @@
 angular.module("project3App").controller("SellerDetailsController",
 function SellerDetailsController($scope, $rootScope, $routeParams, $location, AppResource, ProductDlg, centrisNotify) {
 
+	var sortValue;
+	var sellerId 			= parseInt($routeParams.id);
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
-	var sellerId 			= parseInt($routeParams.id);
 	$scope.sellerDetails 	= 'no details on this seller';
-	$scope.noProducts = false;
+	$scope.noProducts 		= false;
 
 	$scope.dropdown = {
 		title:"products.Dropdown.Title ",
@@ -36,14 +37,14 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	AppResource.getSellerDetails(sellerId)
 		.success(function(data) {
 			$scope.sellerDetails = data;
-		}).error(function(){
+		}).error(function() {
 			centrisNotify.error("products.Messages.GetSellerDetailsFailed");
 
 	});
 
 	/* POST AND UPDATE FUNCTIONS */
 
-	$scope.onAddProduct = function (){
+	$scope.onAddProduct = function() {
 		ProductDlg.show().then(function(newProduct) {
 			AppResource.addSellerProduct(sellerId, newProduct)
 			.success(function(data) {
@@ -51,6 +52,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 				$scope.products.push(data);
 				$scope.topTenProd = new FindTopTen($scope.products);
 				$scope.noProducts = false;
+				$scope.selectedValue(sortValue);
 			}).error(function() {
 				centrisNotify.error("products.Messages.SaveFailed");
 				$location.path('/');
@@ -58,7 +60,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		});
 	};
 
-	$scope.onUpdateSellerProduct = function (productId) {
+	$scope.onUpdateSellerProduct = function(productId) {
 		productId = parseInt(productId);
 		$rootScope.updating = [];
 		$rootScope.updating[0] = sellerId;
@@ -71,6 +73,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 				.success(function(data) {
 					centrisNotify.success("products.Messages.UpdateSucceeded");
 					$rootScope.updating = undefined;
+					$scope.selectedValue(sortValue);
 				}).error(function() {
 					centrisNotify.error("products.Messages.UpdateFailed");
 				});
@@ -119,70 +122,75 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		return updatedProduct;
 	}
 
-	/*OrderBy function*/
+	$scope.testUpdates = function(id, prod) {
+		return checkUpdates(id, prod);
+	};
+
+	/* ORDERBY FUNCTIONS */
 	$scope.selectedValue = function(value) {
-	switch(value) {
-		case 1:
-			$scope.dropdown.title = $scope.dropdown.value1;
-			$scope.products.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA > nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA > nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			break;
-		case 2:
-			$scope.dropdown.title = $scope.dropdown.value2;
-			$scope.products.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA < nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA < nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			break;
-		case 3:
-			$scope.dropdown.title = $scope.dropdown.value3;
-			$scope.products.sort(function(a, b) {
-				return b.price - a.price;
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				return b.price - a.price;
-			});
-			break;
-		case 4:
-			$scope.dropdown.title = $scope.dropdown.value4;
-			$scope.products.sort(function(a, b) {
-				return a.price - b.price;
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				return a.price - b.price;
-			});
-			break;
-		default:
-			$scope.dropdown.title = "Order by";
-			$scope.products.sort(function(a, b) {
-				return a.id - b.id;
-			});
-	}
-};
+		sortValue = value;
+		switch(value) {
+			case 1:
+				$scope.dropdown.title = $scope.dropdown.value1;
+				$scope.products.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA > nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA > nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				break;
+			case 2:
+				$scope.dropdown.title = $scope.dropdown.value2;
+				$scope.products.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA < nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA < nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				break;
+			case 3:
+				$scope.dropdown.title = $scope.dropdown.value3;
+				$scope.products.sort(function(a, b) {
+					return b.price - a.price;
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					return b.price - a.price;
+				});
+				break;
+			case 4:
+				$scope.dropdown.title = $scope.dropdown.value4;
+				$scope.products.sort(function(a, b) {
+					return a.price - b.price;
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					return a.price - b.price;
+				});
+				break;
+			default:
+				$scope.dropdown.title = "Order by";
+				$scope.products.sort(function(a, b) {
+					return a.id - b.id;
+				});
+		}
+	};
 });

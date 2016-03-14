@@ -30,7 +30,7 @@ describe("ProductDlgController should be unit tested here", function() {
 									centrisNotify : cNotify});
 	}));
 
-	it("Setup variables should be defined.", function(){
+	it("Setup variables should be defined.", function() {
 		expect(ctrl).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(resource).toBeDefined();
@@ -49,7 +49,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(scope.isOpen).toEqual(true);
 	});
 
-	it("adding with valid input should succeed", function(){
+	it("adding with valid input should succeed", function() {
 		scope.newProduct = {
 			name: 		"Product",
 			price: 		"50",
@@ -59,7 +59,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
 
-	it("adding with invalid imagePath should NOT succeed", function(){
+	it("adding with invalid imagePath should NOT succeed", function() {
 		scope.newProduct = {
 			name: 		"Product",
 			price: 		"50",
@@ -69,7 +69,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
 
-	it("adding with invalid input should give warning but keep dialog open", function(){
+	it("adding with invalid input should give warning but keep dialog open", function() {
 		scope.updating = undefined;
 		scope.newProduct = {
 			name : 		"A",
@@ -81,7 +81,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(scope.isOpen).toEqual(true);
 	});
 
-	it("adding with a product name the seller is already using should give warning but keep dialog open", function(){
+	it("adding with a product name the seller is already using should give warning but keep dialog open", function() {
 		/* Hannyrðastofa Hannesar already has a product called sjal*/
 		scope.sellerId = 1;
 		scope.newProduct = {
@@ -94,7 +94,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(scope.isOpen).toEqual(true);
 	});
 
-	it("adding with a product invalid img path should", function(){
+	it("adding with a product invalid img path should", function() {
 		/* Hannyrðastofa Hannesar already has a product called sjal*/
 		scope.sellerId = 1;
 		scope.newProduct = {
@@ -140,7 +140,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 									centrisNotify : cNotify});
 	}));
 
-	it("Setup variables should be defined.", function(){
+	it("Setup variables should be defined.", function() {
 		expect(ctrl).toBeDefined();
 		expect(scope).toBeDefined();
 		expect(resource).toBeDefined();
@@ -153,7 +153,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 		expect(scope.isOpen).toEqual(true);
 	});
 
-	it("updating with valid input should succeed", function(){
+	it("updating with valid input should succeed", function() {
 		scope.updating = undefined;
 		scope.newProduct = {
 			name: 		"Product",
@@ -165,7 +165,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
 
-	it("updating with invalid input should give warning but keep dialog open", function(){
+	it("updating with invalid input should give warning but keep dialog open", function() {
 		scope.updating = undefined;
 		scope.newProduct = {
 			name : 		"A",
@@ -177,7 +177,7 @@ describe("ProductDlgController should be unit tested here, updating", function()
 		expect(scope.isOpen).toEqual(true);
 	});
 
-	it("updating with a product name the seller is already using should be OK if updating the same product", function(){
+	it("updating with a product name the seller is already using should be OK if updating the same product", function() {
 		/* Hannyrðastofa Hannesar already has a product called sjal, it's ID is 4*/
 		scope.sellerId 		= 1;
 		scope.updating[0] 	= 1; 

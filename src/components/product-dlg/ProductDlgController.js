@@ -24,11 +24,11 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 					centrisNotify.warning("productDlg.NameTaken");
 
 			}, function available() {
-				checkImage($scope.newProduct.imagePath, function success(){
+				checkImage($scope.newProduct.imagePath, function success() {
 					$scope.$close($rootScope.newProduct);
 					$scope.isOpen = false;
 				}, function error() {
-					if($rootScope.newProduct.imagePath === ""){
+					if($rootScope.newProduct.imagePath === "") {
 						$rootScope.newProduct.imagePath = productPlaceholderImage;
 						$scope.$close($rootScope.newProduct);
 						$scope.isOpen = false;
@@ -43,16 +43,16 @@ function ProductDlgController($scope, $rootScope, $routeParams, AppResource, cen
 		}
 	};
 	
-	$scope.onCancel = function onCancel(){
+	$scope.onCancel = function onCancel() {
 		$rootScope.updating = undefined;
 		$scope.$dismiss();
 		$scope.isOpen = false;
 	};
 
-	function setPlaceholders(){
+	function setPlaceholders() {
 
 		$rootScope.newProduct = {};
-		if($rootScope.updating === undefined){
+		if($rootScope.updating === undefined) {
 			$rootScope.newProduct = {
 				name: "",
 				price: "",
