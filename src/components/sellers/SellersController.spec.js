@@ -76,6 +76,27 @@ describe("SellersController should be unit tested here", function() {
 		expect(mockLocation.path).toHaveBeenCalledWith('sellers/' + 1);
 	});
 
+	it("when updating sellers the helper function should replace empty values with the old ones",function() {
+		var updatedSeller1 = {
+			name: "Updated name",
+			category: "Updated category",
+		};
+		var updatedSeller2 = {
+			name: "",
+			category: "",
+			imagePath: ""
+		};
+
+		var afterCheck = scope.testUpdates(1,updatedSeller1);
+		expect(afterCheck.name).toEqual(updatedSeller1.name);
+		expect(afterCheck.category).toEqual(updatedSeller1.category);
+
+		var afterCheck2 =scope.testUpdates(1,updatedSeller2);
+		expect(afterCheck2.name).not.toEqual("");
+		expect(afterCheck2.category).not.toEqual("");
+
+	});
+
 });
 
 describe("SellersController should be unit tested here, loads FAIL", function() {
