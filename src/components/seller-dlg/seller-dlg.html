@@ -7,17 +7,17 @@
 		<form name="newSellerForm">
 			<div class="input-group">
 				<label for="newSellerName">{{'sellers.Name' | translate}}</label>
-				<input type="text" 
+				<input type="text"
 					class="form-control"
 					placeholder="{{'sellers.AddNew.Name' | translate}}"
 					name="newSellerName"
 					autofocus="autofocus"
 					ng-model="newSeller.name"
-						required="required"
-						pattern="[\w\W]{2,30}"/>
+					required="required"
+					pattern="[\w\W]{2,30}"/>
 			</div>
-			<small 
-				class="help-block" 
+			<small
+				class="help-block"
 				ng-show="newSellerForm.newSellerName.$invalid">{{'sellerDlg.StringValidation' | translate}}
 			</small>
 			<div class="input-group">
@@ -30,8 +30,8 @@
 					required="required"
 					pattern="[\w\W]{2,20}"/>
 			</div>
-				<small 
-					class="help-block" 
+				<small
+					class="help-block"
 					ng-show="newSellerForm.newSellerCategory.$invalid">{{'sellerDlg.StringValidation' | translate}}
 				</small>
 			<div class="input-group">
@@ -42,21 +42,19 @@
 					name="newSellerImg"
 					ng-model="newSeller.imagePath"/>
 			</div>
-				<small 
+				<small
 					class="help-block">{{'sellerDlg.Optional' | translate}}
 			</small>
 			<div class="modal-footer">
 				<button 
-					ng-click="onOk()" 
+					ng-click="onOk()"
 					class="btn btn-default">{{'sellers.AddNew.Submit'| translate}}
 				</button>
 				<button 
-					ng-click="onCancel()" 
+					ng-click="onCancel()"
 					class="btn btn-default">{{'sellers.AddNew.Cancel' | translate}}
 				</button>
 			</div>
 		</form>
 	</div>
 </div>
-
-<!--ng-disabled="newSellerForm.$invalid" -->

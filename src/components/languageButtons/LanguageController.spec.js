@@ -7,12 +7,12 @@ describe("LanguageController should be unit tested here", function() {
 	beforeEach(module("project3App"));
 
 	beforeEach(inject(function($controller, $rootScope, $translate) {
-		scope = $rootScope.$new();
-		translate = $translate;
+		scope 		= $rootScope.$new();
+		translate 	= $translate;
 		
-		ctrl = $controller("LanguageController", {
-			$scope : scope, 
-			$translate : translate
+		ctrl 		= $controller("LanguageController", {
+					$scope : scope,
+					$translate : translate
 		});
 	}));
 
@@ -40,5 +40,4 @@ describe("LanguageController should be unit tested here", function() {
 		scope.changeLanguage("");
 		expect(translate.proposedLanguage()).toEqual("en");
 	});
-
 });

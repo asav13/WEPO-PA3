@@ -3,7 +3,7 @@
 
 describe("SellersController should be unit tested here", function() {
 
-	var sellersController, scope, resource, sellerDlg, cNotify, sellerDlgController;
+	var sellersController, scope, resource, cNotify;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
@@ -13,27 +13,36 @@ describe("SellersController should be unit tested here", function() {
 		}
 	};
 
+	var mockSellerDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn({name:"mockSeller", category: "mockCategory"});
+				}
+			};
+		}
+	};
+
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
 		scope 		= $rootScope.$new();
 		resource 	= AppResource;
-		sellerDlg 	= SellerDlg;
 		cNotify 	= centrisNotify;
 
 		spyOn(resource, 'getSellers').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'addSeller').and.callThrough();
 		spyOn(resource, 'updateSeller').and.callThrough();
-		spyOn(sellerDlg, 'show').and.callThrough();
+		spyOn(mockSellerDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 		spyOn(cNotify, "error").and.callThrough();
 
 
-		sellersController = $controller("SellersController", { 
+		sellersController = $controller("SellersController", {
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			SellerDlg: 		sellerDlg,
+			SellerDlg: 		mockSellerDlg,
 			centrisNotify: 	cNotify
 		});
 	}));
@@ -44,7 +53,7 @@ describe("SellersController should be unit tested here", function() {
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
-		expect(sellerDlg).toBeDefined();
+		expect(mockSellerDlg).toBeDefined();
 	});
 
 	/* TEST for getting sellers */
@@ -57,30 +66,45 @@ describe("SellersController should be unit tested here", function() {
 	it("The scope variable 'sellers' should include one more entry after the call.", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
-	//	expect(sellerDlg.show).toHaveBeenCalled();
-		
+	//	expect(mockSellerDlg.show).toHaveBeenCalled();
 	});
 
 	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
 		var sellerBefore = scope.sellers[0];
-
 		expect(scope.updating).toEqual(undefined);
 		scope.onUpdateSeller(sellerBefore.id);
-		expect(scope.updating).not.toEqual(undefined);
-		expect(sellerDlg.show).toHaveBeenCalled();
+		expect(mockSellerDlg.show).toHaveBeenCalled();
 	});
 
-	it("", function() {
+	it("it should set the ending of the path to sellers/1", function() {
 		scope.seeDetails(1);
-		expect(mockLocation.path).toHaveBeenCalled();
 		expect(mockLocation.path).toHaveBeenCalledWith('sellers/' + 1);
 	});
 
+	it("when updating sellers the helper function should replace empty values with the old ones",function() {
+		var updatedSeller1 = {
+			name: 		"Updated name",
+			category: 	"Updated category",
+		};
+		var updatedSeller2 = {
+			name: 		"",
+			category: 	"",
+			imagePath: 	""
+		};
+
+		var afterCheck = scope.testUpdates(1,updatedSeller1);
+		expect(afterCheck.name).toEqual(updatedSeller1.name);
+		expect(afterCheck.category).toEqual(updatedSeller1.category);
+
+		var afterCheck2 =scope.testUpdates(1,updatedSeller2);
+		expect(afterCheck2.name).not.toEqual("");
+		expect(afterCheck2.category).not.toEqual("");
+	});
 });
 
-describe("SellersController should be unit tested here, loads FAIL", function() {
+describe("SellersController should be unit tested here, failing loads", function() {
 
-	var sellersController, scope, resource, sellerDlg, cNotify;
+	var sellersController, scope, resource, cNotify;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
@@ -90,20 +114,32 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 		}
 	};
 
+	var mockSeller = {name:"mockSeller", category: "mockCategory"};
+
+	var mockSellerDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn(mockSeller);
+				}
+			};
+		}
+	};
+
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
-		scope = $rootScope.$new();
-		resource = AppResource;
-		resource.successLoadSellers = false;
-		resource.successAddSeller = false;
-		sellerDlg = SellerDlg;
-		cNotify = centrisNotify;
+		scope 							= $rootScope.$new();
+		resource 						= AppResource;
+		resource.successLoadSellers 	= false;
+		resource.successAddSeller 		= false;
+		resource.successUpdateSeller 	= false;
+		cNotify 						= centrisNotify;
 
 		spyOn(resource, 'getSellers').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'addSeller').and.callThrough();
 		spyOn(resource, 'updateSeller').and.callThrough();
-		spyOn(sellerDlg, 'show').and.callThrough();
+		spyOn(mockSellerDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 		spyOn(centrisNotify, 'error').and.callThrough();
 
@@ -111,7 +147,7 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			SellerDlg: 		sellerDlg,
+			SellerDlg: 		mockSellerDlg,
 			cNotify: 		centrisNotify
 			});
 		
@@ -123,19 +159,26 @@ describe("SellersController should be unit tested here, loads FAIL", function() 
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
-		expect(sellerDlg).toBeDefined();
+		expect(mockSellerDlg).toBeDefined();
+		expect(cNotify).toBeDefined();
 	});
 
 
-	/* TEST for getting sellers */
 	it("getSellers should have been called and failed, resulting in error message", function() {
 		expect(resource.getSellers).toHaveBeenCalled();
 		expect(cNotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailed");
 	});
 
-	/* TEST for adding a new seller and failing */
-	it("The scope variable 'sellers' should include one more entry after the call.", function() {
+	it("when onAddSeller is called and successAddSeller is false, it should result in error message", function() {
 		scope.onAddSeller();
-		
+		expect(mockSellerDlg.show).toHaveBeenCalled();
+		expect(cNotify.error).toHaveBeenCalledWith("sellers.Messages.SaveFailed");
 	});
+
+	it("when onUpdateSeller is called and successUpdateSeller is false, it should result in error message", function() {
+		scope.onUpdateSeller();
+		expect(mockSellerDlg.show).toHaveBeenCalled();
+		expect(cNotify.error).toHaveBeenCalled();
+	});
+
 });

@@ -1,9 +1,9 @@
 {
 	"sellerDlg" : {
-		"ImageLoadFailed" :				"The given image path is not a path to an image, please try again",
-		"InvalidInput" :				"Invalid input, please check the warnings",
-		"NameTaken" :					"There already exists a seller with this name",
-		"StringValidation":				"Can not be empty, must be 2-30 letters",
-		"Optional":						"This field is optional"
+		"ImageLoadFailed" :	"The given image path is not a path to an image, please try again",
+		"InvalidInput" :	"Invalid input, please check the warnings",
+		"NameTaken" :		"There already exists a seller with this name",
+		"StringValidation":	"Can not be empty, must be 2-30 letters",
+		"Optional":			"This field is optional"
 	}
 }

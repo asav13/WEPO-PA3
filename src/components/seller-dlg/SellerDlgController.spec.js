@@ -15,13 +15,13 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, centrisNotify) {
-		scope = $rootScope;
-		scope.updating = undefined;
-		resource = AppResource;
-		cNotify = centrisNotify;
+		scope 			= $rootScope;
+		scope.updating 	= undefined;
+		resource 		= AppResource;
+		cNotify 		= centrisNotify;
 		
-		scope.$dismiss = function() {};
-		scope.$close = function() {};
+		scope.$dismiss 	= function() {};
+		scope.$close 	= function() {};
 		spyOn(cNotify, 'warning').and.callThrough();
 		spyOn(cNotify, 'error').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
@@ -42,14 +42,14 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 		expect(scope).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(cNotify).toBeDefined();
-	});	
+	});
 
 	it("adding with valid input should succeed", function() {
-		scope.updating = undefined;
+		scope.updating 	= undefined;
 		scope.newSeller = {
 			name: 		"Peter Seller",
 			category: 	"category",
-			imagePath: ""
+			imagePath: 	""
 		};
 		// TODO check what happens here
 		scope.onOk();
@@ -70,7 +70,7 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 	});
 
 	it("adding with valid imagePath should succeed", function() {
-		scope.updating = undefined;
+		scope.updating 	= undefined;
 		scope.newSeller = {
 			name: 		"Peter Seller",
 			category: 	"category",
@@ -81,7 +81,7 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 	});
 
 	it("adding with invalid input should give warning but keep dialog open", function() {
-		scope.updating = undefined;
+		scope.updating 	= undefined;
 		scope.newSeller = {
 			name : 		"A",
 			category : 	undefined
@@ -104,8 +104,7 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 	});
 
 	it("adding with taken name should give warning, but keep dialog open", function() {
-
-		scope.updating = undefined;
+		scope.updating 	= undefined;
 		scope.newSeller = {
 			name: "Leirkeraverkstæði Lomma",
 			category: "category"
