@@ -12,10 +12,11 @@
 				<tr table-sort="name">
 					<th class="text-center">
 						<span translate="sellers.Photo"></span>
-					<th  data-columnName="name" title="{{'sellers.SortByName' | translate}}">
+					</th>
+					<th role="button" data-columnName="name" title="{{'sellers.SortByName' | translate}}">
 						<span translate="sellers.Name"></span>
 					</th>
-					<th  data-columnName="category" title="{{'sellers.SortByCategory' | translate}}">
+					<th role="button" data-columnName="category" title="{{'sellers.SortByCategory' | translate}}">
 						<span translate="sellers.Category"></span>
 					</th>
 				</tr>
@@ -27,7 +28,7 @@
 					</td>
 					<td role="button"  title="See seller's details" ng-click="seeDetails(s.id)">{{s.name}}</td>
 					<td role="button"  title="See seller's details" ng-click="seeDetails(s.id)">{{s.category}}</td>
-					<td><a title="Edit seller" ng-click="onUpdateSeller(s.id)">
+					<td> <a title="Edit seller" ng-click="onUpdateSeller(s.id)">
 							<span class="btn btn-default glyphicon glyphicon-edit"></span>
 						</a>
 					</td>

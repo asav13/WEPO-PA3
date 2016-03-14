@@ -1,37 +1,38 @@
 {
 	"products" : {
-		"AllProducts": 				"Allar vörur",
-		"TopProducts": 				"10 vinsælustu",
-		"Name": 					"Nafn",
-		"Price": 					"Verð",
-		"Sold": 					"Seld stykki",
-		"InStock": 					"Fjöldi til á lager",
-		"Image": 					"Mynd",
-		"AddNewProduct": 			"Bæta við/Breyta vöru",
+		"AllProducts": 					"Allar vörur",
+		"TopProducts": 					"10 vinsælustu",
+		"Name": 						"Nafn",
+		"Price": 						"Verð",
+		"Sold": 						"Seld stykki",
+		"InStock": 						"Fjöldi til á lager",
+		"Search": 						"Leita",
+		"Image": 						"Mynd",
+		"AddNewProduct": 				"Bæta við/Breyta vöru",
 		"AddNew" : {
-			"Name": 				"Nafn vöru",
-			"Price": 				"Verð vöru",
-			"Sold": 				"Fjöldi seldra",
-			"InStock": 				"Fjöldi á lager",
-			"Image": 				"Slóð á mynd",
-			"Submit": 				"Staðfesta",
-			"Cancel": 				"Hætta við"
+			"Name": 					"Nafn vöru",
+			"Price": 					"Verð vöru",
+			"Sold": 					"Fjöldi seldra",
+			"InStock": 					"Fjöldi á lager",
+			"Image": 					"Slóð á mynd",
+			"Submit": 					"Staðfesta",
+			"Cancel": 					"Hætta við"
 		},
 		"Messages" : {
-			"LoadFailed":            "Ekki tókst að sækja vörur fyrir þennan seljanda",
-			"SaveSucceeded":         "Nýrri vöru hefur verið bætt við",
-			"SaveFailed":            "Því miður tókst ekki að bæta við nýrri vöru",
-			"UpdateSucceeded":       "Varan hefur verið uppfærð",
-			"UpdateFailed":          "Því miður tókst ekki að uppfæra vöruna",
+			"LoadFailed":				"Ekki tókst að sækja vörur fyrir þennan seljanda",
+			"SaveSucceeded":			"Nýrri vöru hefur verið bætt við",
+			"SaveFailed":				"Því miður tókst ekki að bæta við nýrri vöru",
+			"UpdateSucceeded":			"Varan hefur verið uppfærð",
+			"UpdateFailed":				"Því miður tókst ekki að uppfæra vöruna",
 			"GetSellerDetailsFailed": 	"Því miður tókst ekki að sækja upplýsingar um þennan seljanda",
-			"NoProducts":             "Þessi sölumaður hefur engar skráðar vörur"
+			"NoProducts":				"Þessi sölumaður hefur engar skráðar vörur"
 		},
 		"Dropdown" : {
-			"Title":                  "Raða eftir",
-			"value1":                 "Nafni (A - Z)",
-			"value2":                 "Nafni (Z - A",
-			"value3":                 "Verði (Hátt - Lágt)",
-			"value4":                 "Verði (Lágt - Hátt"
+			"Title":					"Raða eftir",
+			"value1":					"Nafni (A - Z)",
+			"value2":					"Nafni (Z - A)",
+			"value3":					"Verði (Hátt - Lágt)",
+			"value4":					"Verði (Lágt - Hátt)"
 		}
 	}
 }

@@ -32,7 +32,6 @@ describe("directive: product", function() {
 
 /*
 
-
 describe("when editing", function() {
 	it("should initialize properly", function() {
 		// Compile the HTML fragment into our directive object:

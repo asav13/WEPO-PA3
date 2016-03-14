@@ -12,7 +12,7 @@ angular.module("project3App").directive("productName", function productName() {
 		restrict: "E",	// E is for element
 		template:
 		"<ul class=\"list-inline\">" +
-			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in products\">" + 
+			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in products | filter:searchText\">" + 
 				"<product-card></product-card>" +
 			"</li>" + 
 		"</ul>",
@@ -33,7 +33,7 @@ angular.module("project3App").directive("topProductName", function topProductNam
 		restrict: "E",	// E is for element
 		template: 
 		"<ul class=\"list-inline\">" +
-			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in topTenProd\">" + 
+			"<li class=\"btn\" role=\"button\" ng-repeat=\"prod in topTenProd | filter:searchText\">" + 
 				"<product-card></product-card>" +
 			"</li>" + 
 		"</ul>",
@@ -58,9 +58,15 @@ angular.module("project3App").directive("productCaption", function productCaptio
 						"<h3>{{prod.name}}</h3>" +
 						"<p>{{'products.Price' | translate}}: {{prod.price}} ISK</p>" + 
 						"<small>{{'products.Sold' | translate}}: </small>" +
-						"<small>{{prod.quantitySold}}</small><br>" +
-						"<small>{{'products.InStock' | translate}}: </small>" +
-						"<small>{{prod.quantityInStock}}</small>" +
+						"<small>{{prod.quantitySold}}</small><br>	" +
+						"<div ng-if=\"prod.quantityInStock\" class=\"text-success\">" +
+						"<small><i>{{'products.InStock' | translate}}: </i></small>" +
+							"<small><i>{{prod.quantityInStock}}</small></i>" +
+						"</div>" +
+						"<div ng-if=\"!prod.quantityInStock\" class=\"text-danger\">" +
+							"<small><i>{{'products.InStock' | translate}}:</i> </small>" +
+							"<small><i>none</small></i>" +
+						"</div>" +
 					"</div>"
 	};
 });

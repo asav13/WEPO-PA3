@@ -50,6 +50,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 				centrisNotify.success("products.Messages.SaveSucceeded");
 				$scope.products.push(data);
 				$scope.topTenProd = new FindTopTen($scope.products);
+				$scope.noProducts = false;
 			}).error(function() {
 				centrisNotify.error("products.Messages.SaveFailed");
 				$location.path('/');
