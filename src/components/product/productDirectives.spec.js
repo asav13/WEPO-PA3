@@ -7,6 +7,13 @@ describe("directive: product", function() {
 	var compile;
 	var element;
 	var backend;
+	var directiveElem;
+	/*var mockProducts = [{id: id,
+						 name: productName,
+						 price: price,
+						 quantitySold: quantitySold,
+						 quantityInStock: quantityInStock,
+						 imagePath: path}];*/
 
 	beforeEach(module("project3App"));
 	beforeEach(inject(function($rootScope, $compile, $httpBackend) {
@@ -14,20 +21,35 @@ describe("directive: product", function() {
 		compile = $compile;
 		backend = $httpBackend;
 		element = angular.element("<div product></div>");
-		compile(element)(scope);
-
+		directiveElem = compile(element)(scope);
 		$httpBackend.expectGET("../src/components/seller-details/index.html").respond("<div class=\"product\"");
 	}));
 
-	it("should add class product to element", function() {
+	it("should add class 'product' to element", function() {
 		/*element = compile(template)(scope);
 		backend.flush();
-
 		var isolatedScope = element.isolatedScope();
-
 		expect(isolatedScope.class).toBe(product);*/
-		expect(element.hasClass("product")).toBe(true);
+		expect(element.hasClass("product"));
 	});
+
+	it("should have an <ul> element appended", function() {
+		var ul = directiveElem.find('ul');
+		expect(ul).toBeDefined();
+	});
+
+	it("should contain the product-card directive", function() {
+		var productCard = directiveElem.find('product-card');
+		expect(productCard).toBeDefined();
+		it("which should contain the product-photo directive", function() {			
+			expect(productCard.find("product-photo")).toBeDefined();
+		})
+	});
+
+	it("should list as many products as there are in the data", function() {
+		var productBoxNr = directiveElem.find('ul').children('li').length;
+		//expect(productBoxNr).toBeEqual(scope.mockProducts.length);
+	})	
 });
 
 /*

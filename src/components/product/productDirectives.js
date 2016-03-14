@@ -65,7 +65,7 @@ angular.module("project3App").directive("productCaption", function productCaptio
 						"</div>" +
 						"<div ng-if=\"!prod.quantityInStock\" class=\"text-danger\">" +
 							"<small><i>{{'products.InStock' | translate}}:</i> </small>" +
-							"<small><i>none</small></i>" +
+							"<small><i>{{prod.quantityInStock}}</small></i>" +
 						"</div>" +
 					"</div>"
 	};
