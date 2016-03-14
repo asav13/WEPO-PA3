@@ -7,7 +7,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	$scope.topTenProd 		= [];
 	var sellerId 			= parseInt($routeParams.id);
 	$scope.sellerDetails 	= 'no details on this seller';
-	$scope.noProducts = false;
+	$scope.noProducts 		= false;
 
 	$scope.dropdown = {
 		title:"products.Dropdown.Title ",
@@ -65,7 +65,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		$rootScope.updating[1] = productId;
 
 		ProductDlg.show().then(function(updatedProduct) {
-			updatedProduct = checkUpdates(productId, updatedProduct);
+			updatedProduct = $scope.checkUpdates(productId, updatedProduct);
 			updatedProduct['id'] = productId;
 			AppResource.updateSellerProduct(sellerId, productId, updatedProduct)
 				.success(function(data) {
@@ -119,70 +119,74 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		return updatedProduct;
 	}
 
-	/*OrderBy function*/
+	$scope.testUpdates = function(id, prod){
+		return checkUpdates(id, prod);
+	};
+
+	/* ORDERBY FUNCTIONS */
 	$scope.selectedValue = function(value) {
-	switch(value) {
-		case 1:
-			$scope.dropdown.title = $scope.dropdown.value1;
-			$scope.products.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA > nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA > nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			break;
-		case 2:
-			$scope.dropdown.title = $scope.dropdown.value2;
-			$scope.products.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA < nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-				if(nameA < nameB) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
-			break;
-		case 3:
-			$scope.dropdown.title = $scope.dropdown.value3;
-			$scope.products.sort(function(a, b) {
-				return b.price - a.price;
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				return b.price - a.price;
-			});
-			break;
-		case 4:
-			$scope.dropdown.title = $scope.dropdown.value4;
-			$scope.products.sort(function(a, b) {
-				return a.price - b.price;
-			});
-			$scope.topTenProd.sort(function(a, b) {
-				return a.price - b.price;
-			});
-			break;
-		default:
-			$scope.dropdown.title = "Order by";
-			$scope.products.sort(function(a, b) {
-				return a.id - b.id;
-			});
-	}
-};
+		switch(value) {
+			case 1:
+				$scope.dropdown.title = $scope.dropdown.value1;
+				$scope.products.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA > nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA > nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				break;
+			case 2:
+				$scope.dropdown.title = $scope.dropdown.value2;
+				$scope.products.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA < nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+					if(nameA < nameB) {
+						return 1;
+					} else {
+						return -1;
+					}
+				});
+				break;
+			case 3:
+				$scope.dropdown.title = $scope.dropdown.value3;
+				$scope.products.sort(function(a, b) {
+					return b.price - a.price;
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					return b.price - a.price;
+				});
+				break;
+			case 4:
+				$scope.dropdown.title = $scope.dropdown.value4;
+				$scope.products.sort(function(a, b) {
+					return a.price - b.price;
+				});
+				$scope.topTenProd.sort(function(a, b) {
+					return a.price - b.price;
+				});
+				break;
+			default:
+				$scope.dropdown.title = "Order by";
+				$scope.products.sort(function(a, b) {
+					return a.id - b.id;
+				});
+		}
+	};
 });
