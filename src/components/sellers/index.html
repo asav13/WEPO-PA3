@@ -6,6 +6,12 @@
 		<h1 class="pull-left" translate="sellers.Title"></h1>
 	</div>
 	<hr>
+	<form class="form-inline">
+		<div class="form-group">
+			<input placeholder="{{'sellers.Search' | translate}}" class="form-control" type="text" ng-model="sellersSearchText">
+		</div>
+	</form>
+	<br>
 	<div class="panel panel-default table-responsive">
 		<table class="table table-hover">
 			<thead>
@@ -22,7 +28,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="s in sellers | orderBy:predicate:reverse">
+				<tr ng-repeat="s in sellers | orderBy:predicate:reverse | filter:sellersSearchText">
 					<td class="text-center" title="See sellers's details" role="button" scope="row" ng-click="seeDetails(s.id)">
 						<img width="80" height="80" class="img-circle" ng-src="{{s.imagePath}}"/>
 					</td>

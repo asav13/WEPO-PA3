@@ -21,6 +21,7 @@
 			"Cancel":                "Hætta við"
 		},
 		"SortByName":                "Raða eftir nafni",
-		"SortByCategory":            "Raða eftir flokk"
+		"SortByCategory":            "Raða eftir flokk",
+		"Search":                    "Leita"
 	}
 }

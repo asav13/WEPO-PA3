@@ -21,7 +21,8 @@
 
 [ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED, one feature may give just 0.1 bonus
 	- Videos for products (if page is viewable to customers)
-	- Search and filter, select category
+	-[x] Search/filter, products
+	-[x] Search/filter, sellers
 
 [x] (? %) Boxes
 [x] (? %) Make products sortable in JS
