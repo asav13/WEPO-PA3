@@ -2,6 +2,8 @@
 	"sellerDlg" : {
 		"ImageLoadFailed" :				"Uppgefin slóð var ekki á mynd, vinsamlegast reyndu aftur",
 		"InvalidInput" :				"Ólöglegt inntak, vinsamlegast skoðið viðvörunina",
-		"NameTaken" :					"Það er nú þegar til seljandi með þetta nafn"
+		"NameTaken" :					"Það er nú þegar til seljandi með þetta nafn",
+		"StringValidation":				"Þessi verður að innihalda 2-30 stafi",
+		"Optional":						"Það þarf ekki að fylla þennan reit út"
 	}
 }

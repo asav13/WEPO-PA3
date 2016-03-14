@@ -1,4 +1,3 @@
-<!-- The form will use $scope.newSeller-->
 
 <div class="modal-content">
 	<div class="modal-header">
@@ -19,7 +18,7 @@
 			</div>
 			<small 
 				class="help-block" 
-				ng-show="newSellerForm.newSellerName.$invalid">Can not be empty, must be 2-30 letters.
+				ng-show="newSellerForm.newSellerName.$invalid">{{'sellerDlg.StringValidation' | translate}}
 			</small>
 			<div class="input-group">
 				<label for="newSellerCategory">{{'sellers.Category' | translate}}</label>
@@ -33,7 +32,7 @@
 			</div>
 				<small 
 					class="help-block" 
-					ng-show="newSellerForm.newSellerCategory.$invalid">Can not be empty, must be 2-30 letters.
+					ng-show="newSellerForm.newSellerCategory.$invalid">{{'sellerDlg.StringValidation' | translate}}
 				</small>
 			<div class="input-group">
 				<label for="newSellerImg">{{'sellers.Image' | translate}}</label>
@@ -44,7 +43,7 @@
 					ng-model="newSeller.imagePath"/>
 			</div>
 				<small 
-					class="help-block">Optional.
+					class="help-block">{{'sellerDlg.Optional' | translate}}
 			</small>
 			<div class="modal-footer">
 				<button 

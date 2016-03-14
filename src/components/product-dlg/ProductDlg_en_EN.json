@@ -2,6 +2,9 @@
 	"productDlg" : {
 		"ImageLoadFailed" :				"The given image path is not a path to an image, please try again",
 		"InvalidInput" :				"Invalid input, please check the warnings",
-		"NameTaken" :					"This seller already has a product with this name"
+		"NameTaken" :					"This seller already has a product with this name",
+		"StringValidation":				"Can not be empty, must be 2-30 letters",
+		"NumberValidation":				"Can not be empty, must include numberic values only",
+		"Optional":						"This field is optional"
 	}
 }

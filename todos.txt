@@ -24,12 +24,12 @@
 	- Search and filter, select category
 
 [x] (? %) Boxes
-[ ] (? %) Make products sortable in JS
+[x] (? %) Make products sortable in JS
 
 ca 90% done
 
 
 
 FIXES
-[ ] Translate validation msg ("must be 2-30 letters" etc)
-[ ] When a new product added, set "sort by" to the starting default again, or sort again
+[x] Translate validation msg ("must be 2-30 letters" etc)
+[x] When a new product added, set "sort by" to the starting default again, or sort again

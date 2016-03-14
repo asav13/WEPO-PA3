@@ -19,7 +19,7 @@
 			</div>
 			<small 
 				class="help-block" 
-				ng-show="newProductForm.productName.$invalid">Can not be empty, must be 2-30 letters.
+				ng-show="newProductForm.productName.$invalid">{{'productDlg.StringValidation' | translate}}
 			</small>
 			<div class="input-group">
 				<label for="price">{{'products.Price' | translate}}</label>
@@ -33,7 +33,7 @@
 			</div>
 			<small 
 				class="help-block" 
-				ng-show="newProductForm.price.$invalid">Can not be empty, numberic digits only.
+				ng-show="newProductForm.price.$invalid">{{'productDlg.NumberValidation' | translate}}
 			</small>
 			<div class="input-group">
 				<label for="imagePath">{{'products.Image' | translate}}</label>
@@ -44,7 +44,7 @@
 					ng-model="newProduct.imagePath"/>
 			</div>
 			<small 
-				class="help-block">Optional.
+				class="help-block">{{'productDlg.Optional' | translate}}
 			</small>
 			<div class="modal-footer">
 				<button 
