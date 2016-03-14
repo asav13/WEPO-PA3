@@ -58,7 +58,7 @@ angular.module("project3App").directive("productCaption", function productCaptio
 						"<h3>{{prod.name}}</h3>" +
 						"<p>{{'products.Price' | translate}}: {{prod.price}} ISK</p>" + 
 						"<small>{{'products.Sold' | translate}}: </small>" +
-						"<small>{{prod.quantitySold}}</small><br>" +
+						"<small>{{prod.quantitySold}}</small><br>	" +
 						"<small>{{'products.InStock' | translate}}: </small>" +
 						"<small>{{prod.quantityInStock}}</small>" +
 					"</div>"
