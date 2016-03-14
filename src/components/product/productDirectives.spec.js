@@ -3,25 +3,25 @@
 
 describe("directive: product", function() {
 	var template = "<div product></div>";
-	var scope;
-	var compile;
-	var element;
-	var backend;
-	var directiveElem;
-	/*var mockProducts = [{id: id,
-						 name: productName,
-						 price: price,
-						 quantitySold: quantitySold,
-						 quantityInStock: quantityInStock,
-						 imagePath: path}];*/
-
+	var scope, resource, compile, element;
+	var directiveElem, sellerDetailsController;
+	//var backend;
+	
 	beforeEach(module("project3App"));
-	beforeEach(inject(function($rootScope, $compile, $httpBackend) {
+	beforeEach(inject(function($controller, $rootScope, $compile, AppResource, $httpBackend) {
 		scope = $rootScope.$new();
+		resource = AppResource;
 		compile = $compile;
-		backend = $httpBackend;
+		//backend = $httpBackend;
 		element = angular.element("<div product></div>");
 		directiveElem = compile(element)(scope);
+		spyOn(resource, 'getSellerProducts').and.callThrough();
+
+		sellerDetailsController = $controller("SellerDetailsController", { 
+			$scope: 		scope,
+			AppResource: 	resource
+		});
+
 		$httpBackend.expectGET("../src/components/seller-details/index.html").respond("<div class=\"product\"");
 	}));
 
@@ -43,13 +43,13 @@ describe("directive: product", function() {
 		expect(productCard).toBeDefined();
 		it("which should contain the product-photo directive", function() {			
 			expect(productCard.find("product-photo")).toBeDefined();
-		})
+		});
 	});
 
 	it("should list as many products as there are in the data", function() {
 		var productBoxNr = directiveElem.find('ul').children('li').length;
-		//expect(productBoxNr).toBeEqual(scope.mockProducts.length);
-	})	
+		expect(productBoxNr).toEqual(scope.products.length);
+	});	
 });
 
 /*
