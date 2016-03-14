@@ -2,15 +2,27 @@
 
 /* UNIT TESTS FOR SELLER DETAILS CONTROLLER */
 describe("SellerDetailsController should be unit tested here", function() {
-	var sellerDetailsController, scope, resource, productDlg, routeParams, mockLocation;
+	var sellerDetailsController, scope, resource, routeParams, mockLocation;
 
 	beforeEach(module("project3App"));
+
+
+	var mockProduct = {name: "mockSeller", price: 100};
+
+	var mockProductDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn(mockProduct);
+				}
+			};
+		}
+	};
 
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
 		scope 				= $rootScope.$new();
 		resource 			= AppResource;
-		productDlg 			= ProductDlg;
 		routeParams 		= $routeParams;
 		routeParams.id 		= 1;
 		mockLocation 		= $location;
@@ -19,14 +31,14 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
-		spyOn(productDlg, 'show').and.callThrough();
+		spyOn(mockProductDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			ProductDlg: 	productDlg,
+			ProductDlg: 	mockProductDlg,
 			$routeParams: 	routeParams
 			});
 	}));
@@ -36,6 +48,7 @@ describe("SellerDetailsController should be unit tested here", function() {
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
+		expect(mockProductDlg).toBeDefined();
 	});
 
 	it("getSellerDetails should be called as the page is entered, with the correct id", function() {
@@ -49,12 +62,12 @@ describe("SellerDetailsController should be unit tested here", function() {
 
 	it("add new product should open productDlg", function() {
 		scope.onAddProduct();
-		expect(productDlg.show).toHaveBeenCalled();
+		expect(mockProductDlg.show).toHaveBeenCalled();
 	});
 
 	it("update product should open productDlg", function() {
-		scope.onUpdateSellerProduct();
-		expect(productDlg.show).toHaveBeenCalled();
+		scope.onUpdateSellerProduct(1);
+		expect(mockProductDlg.show).toHaveBeenCalled();
 	});
 
 	it("calling selectedValue for product sorting should change the title in the dropdown", function() {
@@ -98,28 +111,40 @@ describe("SellerDetailsController should be unit tested here", function() {
 });
 
 describe("SellerDetailsController should be unit tested here, seller with no products", function() {
-	var sellerDetailsController, scope, resource, productDlg, routeParams, mockLocation;
+	var sellerDetailsController, scope, resource, routeParams, mockLocation;
 
 	beforeEach(module("project3App"));
 
+	var mockProduct = {name: "mockSeller", price: 100};
+
+	var mockProductDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn(mockProduct);
+				}
+			};
+		}
+	};
+
 	beforeEach(inject(function($controller, $location, $rootScope, $routeParams, AppResource, ProductDlg) {
-		scope = $rootScope.$new();
-		resource = AppResource;
-		productDlg = ProductDlg;
-		routeParams = $routeParams;
-		routeParams.id = 2;
-		mockLocation = $location;
-		mockLocation.path = "/sellers/1";
+		scope 				= $rootScope.$new();
+		resource 			= AppResource;
+		routeParams 		= $routeParams;
+		routeParams.id 		= 2;
+		mockLocation 		= $location;
+		mockLocation.path 	= "/sellers/1";
+
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
-		spyOn(productDlg, 'show').and.callThrough();
+		spyOn(mockProductDlg, 'show').and.callThrough();
 		spyOn(mockLocation, "path");
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			ProductDlg: 	productDlg,
+			ProductDlg: 	mockProductDlg,
 			$routeParams: 	routeParams
 			});
 		
@@ -131,7 +156,7 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(routeParams).toBeDefined();
-		expect(productDlg).toBeDefined();
+		expect(mockProductDlg).toBeDefined();
 	});
 
 	it("getSellerDetails should be called as the page is entered", function() {
@@ -147,9 +172,21 @@ describe("SellerDetailsController should be unit tested here, seller with no pro
 
 describe("SellerDetailsController should be unit tested here, testing failures", function() {
 
-	var sellerDetailsController, scope, resource, productDlg, cNotify;
+	var sellerDetailsController, scope, resource, cNotify;
 
 	beforeEach(module("project3App"));
+
+	var mockProduct = {name: "mockSeller", price: 100};
+
+	var mockProductDlg = {
+		show: function() {
+			return {
+				then: function(fn){
+					fn(mockProduct);
+				}
+			};
+		}
+	};
 
 	var mockLocation = {
 		path: function(p) {
@@ -158,22 +195,24 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, ProductDlg, centrisNotify) {
-		scope = $rootScope.$new();
-		resource = AppResource;
-		resource.successGetSellerProducts = false;
-		resource.successLoadSellerDetails = false;
-		productDlg = ProductDlg;
-		cNotify = centrisNotify;
+		scope 								= $rootScope.$new();
+		resource 							= AppResource;
+		resource.successGetSellerProducts 	= false;
+		resource.successLoadSellerDetails 	= false;
+		resource.successUpdateSellerProduct = false;
+		resource.successAddProduct 			= false;
+		cNotify 							= centrisNotify;
+		
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'getSellerProducts').and.callThrough();
-		spyOn(productDlg, 'show').and.callThrough();
+		spyOn(mockProductDlg, 'show').and.callThrough();
 		spyOn(cNotify, 'error').and.callThrough();
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
-			ProductDlg: 	productDlg,
+			ProductDlg: 	mockProductDlg,
 			centrisNotify: 	cNotify
 			});
 		spyOn(mockLocation, "path");
@@ -184,7 +223,7 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 		expect(scope).toBeDefined();
 		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
-		expect(productDlg).toBeDefined();
+		expect(mockProductDlg).toBeDefined();
 		expect(cNotify).toBeDefined();
 	});
 
@@ -198,5 +237,16 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 		expect(cNotify.error).toHaveBeenCalled();
 	});
 
-});
+	it("add new product should open ", function() {
+		scope.onAddProduct();
+		expect(mockProductDlg.show).toHaveBeenCalled();
+		expect(cNotify.error).toHaveBeenCalled();
+	});
 
+	it("update product should open productDlg", function() {
+		scope.onUpdateSellerProduct(1);
+		expect(mockProductDlg.show).toHaveBeenCalled();
+		expect(cNotify.error).toHaveBeenCalled();
+	});
+
+});
