@@ -12,7 +12,7 @@
 			"UpdateSucceeded":       "Seljandinn hefur verið uppfærður",
 			"UpdateFailed":          "Því miður tókst ekki að bæta við nýjum seljanda"
 		},
-		"AddNewSeller":              "Bæta við sölumanni",
+		"AddNewSeller":              "Bæta við/Breyta sölumanni",
 		"AddNew" : {
 			"Name":                  "Nafn Sölumanns",
 			"Category":              "Vöruflokkur",

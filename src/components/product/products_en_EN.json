@@ -1,14 +1,14 @@
 {
 	"products" : {
-		"AllProducts": 					"All products",
-		"TopProducts": 					"10 most bought",
-		"Name": 						"Name",
-		"Price": 						"Price",
-		"Sold": 						"Sold units",
-		"InStock": 						"In stock",
+		"AllProducts": 				"All products",
+		"TopProducts": 				"10 most bought",
+		"Name": 					"Name",
+		"Price": 					"Price",
+		"Sold": 					"Sold units",
+		"InStock": 					"In stock",
 		"Search": 						"Search",
-		"Image": 						"Image",
-		"AddNewProduct": 				"Add new product",
+		"Image": 					"Image",
+		"AddNewProduct": 			"Add/edit product",
 		"AddNew" : {
 			"Name": 					"Product's name",
 			"Price": 					"Product's price",
