@@ -8,7 +8,6 @@ build/
 coverage/
 typings/
 .tmp/
-.idea/
 .DS_Store
 .grunt/
 _SpecRunner.html
