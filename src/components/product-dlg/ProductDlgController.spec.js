@@ -16,8 +16,6 @@ describe("ProductDlgController should be unit tested here", function() {
 
 		scope.$dismiss 	= function () {};
 		scope.$close 	= function () {};
-		scope.success 	= function () {};
-		scope.error 	= function () {};
 
 		spyOn(scope, '$dismiss').and.callThrough();
 		spyOn(scope, '$close').and.callThrough();
@@ -128,8 +126,6 @@ describe("ProductDlgController should be unit tested here, updating", function()
 
 		scope.$dismiss 		= function () {};
 		scope.$close 		= function () {};
-		scope.success 		= function () {};
-		scope.error 		= function () {};
 
 		spyOn(scope, '$dismiss').and.callThrough();
 		spyOn(scope, '$close').and.callThrough();

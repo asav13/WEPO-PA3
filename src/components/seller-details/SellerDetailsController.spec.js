@@ -173,11 +173,6 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 		}
 	};
 
-	var mockLocation = {
-		path: function(p) {
-		}
-	};
-
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, ProductDlg, centrisNotify) {
 		scope 								= $rootScope.$new();
@@ -195,18 +190,16 @@ describe("SellerDetailsController should be unit tested here, testing failures",
 
 		sellerDetailsController = $controller("SellerDetailsController", { 
 			$scope: 		scope,
-			$location: 		mockLocation,
 			AppResource: 	resource,
 			ProductDlg: 	mockProductDlg,
 			centrisNotify: 	cNotify
 			});
-		spyOn(mockLocation, "path");
+
 	}));
 
 	it("scope and mockLocation should be defined.", function() {
 		expect(sellerDetailsController).toBeDefined();
 		expect(scope).toBeDefined();
-		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(mockProductDlg).toBeDefined();
 		expect(cNotify).toBeDefined();

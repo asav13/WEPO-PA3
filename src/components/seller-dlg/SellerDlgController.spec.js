@@ -7,11 +7,6 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 
 	beforeEach(module("project3App"));
 
-	var mockLocation = {
-		path: function(p) {
-		}
-	};
-
 	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, centrisNotify) {
 		scope 			= $rootScope;
@@ -30,7 +25,6 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 
 		sellerDlgController = $controller("SellerDlgController", { 
 			$scope: 		scope,
-			$location: 		mockLocation,
 			AppResource: 	resource,
 			centrisNotify: 	cNotify,
 			});
@@ -140,11 +134,6 @@ describe("SellerDlgController should be unit tested here, updating", function() 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
 
-	var mockLocation = {
-		path: function(p) {
-		}
-	};
-
 		/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, centrisNotify) {
 		scope 				= $rootScope;
@@ -152,17 +141,14 @@ describe("SellerDlgController should be unit tested here, updating", function() 
 		resource 			= AppResource;
 		cNotify 			= centrisNotify;
 		
-		scope.$dismiss 		= function() {};
 		scope.$close 		=	 function() {};
 		
 		spyOn(cNotify, 'warning').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
-		spyOn(scope, '$dismiss').and.callThrough();
 		spyOn(scope, '$close').and.callThrough();
 
 		sellerDlgController = $controller("SellerDlgController", { 
 			$scope: 		scope,
-			$location: 		mockLocation,
 			AppResource: 	resource,
 			centrisNotify: 	cNotify,
 			});
