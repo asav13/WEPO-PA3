@@ -10,11 +10,11 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	$scope.noProducts = false;
 
 	$scope.dropdown = {
-		message:"Order By",
-		value1: "Name (A - Z)",
-		value2: "Name (Z - A)",
-		value3: "Price (High - Low)",
-		value4: "Price (Low - High"
+		title:"products.Dropdown.Title ",
+		value1: "products.Dropdown.value1",
+		value2: "products.Dropdown.value2",
+		value3: "products.Dropdown.value3",
+		value4: "products.Dropdown.value4"
 };
 
 	/* GET FUNCTIONS */
@@ -122,7 +122,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	$scope.selectedValue = function(value) {
 	switch(value) {
 		case 1:
-			$scope.dropdown.message = $scope.dropdown.value1;
+			$scope.dropdown.title = $scope.dropdown.value1;
 			$scope.products.sort(function(a, b) {
 				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
 				if(nameA > nameB) {
@@ -141,7 +141,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 			});
 			break;
 		case 2:
-			$scope.dropdown.message = $scope.dropdown.value2;
+			$scope.dropdown.title = $scope.dropdown.value2;
 			$scope.products.sort(function(a, b) {
 				var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
 				if(nameA < nameB) {
@@ -160,7 +160,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 			});
 			break;
 		case 3:
-			$scope.dropdown.message = $scope.dropdown.value3;
+			$scope.dropdown.title = $scope.dropdown.value3;
 			$scope.products.sort(function(a, b) {
 				return b.price - a.price;
 			});
@@ -169,7 +169,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 			});
 			break;
 		case 4:
-			$scope.dropdown.message = $scope.dropdown.value4;
+			$scope.dropdown.title = $scope.dropdown.value4;
 			$scope.products.sort(function(a, b) {
 				return a.price - b.price;
 			});
@@ -178,7 +178,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 			});
 			break;
 		default:
-			$scope.dropdown.message = "Order by";
+			$scope.dropdown.title = "Order by";
 			$scope.products.sort(function(a, b) {
 				return a.id - b.id;
 			});

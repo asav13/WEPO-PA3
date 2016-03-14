@@ -23,7 +23,15 @@
 			"SaveFailed":            "Unfortunately we could not add a new product",
 			"UpdateSucceeded":       "The product has been updated successfully",
 			"UpdateFailed":          "Unfortunately we could not update the product",
-			"GetSellerDetailsFailed": 	"Unfortunately we could not load this seller's details"
+			"GetSellerDetailsFailed": 	"Unfortunately we could not load this seller's details",
+			"NoProducts":             "This seller has no products registered"
+		},
+		"Dropdown" : {
+			"Title":                  "Order by",
+			"value1":                 "Name (A - Z)",
+			"value2":                 "Name (Z - A",
+			"value3":                 "Price (High - Low)",
+			"value4":                 "Price (Low - High)"
 		}
 	}
 }

@@ -23,7 +23,15 @@
 			"SaveFailed":            "Því miður tókst ekki að bæta við nýrri vöru",
 			"UpdateSucceeded":       "Varan hefur verið uppfærð",
 			"UpdateFailed":          "Því miður tókst ekki að uppfæra vöruna",
-			"GetSellerDetailsFailed": 	"Því miður tókst ekki að sækja upplýsingar um þennan seljanda"
+			"GetSellerDetailsFailed": 	"Því miður tókst ekki að sækja upplýsingar um þennan seljanda",
+			"NoProducts":             "Þessi sölumaður hefur engar skráðar vörur"
+		},
+		"Dropdown" : {
+			"Title":                  "Raða eftir",
+			"value1":                 "Nafni (A - Z)",
+			"value2":                 "Nafni (Z - A",
+			"value3":                 "Verði (Hátt - Lágt)",
+			"value4":                 "Verði (Lágt - Hátt"
 		}
 	}
 }
