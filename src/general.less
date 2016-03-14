@@ -1,29 +1,30 @@
 .General {
-	
 	//Variables
-	@navColor: #993333;
-	@navTextColor: #fff;
-	@spacing: 10px;
-	@navbarHeight: 30px;
+	@navColor: 		#993333;
+	@navTextColor: 	#fff;
+	@spacing: 		10px;
+	@navbarHeight: 	30px;
 
 	.navbar {
 		.container {
 			.navbar-header {
 				a {
-					color: spin(darken(@navTextColor, 10%), 8);
-					text-decoration: none;
-					font-size: 16pt;
-					&:hover {				
+					color: 				spin(darken(@navTextColor, 10%), 8);
+					text-decoration: 	none;
+					font-size: 			16pt;
+					&:hover {
 						color: @navTextColor;
 					}
+
 					img {
 						margin-right: @spacing;
 					}
 				}
+
 				min-height: 50px + @navbarHeight;
 			}
 		}
-	
+
 		ul {
 			padding-top: @spacing + 4;
 			a {
@@ -35,14 +36,13 @@
 				}
 			}
 		}
-	
-			
 	}
+
 	.footer {
 		padding-bottom: @spacing + 10;
 	}
+
 	.navbar-inverse {
 		background-color: @navColor;
 	}
-	
 }

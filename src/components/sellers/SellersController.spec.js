@@ -2,7 +2,6 @@
 /* UNIT TESTS FOR SELLERs  CONTROLLER */
 
 describe("SellersController should be unit tested here", function() {
-
 	var sellersController, scope, resource, sellerDlg, cNotify, sellerDlgController;
 
 	/* Our Angular App, now we can access the Controller */
@@ -29,7 +28,7 @@ describe("SellersController should be unit tested here", function() {
 		spyOn(cNotify, "error").and.callThrough();
 
 
-		sellersController = $controller("SellersController", { 
+		sellersController = $controller("SellersController", {
 			$scope: 		scope,
 			$location: 		mockLocation,
 			AppResource: 	resource,
@@ -58,7 +57,6 @@ describe("SellersController should be unit tested here", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
 	//	expect(sellerDlg.show).toHaveBeenCalled();
-		
 	});
 
 	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
@@ -70,12 +68,10 @@ describe("SellersController should be unit tested here", function() {
 		expect(sellerDlg.show).toHaveBeenCalled();
 	});
 
-	it("", function() {
+	it("it should set the ending of the path to sellers/1", function() {
 		scope.seeDetails(1);
-		expect(mockLocation.path).toHaveBeenCalled();
 		expect(mockLocation.path).toHaveBeenCalledWith('sellers/' + 1);
 	});
-
 });
 
 describe("SellersController should be unit tested here, loads FAIL", function() {

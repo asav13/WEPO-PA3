@@ -5,7 +5,7 @@ function ProductDlg($uibModal) {
 	return {
 		show: function() {
 			var modalInstance = $uibModal.open( {
-				templateUrl: "components/product-dlg/product-dlg.html", 
+				templateUrl: "components/product-dlg/product-dlg.html",
 				controller:  "ProductDlgController"
 			});
 

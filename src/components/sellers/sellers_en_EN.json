@@ -1,27 +1,27 @@
 {
 	"sellers" : {
-		"Title":                     "Sellers",
-		"Photo":                     "Photo",
-		"Name":                      "Name",
-		"Category":                  "Category",
-		"Image":                     "Image",
+		"Title":				"Sellers",
+		"Photo":				"Photo",
+		"Name":					"Name",
+		"Category":				"Category",
+		"Image":				"Image",
 		"Messages" : {
-			"LoadFailed":            "Failed to load the list of sellers",
-			"SaveSucceeded":         "The seller has been added successfully",
-			"SaveFailed":            "Unfortunately we could not add a new seller",
-			"UpdateSucceeded":       "The seller has been updated successfully",
-			"UpdateFailed":          "Unfortunately we could not update the seller"
+			"LoadFailed":		"Failed to load the list of sellers",
+			"SaveSucceeded":	"The seller has been added successfully",
+			"SaveFailed":		"Unfortunately we could not add a new seller",
+			"UpdateSucceeded":	"The seller has been updated successfully",
+			"UpdateFailed":		"Unfortunately we could not update the seller"
 		},
-		"AddNewSeller":              "Add new/Edit seller",
+		"AddNewSeller":			"Add new/Edit seller",
 		"AddNew" : {
-			"Name":                  "Seller's name",
-			"Category":              "Product's category",
-			"Image":                 "Image Path",
-			"Submit":                "Submit",
-			"Cancel":                "Abort"
+			"Name":				"Seller's name",
+			"Category":			"Product's category",
+			"Image":			"Image Path",
+			"Submit":			"Submit",
+			"Cancel":			"Abort"
 		},
-		"SortByName":                "Sort by name",
-		"SortByCategory":            "Sort by category",
-		"Search":                    "Search"
+		"SortByName":			"Sort by name",
+		"SortByCategory":		"Sort by category",
+		"Search":				"Search"
 	}
 }

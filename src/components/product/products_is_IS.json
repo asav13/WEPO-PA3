@@ -8,6 +8,7 @@
 		"InStock": 						"Fjöldi til á lager",
 		"Search": 						"Leita",
 		"Image": 						"Mynd",
+		"AddProductButton": 			"Bæta við nýrri vöru",
 		"AddNewProduct": 				"Bæta við/Breyta vöru",
 		"AddNew" : {
 			"Name": 					"Nafn vöru",

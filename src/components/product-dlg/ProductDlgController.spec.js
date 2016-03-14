@@ -2,7 +2,6 @@
 /* UNIT TESTS FOR PRODUCT DIALOG CONTROLLER */
 
 describe("ProductDlgController should be unit tested here", function() {
-
 	var scope, routeParams, resource, cNotify, ctrl, rootScope;
 
 	beforeEach(module("project3App"));
@@ -28,7 +27,7 @@ describe("ProductDlgController should be unit tested here", function() {
 									$routeParams : 	routeParams,
 									AppResource : 	resource,
 									centrisNotify : cNotify});
-	}));
+		}));
 
 	it("Setup variables should be defined.", function() {
 		expect(ctrl).toBeDefined();
@@ -44,7 +43,7 @@ describe("ProductDlgController should be unit tested here", function() {
 		expect(scope.$dismiss).toHaveBeenCalled();
 	});
 
-	it("", function(){
+	it("should set isOpen to true after calling onOk", function() {
 		scope.onOk();
 		expect(scope.isOpen).toEqual(true);
 	});
@@ -70,8 +69,8 @@ describe("ProductDlgController should be unit tested here", function() {
 	});
 
 	it("adding with invalid input should give warning but keep dialog open", function() {
-		scope.updating = undefined;
-		scope.newProduct = {
+		scope.updating 		= undefined;
+		scope.newProduct 	= {
 			name : 		"A",
 			price : 	""
 		};
@@ -83,8 +82,8 @@ describe("ProductDlgController should be unit tested here", function() {
 
 	it("adding with a product name the seller is already using should give warning but keep dialog open", function() {
 		/* Hannyrðastofa Hannesar already has a product called sjal*/
-		scope.sellerId = 1;
-		scope.newProduct = {
+		scope.sellerId 		= 1;
+		scope.newProduct 	= {
 			name : 		"Sjal",
 			price: 		"500",
 		};
@@ -96,11 +95,11 @@ describe("ProductDlgController should be unit tested here", function() {
 
 	it("adding with a product invalid img path should", function() {
 		/* Hannyrðastofa Hannesar already has a product called sjal*/
-		scope.sellerId = 1;
-		scope.newProduct = {
+		scope.sellerId 		= 1;
+		scope.newProduct 	= {
 			name : 		"Troll",
 			price: 		"500",
-			imgPath: ""
+			imgPath: 	""
 		};
 
 		scope.onOk();
@@ -110,7 +109,6 @@ describe("ProductDlgController should be unit tested here", function() {
 });
 
 describe("ProductDlgController should be unit tested here, updating", function() {
-
 	var scope, routeParams, resource, cNotify, ctrl;
 
 	beforeEach(module("project3App"));
@@ -124,16 +122,16 @@ describe("ProductDlgController should be unit tested here, updating", function()
 		scope.updating[0] 	= 1;
 		scope.updating[1] 	= 1;
 
-		scope.$dismiss = function () {};
-		scope.$close = function () {};
-		scope.success = function () {};
-		scope.error = function () {};
+		scope.$dismiss 		= function () {};
+		scope.$close 		= function () {};
+		scope.success 		= function () {};
+		scope.error 		= function () {};
 
 		spyOn(scope, '$dismiss').and.callThrough();
 		spyOn(scope, '$close').and.callThrough();
 		spyOn(cNotify, 'warning').and.callThrough();
 
-		ctrl = 			$controller("ProductDlgController", {
+		ctrl 				= $controller("ProductDlgController", {
 									$scope : 		scope,
 									$routeParams : 	routeParams,
 									AppResource : 	resource,

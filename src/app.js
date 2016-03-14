@@ -20,6 +20,7 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pas
 
 	$translateProvider.preferredLanguage("en");	//For Laura <3
 	$translateProvider.fallbackLanguage("en");
+	/* To get rid of a sanitazion warning */
 	$translateProvider.useSanitizeValueStrategy('sanitize');
 	$translateProvider.useSanitizeValueStrategy('escapeParameters');
 	$translateProvider.useSanitizeValueStrategy('escape');

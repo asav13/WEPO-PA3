@@ -2,8 +2,7 @@
 
 angular.module("project3App").controller("SellersController",
 function SellersController($scope, $rootScope, $location, AppResource, SellerDlg, $translate, centrisNotify) {
-
-	$scope.sellers 	= {};
+	$scope.sellers 		= {};
 	$rootScope.updating = undefined;
 	
 	/* GET FUNCTIONS */
@@ -19,7 +18,6 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 	};
 
 	/* POST AND UPDATE FUNCTIONS */
-
 	/* When a new seller is submitted, the form is not there already */
 	$scope.onAddSeller = function() {
 		SellerDlg.show().then(function(newSeller) {
@@ -48,7 +46,6 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 	};
 
 	/* HELPER FUNCTIONS */
-
 	function checkUpdates(sellerId, updatedSeller) {
 		var sellerBefore;
 		AppResource.getSellerDetails(sellerId)
@@ -68,6 +65,5 @@ function SellersController($scope, $rootScope, $location, AppResource, SellerDlg
 
 		return updatedSeller;
 	}
-
 });
 
