@@ -1,5 +1,5 @@
 "use strict";
-/* UNIT TESTS FOR SELLERs  CONTROLLER */
+/* UNIT TESTS FOR SELLERS  CONTROLLER */
 
 describe("SellerDlgController should be unit tested here, adding", function() {
 
@@ -7,7 +7,6 @@ describe("SellerDlgController should be unit tested here, adding", function() {
 
 	beforeEach(module("project3App"));
 
-	/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, centrisNotify) {
 		scope 			= $rootScope;
 		scope.updating 	= undefined;
@@ -131,10 +130,8 @@ describe("SellerDlgController should be unit tested here, updating", function() 
 
 	var sellerDlgController, scope, resource, cNotify;
 
-	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
 
-		/* Inject: Get access */
 	beforeEach(inject(function($controller, $rootScope, AppResource, centrisNotify) {
 		scope 				= $rootScope;
 		scope.updating 		= 1;
@@ -219,5 +216,4 @@ describe("SellerDlgController should be unit tested here, updating", function() 
 		scope.onOk();
 		expect(cNotify.warning).not.toHaveBeenCalled();
 	});
-
 });

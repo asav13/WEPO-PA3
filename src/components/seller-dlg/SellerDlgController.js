@@ -3,7 +3,7 @@
 angular.module("project3App").controller("SellerDlgController",
 function SellerDlgController($scope, $rootScope, AppResource, centrisNotify) {
 	setPlaceholders();
-	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg"
+	var sellerPlaceholderImage = "src/components/seller-dlg/sellerPlaceholder.jpg";
 
 	$rootScope.onOk = function onOk() {
 		$scope.isOpen = true;

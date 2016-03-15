@@ -3,7 +3,8 @@
 angular.module("project3App").controller("ProductDlgController",
 function ProductDlgController($scope, $rootScope, $routeParams, AppResource, centrisNotify) {
 	setPlaceholders();
-	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";	$scope.sellerId 			= parseInt($routeParams.id);
+	var productPlaceholderImage = "src/components/product-dlg/productPlaceholder.jpg";	
+	$scope.sellerId 			= parseInt($routeParams.id);
 
 	$scope.onOk = function onOk(){
 		$scope.isOpen = true;

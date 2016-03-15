@@ -3,15 +3,11 @@
 
 describe("SellersController should be unit tested here", function() {
 
-	var sellersController, scope, resource, cNotify;
+	var sellersController, scope, resource, cNotify, mockLocation;
 
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
 
-	var mockLocation = {
-		path: function(p) {
-		}
-	};
 
 	var mockSellerDlg = {
 		show: function() {
@@ -24,26 +20,27 @@ describe("SellersController should be unit tested here", function() {
 	};
 
 	/* Inject: Get access */
-	beforeEach(inject(function($controller, $rootScope, AppResource, SellerDlg, centrisNotify) {
-		scope 		= $rootScope.$new();
-		resource 	= AppResource;
-		cNotify 	= centrisNotify;
+	beforeEach(inject(function($controller, $rootScope, $location, AppResource, SellerDlg, centrisNotify) {
+		scope 			= $rootScope.$new();
+		resource 		= AppResource;
+		cNotify 		= centrisNotify;
+		mockLocation 	= $location;
 
 		spyOn(resource, 'getSellers').and.callThrough();
 		spyOn(resource, 'getSellerDetails').and.callThrough();
 		spyOn(resource, 'addSeller').and.callThrough();
 		spyOn(resource, 'updateSeller').and.callThrough();
 		spyOn(mockSellerDlg, 'show').and.callThrough();
-		spyOn(mockLocation, "path");
 		spyOn(cNotify, "error").and.callThrough();
+		spyOn(mockLocation, 'path');
 
 
 		sellersController = $controller("SellersController", {
 			$scope: 		scope,
-			$location: 		mockLocation,
 			AppResource: 	resource,
 			SellerDlg: 		mockSellerDlg,
-			centrisNotify: 	cNotify
+			centrisNotify: 	cNotify,
+			$location: 		mockLocation
 		});
 	}));
 
@@ -51,7 +48,6 @@ describe("SellersController should be unit tested here", function() {
 	it("Setup variables should be defined.", function() {
 		expect(sellersController).toBeDefined();
 		expect(scope).toBeDefined();
-		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(mockSellerDlg).toBeDefined();
 	});
@@ -66,7 +62,7 @@ describe("SellersController should be unit tested here", function() {
 	it("The scope variable 'sellers' should include one more entry after the call.", function() {
 		scope.onAddSeller();
 		expect(scope.updating).toEqual(undefined);
-	//	expect(mockSellerDlg.show).toHaveBeenCalled();
+		expect(mockSellerDlg.show).toHaveBeenCalled();
 	});
 
 	it("When onUpdateSeller is executed, some scope variables should change and sellerDlg.show be called", function() {
@@ -109,11 +105,6 @@ describe("SellersController should be unit tested here, failing loads", function
 	/* Our Angular App, now we can access the Controller */
 	beforeEach(module("project3App"));
 
-	var mockLocation = {
-		path: function(p) {
-		}
-	};
-
 	var mockSeller = {name:"mockSeller", category: "mockCategory"};
 
 	var mockSellerDlg = {
@@ -140,12 +131,10 @@ describe("SellersController should be unit tested here, failing loads", function
 		spyOn(resource, 'addSeller').and.callThrough();
 		spyOn(resource, 'updateSeller').and.callThrough();
 		spyOn(mockSellerDlg, 'show').and.callThrough();
-		spyOn(mockLocation, "path");
 		spyOn(centrisNotify, 'error').and.callThrough();
 
 		sellersController = $controller("SellersController", { 
 			$scope: 		scope,
-			$location: 		mockLocation,
 			AppResource: 	resource,
 			SellerDlg: 		mockSellerDlg,
 			cNotify: 		centrisNotify
@@ -157,7 +146,6 @@ describe("SellersController should be unit tested here, failing loads", function
 	it("Setup variables should be defined.", function() {
 		expect(sellersController).toBeDefined();
 		expect(scope).toBeDefined();
-		expect(mockLocation).toBeDefined();
 		expect(resource).toBeDefined();
 		expect(mockSellerDlg).toBeDefined();
 		expect(cNotify).toBeDefined();
