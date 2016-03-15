@@ -10,6 +10,7 @@
 		"Image": 						"Image",
 		"AddProductButton": 			"Add new product",
 		"AddNewProduct": 				"Add/edit product",
+		"Edit":							"Edit product",
 		"AddNew" : {
 			"Name": 					"Product's name",
 			"Price": 					"Product's price",

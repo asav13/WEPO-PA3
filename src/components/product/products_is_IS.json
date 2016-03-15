@@ -10,6 +10,7 @@
 		"Image": 						"Mynd",
 		"AddProductButton": 			"Bæta við nýrri vöru",
 		"AddNewProduct": 				"Bæta við/Breyta vöru",
+		"Edit":							"Breyta vöru",
 		"AddNew" : {
 			"Name": 					"Nafn vöru",
 			"Price": 					"Verð vöru",

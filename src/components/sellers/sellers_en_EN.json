@@ -23,6 +23,8 @@
 		},
 		"SortByName":			"Sort by name",
 		"SortByCategory":		"Sort by category",
-		"Search":				"Search"
+		"Search":				"Search",
+		"SeeDetails":			"See sellers's details",
+		"Edit":					"Edit seller"
 	}
 }

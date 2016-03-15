@@ -39,7 +39,7 @@
 			<tbody>
 				<tr ng-repeat="s in sellers | orderBy:predicate:reverse | filter:sellersSearchText">
 					<td class="text-center"
-						title="See sellers's details"
+						title="{{'sellers.SeeDetails' | translate}}"
 						role="button"
 						scope="row"
 						ng-click="seeDetails(s.id)">
@@ -49,12 +49,12 @@
 							ng-src="{{s.imagePath}}"/>
 					</td>
 					<td role="button"
-						title="See seller's details"
+						title="{{'sellers.SeeDetails' | translate}}"
 						ng-click="seeDetails(s.id)">{{s.name}}</td>
 					<td role="button"
-						title="See seller's details"
+						title="{{'sellers.SeeDetails' | translate}}"
 						ng-click="seeDetails(s.id)">{{s.category}}</td>
-					<td><a title="Edit seller"
+					<td><a title="{{'sellers.Edit' | translate}}"
 							ng-click="onUpdateSeller(s.id)">
 							<span class="btn btn-default glyphicon glyphicon-edit"></span>
 						</a>

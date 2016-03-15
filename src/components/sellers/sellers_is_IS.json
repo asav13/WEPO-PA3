@@ -23,6 +23,8 @@
 		},
 		"SortByName":			"Raða eftir nafni",
 		"SortByCategory":		"Raða eftir flokk",
-		"Search":				"Leita"
+		"Search":				"Leita",
+		"SeeDetails":			"Sjá nánari upplýsingar um seljanda",
+		"Edit":					"Breyta seljanda"
 	}
 }

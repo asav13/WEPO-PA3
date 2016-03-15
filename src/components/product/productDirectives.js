@@ -46,7 +46,7 @@ angular.module("project3App").directive("productCard", function productCard() {
 	return {
 		restrict: "E",
 		template:
-			"<div title=\"Edit item\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
+			"<div title=\"{{'products.Edit' | translate}}\" ng-click=\"onUpdateSellerProduct(prod.id)\" class=\"thumbnail listLink\">" +
 				"<product-photo></product-photo>" +
 				"<product-caption></product-caption>" +
 			"</div>"

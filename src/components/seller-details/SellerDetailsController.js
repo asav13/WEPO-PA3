@@ -2,7 +2,7 @@
 
 angular.module("project3App").controller("SellerDetailsController",
 function SellerDetailsController($scope, $rootScope, $routeParams, $location, AppResource, ProductDlg, centrisNotify) {
-	var sortValue;
+	var sortValue			= 1;
 	var sellerId 			= parseInt($routeParams.id);
 	$scope.products 		= [];
 	$scope.topTenProd 		= [];
@@ -18,23 +18,13 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 };
 
 	/* GET FUNCTIONS */
-	AppResource.getSellerProducts(sellerId)
-		.success(function(data) {
-			$scope.products 	= data;
-			$scope.topTenProd 	= new FindTopTen(data);
-
-			if(data.length === 0) {
-				$scope.noProducts = true;
-			} else {
-				$scope.noProducts = false;
-			}
-		}).error(function() {
-			centrisNotify.error("products.Messages.LoadFailed");
-	});
+	/* 	AppResource.getSellerProducts had to be moved below the sort
+		so that it would recognize the sort functions.. silly scoping :) */
 
 	AppResource.getSellerDetails(sellerId)
 		.success(function(data) {
 			$scope.sellerDetails = data;
+
 		}).error(function() {
 			centrisNotify.error("products.Messages.GetSellerDetailsFailed");
 	});
@@ -77,6 +67,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 	};
 
 	/* HELPER FUNCTIONS */
+
 	/* Finding top 10 most sold products */
 	function FindTopTen(data) {
 		var dataArr 	= [];
@@ -97,13 +88,13 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		return topTenArr;
 	}
 
+	/* For those fields that were not modified, we keep the old values */
 	function checkUpdates(productId, updatedProduct) {
 		var productBefore;
 		AppResource.getSellerProductDetails(sellerId, productId)
 			.success(function(data){
 				productBefore = data;
 		});
-		// For those fields that were not modified, we keep the old values
 		if(updatedProduct.name === ""){
 			updatedProduct.name = productBefore.name;
 		}
@@ -121,7 +112,7 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 		return checkUpdates(id, prod);
 	};
 
-	/* ORDERBY FUNCTIONS */
+	/* Orderby function for products */
 	$scope.selectedValue = function(value) {
 		sortValue = value;
 		switch(value) {
@@ -188,4 +179,23 @@ function SellerDetailsController($scope, $rootScope, $routeParams, $location, Ap
 				});
 		}
 	};
+
+	/* This fellow needed to be on the bottom or else Angular did not recognize the sort function...*/
+	AppResource.getSellerProducts(sellerId)
+		.success(function(data) {
+			$scope.products 	= data;
+			$scope.topTenProd 	= new FindTopTen(data);
+
+			if(data.length === 0) {
+				$scope.noProducts = true;
+			} else {
+				$scope.noProducts = false;
+				if($scope.selectedValue !== undefined) {
+					$scope.selectedValue(sortValue);
+					$scope.dropdown.title = "Order by";
+				}
+			}
+		}).error(function() {
+			centrisNotify.error("products.Messages.LoadFailed");
+	});
 });
