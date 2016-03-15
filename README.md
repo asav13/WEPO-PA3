@@ -56,7 +56,7 @@ Features not mentioned in project description:
 
 ## User instructions
 * To change the language, click the ***flags*** in the top right corner.
-* To locate from seller-details page, back to list of sellers, click the ***Shell Sarks*** icon on the top left of the screen.
+* To locate from seller-details page, back to list of sellers, click the ***SellSharks*** icon on the top left of the screen.
 
 ##### Sellers
 * To add a new seller, press the ***+ New Seller*** button and fill in the name and category of product. You can add a photo but it is not mandatory. Upon finish, an error/success message will tell you if it was a success or not.
