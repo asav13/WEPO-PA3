@@ -40,8 +40,8 @@ To run the unit tests, run
 from the root.
 Open the *index.html* file, located in *../coverage/Chrome 48.0.2564 (Windows 10 0.0.0)* to see the coverage of unit tests.
 
-## Site testing
-The site was tested in:
+## Browser support
+The site was tested on:
 * Chrome 
 * Firefox 
 * Microsoft edge
