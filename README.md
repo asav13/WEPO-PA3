@@ -41,7 +41,7 @@ from the root.
 Open the *index.html* file, located in *../coverage/Chrome 48.0.2564 (Windows 10 0.0.0)* to see the coverage of unit tests.
 
 ## Browser support
-The site was tested on:
+During developement the site was tested on:
 * Chrome 
 * Firefox 
 * Microsoft edge
