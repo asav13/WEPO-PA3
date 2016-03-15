@@ -53,9 +53,9 @@ module.exports = {
 		],
 		styles:  [
 			"src/app.less",
-			//"src/vendor/bootstrap/dist/css/bootstrap.min.css", //doesnt read
+			//"src/vendor/bootstrap/dist/css/bootstrap.min.css", //doesnt read this...
 			"src/components/**/*.less",
-			"!src/components/**/_*.less"
+			"!src/components/**/_*.less",
 		],
 		fonts:   [
 			"src/vendor/font-awesome/fonts/**/*.*"
