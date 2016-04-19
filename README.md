@@ -5,6 +5,9 @@ Assignment: Online Sale Business for Sellers<br>
 Authors: asav13@ru.is, vedise13@ru.is, laurar14@ru.is
 
 An AngularJS application that displays a list of sellers and their respective products.
+<br>
+The project is currently deployed at https://www.asabjork.com
+
 ## Installation and dependencies
 ### Dependencies
 All javascript references are handled by gulp.
