@@ -1,5 +1,4 @@
-[~1/2] (20%) 	Unit tests for all code
-[ ]				CHECK DIALOGS !!! Not only the controllers
+[x] (20%) 	Unit tests for all code - 100% coverage CHECK !
 
 [x] (5%) List individuals
 [x] (10%) Add/edit individuals
@@ -19,7 +18,7 @@
 [x] (5%) Responsive layout 
 [x] (5%) Product directive
 
-[ ] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED, one feature may give just 0.1 bonus
+[x] (10%) Coolness bonus - IF EVERYTHING ELSE FINISHED, one feature may give just 0.1 bonus
 	- Videos for products (if page is viewable to customers)
 	-[x] Search/filter, products
 	-[x] Search/filter, sellers
@@ -27,9 +26,6 @@
 
 [x] (? %) Boxes
 [x] (? %) Make products sortable in JS
-
-ca 90% done
-
 
 
 FIXES
