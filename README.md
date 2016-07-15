@@ -4,7 +4,7 @@ T-303-WEPO - Web Programming II<br>
 Assignment: Online Sale Business for Sellers<br>
 Authors: asav13@ru.is, vedise13@ru.is, laurar14@ru.is
 
-An AngularJS application that displays a list of sellers and their respective products.
+An AngularJS application for managing data for sellers and their products. 
 <br>
 The project is currently deployed at http://www.asabjork.com/sellsharks/
 
